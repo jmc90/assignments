@@ -1,0 +1,39 @@
+body {
+    font-size: 20px;
+}
+
+#container h1 {
+    color: darkgreen;
+}
+
+#container h1,h2 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+#container img {
+    float: left;
+    width: 200px;
+    margin: 20px;
+    
+}
+
+p, ul {
+    line-height: 25px;
+}
+
+ul {
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}

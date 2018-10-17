@@ -1,0 +1,17 @@
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+header img{
+    margin-top: 20px;
+}
+section ul {
+    list-style-type: none;
+}
+
+section li {
+    line-height: 200%;
+}
