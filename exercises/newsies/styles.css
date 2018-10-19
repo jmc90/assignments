@@ -1,0 +1,32 @@
+header  {
+    text-align: center;
+    font-size: 150%;
+    color: red;
+    
+}
+
+#news { 
+    display: inline-block;
+    width: 70%;
+}
+
+#classifieds {
+    display: inline-block;
+    width: 25%;
+    vertical-align: top;
+}
+
+#news img {
+    float: left;
+}
+
+#classifieds div {
+    border-style: solid;
+    border-color: purple
+}
+
+.aside {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
