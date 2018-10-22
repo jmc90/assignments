@@ -14,7 +14,7 @@ function largest(num1, num2, num3) {
 // (Return the string "even" or "odd")
 
 function evenOrOdd(num) {
-    if(num % 2 === 0){
+    if (num % 2 === 0){
         return "even"
     } else {
         return "odd"
@@ -26,7 +26,7 @@ function evenOrOdd(num) {
 // of the string.
 
 function concatStr(str) {
-    if(str.length < 20) {
+    if (str.length < 20) {
         return str.concat(str)
     } else {
         return str.slice(0, Math.floor(str.length/2))
@@ -39,8 +39,8 @@ function concatStr(str) {
 var nums = []
 function fibonacci(n) {
     nums.push(0 ,1)
-    for(var i = 0; i < n; i++) {
-        if(i >= 2) {
+    for (var i = 0; i < n; i++) {
+        if (i >= 2) {
             nums.push(nums[i - 2] + nums[i - 1])
         }
     }
@@ -54,3 +54,37 @@ fibonacci(5)
 
 // Write a function to solve the quadratic equation. 
 // (It should accept three numbers as parameters, and then return an array with the resulting x values.)
+
+
+function quadraticEquation(a, b, c) { 
+    var x = []
+
+    var answer1 = (-1 * b + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a)
+    var answer2 = (-1 * b - Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a)
+    
+    x.push(answer1, answer2)
+    return x;
+}
+
+//Write a function that accepts a string as a parameter. Return the most frequently occuring letter in that string.
+
+function getFrequency(string) {
+    var max = 0;
+    var letter;
+    var counter = {};
+  
+    for (var i = 0; i < string.length; i++) {
+      if (counter[string[i]]) {
+        counter[string[i]] = counter[string[i]] + 1
+      } else {
+            counter[string[i]] = 1
+      } 
+      if (counter[string[i]] > max) {
+        max = counter[string[i]];
+        letter = string[i];
+      }
+    }
+  
+    return [letter, max];
+  }
+  
