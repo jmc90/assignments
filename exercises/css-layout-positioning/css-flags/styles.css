@@ -1,0 +1,80 @@
+body {
+    background-color: bisque;
+}
+
+.container {
+    width: 60%;
+    margin: auto;
+    border: 0;
+    padding: 0;
+}
+
+.france1 {
+    display: inline-block;
+    width: 33%;
+    height: 500px;
+    background-color: darkblue;
+    
+}
+
+.france2 {
+    display: inline-block;
+    width: 33%;
+    height: 500px;
+    background-color: white;
+    
+}
+
+.france3 {
+    display: inline-block;
+    width: 33%;
+    height: 500px;
+    background-color: red;
+  
+}
+
+.germany1 {
+    width: 100%;
+    height: 165px;
+    background-color: black;
+    
+}
+
+.germany2 {
+    width: 100%;
+    height: 165px;
+    background-color: red;
+    
+}
+
+.germany3 {
+    width: 100%;
+    height: 165px;
+    background-color: yellow;
+  
+}
+
+.madagascar1 {
+    width: 33%;
+    height: 500px;
+    display: inline-block;
+    background-color: white;
+    
+}
+
+.madagascar2 {
+    width: 66%;
+    height: 250px;
+    display: inline-block;
+    background-color: red;
+    vertical-align: top;
+    
+}
+
+.madagascar3 {
+    width: 66%;
+    height: 250px;
+    display: inline-block;
+    background-color: yellow;
+  
+}
