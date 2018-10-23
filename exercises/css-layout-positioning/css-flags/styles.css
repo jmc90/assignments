@@ -32,3 +32,34 @@ body {
     background-color: red;
     right: 0;
 }
+
+/* germany */
+
+.germ-container {
+    width: 300px;
+    height: 210px;
+    border: 1px solid black;
+    position: relative;
+    margin: 5px;
+}
+
+.germ-black, .germ-red, .germ-yellow {
+    position: absolute;
+    height: 70px;
+    width: 300px;
+}
+
+.germ-black {
+    background-color: black;
+    
+}
+
+.germ-red {
+    background-color: red;
+    top: 70px;
+}
+
+.germ-yellow {
+    background-color: yellow;
+    top: 140px;
+}
