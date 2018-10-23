@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Very Basic Calculator</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <h1>Basic Calculator Form</h1>
+    <div class="container">
+
+        <!-- Addition form -->
+        <div class="add">
+            <h3>Addition</h3>
+            <form name="add">
+                <input type="number" name="add1" placeholder="First Number">
+                <p>+</p>
+                <input type="number" name="add2" placeholder="Second Number">
+                <button>Total</button>
+                <p id="sumParagraph"></p>
+            </form>
+        </div>
+
+        <!-- Subtraction form -->
+        <div class="sub">
+            <h3>Subtraction</h3>
+            <form name="subtract">
+                <input type="number" name="sub1" placeholder="First Number">
+                <p>-</p>
+                <input type="number" name="sub2" placeholder="Second Number">
+                <button> Total</button>
+                <p id="diffParagraph"></p>
+            </form>
+        </div>
+
+        <!-- Multiplaction form -->
+        <div class="mult">
+            <h3>Multiplication</h3>
+            <form name="multiply">
+                <input type="number" name="mult1" placeholder="First Number">
+                <p>x</p>
+                <input type="number" name="mult2" placeholder="Second Number">
+                <button>Total</button>
+                <p id="prodParagraph"></p>
+            </form> 
+        </div>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
