@@ -9,7 +9,7 @@ bill.addEventListener('submit', function(event){
     var cheep = bill.cheep.value  * 11
     var subTotal = Number(goomba) + Number(bomb) + Number(cheep)
 
-    var total = document.getElementById("totalCoins")
+    var total = document.getElementById("total-coins")
     
     total.textContent = ` Total is ${subTotal} coins`
 
