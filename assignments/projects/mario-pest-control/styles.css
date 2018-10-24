@@ -1,3 +1,66 @@
 body {
     font-family: 'Play', sans-serif;
+    background-color: lightgray;
+    margin: 0;
 }
+
+.top-showcase {
+    width: 100%;
+    height: 350px;
+    background-image: url('https://img00.deviantart.net/3d9c/i/2016/065/4/f/mario_bros__plumbing_and_pest_control__colour__by_wildwing64-d9u5coj.png');
+    background-size: contain;
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-color: rgb(32, 12, 51);
+}
+
+header h1{
+    font-family: 'Bangers', cursive;
+    letter-spacing: 3px;
+    background-color: crimson;
+    background-image:
+}
+
+input {
+    width: 30px;
+    height: 30px
+}
+
+.input {
+    margin-left: auto;
+}
+
+.goomba-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content:flex-start ;
+    flex-wrap: wrap
+
+}
+
+.bobomb-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content:flex-start ;
+    flex-wrap: wrap
+
+}
+
+.cheeps-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content:flex-start ;
+    flex-wrap: wrap
+
+}
+
+.button-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.
