@@ -5,26 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mario Pest Control</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Mario Pest Control</h1>
-    </header>
-    <div class="main-container">
-        <div class="goombas">
-            <div class="goombaImg">
-                <img src="" alt="">
-                <div class="nameDiv">
-                    <h2 class="baddieName">Goomba</h2>
-                </div>
-                <span class="cost">5 Coins</span>
-                <form name="goomba">
-                <input type="text" name="baddieInput" id="goombaInput">
-                </form>
-            </div>    
+        <div>
+            <h1>Mario Pest Control</h1>
         </div>
+    </header>
 
-    </div>
+    <form name="pestBill">
+        <div class="goomba-div">
+            <div class="goomba-pic">
+                <img src="" alt="goomba image">
+            </div>
+            <div class="name">
+                <h2 class="baddie-type">Goombas</h2>
+            </div>
+            <span class="price">5 Coins</span>
+            <input type="number" name="goomba">
+        </div>
+        <div class="bobomb-div">
+            <div class="bobomb-pic">
+                <img src="" alt="bobomb image">
+            </div>
+            <div class="name">
+                <h2 class="baddie-type">Bob-ombs</h2>
+            </div>
+            <span class="price">7 Coins</span>
+            <input type="number" name="bomb">
+        </div>
+        <div class="cheeps-div">
+            <div class="cheeps-pic">
+                <img src="" alt="cheep-cheep image">
+            </div>
+            <div class="name">
+                <h2 class="baddie-type">Cheep-cheeps</h2>
+            </div>
+            <span class="price">11 Coins</span>
+            <input type="number" name="cheep">
+        </div>
+        <div>
+            <button>Total</button>
+        </div>
+        <div class="total">
+            <div><span id="totalCoins">0 coins</span></div>
+        </div>
+    </form>
+    
 
     <script type="text/javascript" src="./app.js"></script>
 </body>
