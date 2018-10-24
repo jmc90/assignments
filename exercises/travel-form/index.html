@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Travel</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <main class="main-container">
+        <header>
+            <h1>Travel Everywhere!<span class="disclaimer"> up to 3 locations only..</span></h1>
+        </header>
+            <form class="form" name="info">
+                <div>
+                    <h2>Enter your traveler information here:</h2>
+                    <h3>Traveler</h3>
+                    First Name:<input type="text" name="firstName" placeholder="First Name">
+                    Last Name:<input type="text" name="lastName" placeholder="Last Name">
+                    Age:<input type="number" name="age">
+                    <br>
+                    Gender: 
+                    <input type="radio" name="gender" value="Male">Male
+                    <input type="radio" name="gender" value="Female">Female
+                    <br>
+                    Travel location:
+                    <input type="radio" name="location" value="Japan">Japan
+                    <input type="radio" name="location" value="Spain">Spain
+                    <input type="radio" name="location" value="Italy">Italy
+                    <br>
+                    Dietary Restrictions: 
+                    <input type="checkbox" name="diet" value="Vegan">Vegan
+                    <input type="checkbox" name="diet" value="lactose Free">Lactose Free
+                    <input type="checkbox" name="diet" value="Kosher">Kosher
+                    <br>
+                    <button>Submit</button>
+                </div>
+            </form>
+    </main>
+    <script src="./app.js"></script>
+</body>
+</html>

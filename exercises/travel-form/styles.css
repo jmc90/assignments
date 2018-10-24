@@ -1,0 +1,31 @@
+body {
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color:#f4f4f4;
+    color:#555555;
+    line-height:1.6em;
+	margin:0;
+}
+
+.main-container {
+    width:80%;
+	margin: 0 auto;
+}
+
+.disclaimer {
+    font-size: 10px;
+}
+
+.form {
+    background-color: lightgreen;
+    
+}
+
+header { 
+    height: 50px;
+    background-color: aquamarine
+}
+
+.form h2 { 
+    margin-top: 0;
+}
