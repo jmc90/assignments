@@ -29,8 +29,6 @@ while(!hasWon && !isDead) {
             console.log("\n You ended the game")
             isDead = true
     }
-
-    
 }
 
 
