@@ -15,7 +15,7 @@ function arrayIndex(str) {
 
 // console.log(arrayIndex(phrase))
 
-// 
+
 function getFrequency(string) {
     var freq = {}
     for (var i=0; i<string.length;i++) {
@@ -29,6 +29,20 @@ function getFrequency(string) {
 
     return freq
 }
+
+function getFrequency(string) {
+    var freq = {}
+    var arr = string.split('')
+    arr.forEach(char => {
+        if(freq[char]) {
+            freq[char]++
+        } else {
+            freq[char] = 1
+        }
+    })
+    return freq
+}
+
 
 
 
