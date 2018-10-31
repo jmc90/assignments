@@ -1,5 +1,22 @@
 var ask = require('readline-sync')
 
+
+// REQUIREMENTS 
+ /*
+ character creation
+walking
+running from a fight
+fighting
+enemy creation
+attacking enemy
+enemy attacking
+enemy dying (including dropping an item)
+character dying
+*/
+
+
+////////////////////////////////
+//---Player and Enemies Constructors---//
 function Player(name, hp){
     this.name = name
     this.hp = hp
@@ -20,7 +37,14 @@ function Enemy(type, hp){
 }
 
 ///////////////////////////
+//---Functions---//
+
+
+
+///////////////////////////
 //---Global Variables---//
- 
+ var Player1 = new Player("Jon", 100)
 var hasWon = false
-var 
+
+
+/////////////////////////
