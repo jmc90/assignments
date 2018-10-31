@@ -33,6 +33,7 @@ body {
     font-size: 1.5rem;
 }
 
+/* Just make one class and apply it everywhere you want those styles */
 .goomba-div,
 .bobomb-div,
 .cheeps-div {
