@@ -60,5 +60,7 @@ var people = [
 ]
 
 function byAge(arr){
-
+    return arr.sort((a, b) => a.age - b.age)
 }
+
+console.log(byAge(people))

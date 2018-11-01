@@ -1,0 +1,48 @@
+{
+    "appetizers": [{
+        "name": "chips and salsa",
+        "ingredients": ["chips ingredients", "salsa ingredients"],
+        "description": "exactly what it sounds like"
+    },{
+        "name": "chicken wings",
+        "ingredients": ["chicken", "wings", "hot sauce ingredients"],
+        "description": "exactly what it sounds like"
+    }],
+    "cold sandwiches": [{
+        "name": "italian sub",
+        "ingredients": ["bread", "cheese", "italian meats", "lettuce", "tomato", "mayo"],
+        "description": "a basic italian sub that doesn't taste too bad"
+    },{
+        "name": "tuna sub",
+        "ingredients": ["bread", "tuna", "mayo"],
+        "description": "exactly what it sounds like"
+    }],
+   "hot sandwiches": [{
+        "name": "steak and cheese",
+        "ingredients": ["bread", "steak", "cheese"],
+        "description": "exactly what it sounds like"
+   },{
+        "name": "meatball sub",
+        "ingredients": ["bread", "meat", "balls", "tomato sauce", "maybe something else "],
+        "description": "exactly what it sounds like"
+   }],
+   " desserts": [{
+        "name": "cheesecake",
+        "ingredients": ["cheese", "cake"],
+        "description": "exactly what it sounds like"
+   },{
+        "name": "cookies",
+        "ingredients": ["chocalate chips", "flour", "eggs"],
+        "description": "exactly what it sounds like"
+   }],
+   " drinks": [{
+        "name": "mountain dew",
+        "ingredients": ["mountian stuff", "dew stuff"],
+        "description": "exactly what it sounds like"
+   },{
+        "name": "water",
+        "ingredients": ["h", "2o"],
+        "description": "exactly what it sounds like"
+   }]
+}
+
