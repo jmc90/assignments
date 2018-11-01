@@ -1,0 +1,17 @@
+body {
+    margin: 0
+}
+
+#poke {
+    width:80%;
+    margin: auto;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    border: solid 5px black;
+    background-color: blue;
+    color: red;
+    margin: 20px;
+}
