@@ -150,7 +150,7 @@ while(walkDistance < 10 && hasQuit === false && isDead === false) {
     walk()
 } 
 
-if (walkDistance === 5) {
+if (walkDistance === 10) {
     console.log("you made it out of the city")
 }
 
