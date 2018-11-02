@@ -33,9 +33,7 @@ body {
     font-size: 1.5rem;
 }
 
-.goomba-div,
-.bobomb-div,
-.cheeps-div {
+.baddies-div {
     display: flex;
     flex-direction: row;
     align-items: center; 
@@ -43,6 +41,22 @@ body {
     flex-wrap: wrap;
     width: 90%;
     margin: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.goomba-box {
+    background-color: rgba(231, 178, 63, 0.5);
+    
+}
+
+.bobomb-box {
+    background-color: rgba(19, 77, 236, 0.562);
+}
+
+.cheeps-box{
+    background-color: rgba(250, 0, 0, 0.856);
 }
 
 .button-div {
