@@ -14,7 +14,7 @@ describe("The count code function", function() {
     test("should return correct code count amount", function() {
         expect(countCode("aaacodebbb")).toBe(1)
         expect(countCode("codexxcode")).toBe(2)
-        expect(countCode("cozexxcope")).toBe(3)
+        expect(countCode("cozexxcope")).toBe(2)
     })
 
 })
