@@ -33,7 +33,7 @@ var hasQuit = false
 var walkDistance = 0
 var triedRun = false
 var alienTypes = ["Grey", "Reptilian", "Chupacabra"]
-var alienDrops = ["Med Pack", "Cool Alien Helmet", "Alien artifact"]
+var alienDrops = ["Med Pack", "Cool Alien Helmet", "Alien Artifact"]
 var enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 50)
 var alienWeapons =[]
 var isDead = false
@@ -54,7 +54,8 @@ function playerAttacksEnemy() {
             if (enemy.hp > 0) {
                 console.log(`Good shot! Enemy hp is now at ${enemy.hp} hp`)
             } else {
-                console.log("You took him out! Lets keep going!")
+                player1.inventory.push(alienDrops[Math.floor((Math.random() * alienDrops.length) + 1)])
+                console.log(`You took him out! You recieved a ${player1.inventory[player1.inventory.length -1]} Lets keep going!`)
             }
         } 
     }
