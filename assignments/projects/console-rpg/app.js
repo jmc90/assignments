@@ -46,15 +46,15 @@ var isDead = false
 //---Functions---//
 
 function playerAttacksEnemy() {
-    var attack1 = readline.keyIn("Press 'a' to fight back!!", {limit: 'a'})
+    var attack1 = readline.keyIn("Press 'a' to ATTACK!!", {limit: 'a'})
     var pAttackDamage = player1.attack()
     if(attack1 === 'a') {
         if(enemy.hp > 0) {
             enemy.hp -= pAttackDamage
             if (enemy.hp > 0) {
-                console.log(`Good shot! Enemy hp is now at ${enemy.hp} hp`)
+                console.log(`Good shot! Enemy hp is now at ${enemy.hp} hp\n`)
             } else {
-                player1.inventory.push(alienDrops[Math.floor((Math.random() * alienDrops.length) + 1)])
+                player1.inventory.push(alienDrops[Math.floor(Math.random() * (alienDrops.length))])
                 console.log(`You took him out! You recieved a ${player1.inventory[player1.inventory.length -1]} Lets keep going!`)
             }
         } 
@@ -72,7 +72,7 @@ function enemyAttacksPlayer() {
 }
 
 function attackSequence() {
-    enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 50) ///change to random enemy and hp.
+    enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 70) ///change to random enemy and hp.
     console.log(`You were attacked by a ${enemy.type}!`)
     while(player1.hp > 0 && enemy.hp > 0) {
         playerAttacksEnemy()
@@ -125,7 +125,7 @@ function walk(){
              console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: You're inventory is EMPTY!!`)
          } else {
             //tell user what's in their inventory, and their health, and then tell them to push w to walk
-         console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: ${player1.inventory}`)
+         console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: ${player1.inventory}\n`)
          }
          
     } else if (toDo === 'z'){
@@ -139,10 +139,10 @@ function walk(){
 ////////////////////////////
 //---Game loop---//
 
-console.log("back story")
-player1.name = readline.question("May I have your name? ")
+console.log("back story\n")
+player1.name = readline.question("\nMay I have your name?\n ")
 var capName = player1.name.toUpperCase()
-console.log(`Thank you ${capName}, let's begin!`)
+console.log(`Thank you ${capName}, let's begin!\n`)
 
 while(walkDistance < 10 && hasQuit === false && isDead === false) {
     walk()
