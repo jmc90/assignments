@@ -1,15 +1,6 @@
 var readline = require('readline-sync')
 
 
-// REQUIREMENTS 
- /*
-fighting
-attacking enemy
-enemy attacking
-enemy dying (including dropping an item)
-character dying
-*/
-
 /////////////////////////////////////////
 //---Player and Enemies Constructors---//
 
@@ -42,6 +33,7 @@ var hasQuit = false
 var walkDistance = 0
 var triedRun = false
 var alienTypes = ["Grey", "Reptilian", "Chupacabra"]
+var alienDrops = ["Med Pack", "Cool Alien Helmet", "Alien artifact"]
 var enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 50)
 var alienWeapons =[]
 var isDead = false
@@ -90,11 +82,14 @@ function attackSequence() {
 }
 
 function run(){
-    if(Math.floor((Math.random() * 2) + 1) === 1){
+    if(Math.floor((Math.random() * 2) + 1) === 1 && !triedRun){
         console.log("You got away. That was close!")
+        triedRun = true
+        console.log(triedRun)
     } else {
         console.log(`You cannot escape this time! You must fight. It's coming straight for you!`)
         attackSequence()
+        triedRun === false
     }
 
 }
@@ -107,11 +102,12 @@ function fight(){
         run()
     } else {
         attackSequence()
+
     }
 }
 
 function walk(){
-    var toDo = readline.keyIn(`Your health is ${player1.hp}. Press 'w' to walk or 'i' to check inventory or 'z' to quit`, {limit: 'wiz'})
+    var toDo = readline.keyIn(`Press 'w' to walk or 'i' to check inventory and health or 'z' to quit`, {limit: 'wiz'})
      if (toDo === 'w'){
          if(Math.floor((Math.random() * 3) + 1) === 1){
              fight()
@@ -125,10 +121,10 @@ function walk(){
          
     }  else if (toDo === 'i') {
          if (player1.inventory.length === 0) {
-             console.log("You're inventory is EMPTY!!")
+             console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: You're inventory is EMPTY!!`)
          } else {
             //tell user what's in their inventory, and their health, and then tell them to push w to walk
-         console.log(`Your inventory contains: ${player1.inventory}`)
+         console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: ${player1.inventory}`)
          }
          
     } else if (toDo === 'z'){
@@ -144,7 +140,8 @@ function walk(){
 
 console.log("back story")
 player1.name = readline.question("May I have your name? ")
-console.log(`Thank you ${player1.name}, let's begin!`)
+var capName = player1.name.toUpperCase()
+console.log(`Thank you ${capName}, let's begin!`)
 
 while(walkDistance < 10 && hasQuit === false && isDead === false) {
     walk()
@@ -156,6 +153,7 @@ if (walkDistance === 10) {
 
 if (player1.hp <= 0) {
     console.log("You're DEAD!!!")
+    isDead = false
 }
 
 if (hasQuit === true) {
