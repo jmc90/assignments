@@ -75,7 +75,9 @@ function attackSequence() {
     console.log(`You were attacked by a ${enemy.type}!\n`)
     while(player1.hp > 0 && enemy.hp > 0) {
         playerAttacksEnemy()
-        enemyAttacksPlayer()
+        if (enemy.hp > 0) {
+            enemyAttacksPlayer()
+        }
     }
 }
 
@@ -125,6 +127,7 @@ function walk(){
                 player1.hp += 20
                 console.log(`You consumed a health pack. Your hp is now ${player1.hp}`)
                 delete player1.inventory[index]
+                console.log(player1.inventory)
             } else if (player1.inventory[index] === "Cool Alien Helmet") {
                 console.log("It wont fit your human head. But might be a cool souvenir if you make it out alive")
             } else if (player1.inventory[index] === "Alien Artifact") { 
