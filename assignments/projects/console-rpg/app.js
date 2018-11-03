@@ -29,7 +29,7 @@ var player1 = new Player("Jon", 100)
 var hasQuit = false
 var walkDistance = 0
 var triedRun = false
-var alienTypes = ["Grey", "Reptilian", "Chupacabra"]
+var alienTypes = ["Grey", "Reptilian", "Nordic"]
 var alienDrops = ["Med Pack", "Cool Alien Helmet", "Alien Artifact"]
 var enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 50)
 var alienWeapons =[]
@@ -57,7 +57,7 @@ function playerAttacksEnemy() {
 }
 
 function enemyAttacksPlayer() {
-    var defend = readline.keyIn("\nPrepare for enemy attack!! Press 'c' to continue\n", {limit: 'c'})
+    var defend = readline.keyIn("\nEnemy is attacking back!! Press 'c' to continue\n", {limit: 'c'})
     var eAttackDamage = enemy.attack()
     if(defend === 'c') {
         player1.hp -= eAttackDamage
@@ -73,6 +73,19 @@ function enemyAttacksPlayer() {
 function attackSequence() {
     enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 70) ///change to random enemy and hp.
     console.log(`You were attacked by a ${enemy.type}!\n`)
+    var description = readline.keyIn(`Press 'd' to view a description of your enemy or 'c' to conitnue\n`, {limit: 'dc'})
+    if (description === "d") {
+        if (enemy.type === "Grey") {
+            console.log(`\n ${enemy.type}:\nDescription: 3-4ft tall, bluish grey in colour, large bug-like black eyes, slit for a mouth, small nose. 3 fingers and a thumb, long spindly arms and legs. Often seen with small dwarf-like creatures. Type most commonly seen in abduction cases.\n`)
+        } else if (enemy.type === "Reptilian") {
+            console.log(`\n${enemy.type}:\nDescription: 5-7ft in height, red eyes. resembles a lizard, very intelligent, very nasty, in other words don't mess with these guys. Said to live in underground bases, in fact rumoured to have taken over a US military underground base and to live on human blood.. Have been seen in charge of other races. These could be the top guys!!!`)
+        } else if (enemy.type === "Nordic") {
+            console.log(`\n${enemy.type}:\nDescription: 6-8Ft, Swedish looking Aliens, Human in appearance, but who knows if this is just a disguise??? Said to be the overseers of abductions, but do not seem to be as malevolent as some of the other species mentioned here`)
+        }
+    }
+    else if (description === "c") {
+        console.log("\nGet ready to fight!!!\n")
+    }
     while(player1.hp > 0 && enemy.hp > 0) {
         playerAttacksEnemy()
         if (enemy.hp > 0) {
