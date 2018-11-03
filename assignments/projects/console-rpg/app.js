@@ -94,7 +94,7 @@ function run(){
 
 
 function fight(){
-    var fightOrRun = readline.keyIn("You have been spotted!! \nPress 'r' to run or 'f' to fight\n", {limit: 'rf'})
+    var fightOrRun = readline.keyIn("You have been spotted!!\n\nPress 'r' to run or 'f' to fight\n", {limit: 'rf'})
     if (fightOrRun === 'r'){
         run()
     } else {
@@ -126,7 +126,7 @@ function walk(){
             if (player1.inventory[index] === "Med Pack") {
                 player1.hp += 20
                 console.log(`You consumed a health pack. Your hp is now ${player1.hp}`)
-                delete player1.inventory[index]
+                player1.inventory.splice(index, 1)
                 console.log(player1.inventory)
             } else if (player1.inventory[index] === "Cool Alien Helmet") {
                 console.log("It wont fit your human head. But might be a cool souvenir if you make it out alive")
@@ -138,6 +138,7 @@ function walk(){
          }
          
     } else if (toDo === 'z'){
+        console.log("You are a QUITTER!!!! Feel bad about yourself now")
         hasQuit = true
     }
 }
@@ -150,7 +151,7 @@ player1.name = readline.question("\nMay I have your name?\n ")
 var capName = player1.name.toUpperCase()
 console.log(`Thank you ${capName}, let's begin!\n`)
 
-while(walkDistance < 10 && hasQuit === false && isDead === false) {
+while(walkDistance < 20 && hasQuit === false && isDead === false) {
     walk()
 } 
 
