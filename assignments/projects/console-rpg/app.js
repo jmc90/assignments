@@ -25,7 +25,7 @@ function Enemy(type, hp){
 
 ///////////////////////////
 //---Global Variables---//
-var player1 = new Player("Jon", 10)
+var player1 = new Player("Jon", 100)
 var hasQuit = false
 var walkDistance = 0
 var triedRun = false
@@ -108,24 +108,36 @@ function walk(){
          } else {
              console.log("Luckily you ran into no aliens\n")
              walkDistance++
-             console.log(`You have made it ${walkDistance} miles. You have ${10 - walkDistance} to go\n`)
+             if(walkDistance === 1) {
+                 console.log(`You have made it ${walkDistance} mile. You have ${10 - walkDistance} to go\n`)
+             } else {
+                console.log(`You have made it ${walkDistance} miles. You have ${10 - walkDistance} to go\n`)
+             } 
          } 
          
     }  else if (toDo === 'i') {
          if (player1.inventory.length === 0) {
              console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: You're inventory is EMPTY!!\n`)
          } else {
-            
-         console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: ${player1.inventory}\n`)
+            console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: ${player1.inventory}\n`)
+            index = readline.keyInSelect(player1.inventory, 'Choose an Item to use or view')
+            if (player1.inventory[index] === "Med Pack") {
+                player1.hp += 20
+                console.log(`You consumed a health pack. Your hp is now ${player1.hp}`)
+                delete player1.inventory[index]
+            } else if (player1.inventory[index] === "Cool Alien Helmet") {
+                console.log("It wont fit your human head. But might be a cool souvenir if you make it out alive")
+            } else if (player1.inventory[index] === "Alien Artifact") { 
+                console.log("This could be helpful. You can't figure out what it is or does though..")
+            } else if (player1.inventory[index] === -1) {
+                console.log("You didn't choose and item. Let's continue")
+            }
          }
          
     } else if (toDo === 'z'){
         hasQuit = true
     }
 }
-
-//////////////////////////////
-
 
 ////////////////////////////
 //---Game loop---//
