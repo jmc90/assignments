@@ -26,14 +26,13 @@ function Enemy(type, hp){
 ///////////////////////////
 //---Global Variables---//
 var player1 = new Player("Jon", 100)
-var hasQuit = false
+var hasQuitOrDead = false
 var walkDistance = 0
 var triedRun = false
 var alienTypes = ["Grey", "Reptilian", "Nordic"]
 var alienDrops = ["Med Pack", "Cool Alien Helmet", "Alien Artifact"]
 var enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 50)
 var alienWeapons =[]
-var isDead = false
 
 
 
@@ -50,7 +49,8 @@ function playerAttacksEnemy() {
         if (enemy.hp > 0) {
                 console.log(`\nGood shot! Enemy hp is now at ${enemy.hp} hp\n`)
         } else {
-                player1.inventory.push(alienDrops[Math.floor(Math.random() * (alienDrops.length))])
+                var item = alienDrops[Math.floor(Math.random() * (alienDrops.length))]
+                player1.inventory.push(item)
                 console.log(`\nYou took him out! You recieved a ${player1.inventory[player1.inventory.length -1]} Lets keep going!\n`)
         }
     }
@@ -64,8 +64,8 @@ function enemyAttacksPlayer() {
         if (player1.hp > 0) {
             console.log(`\nYou have been hit! Your hp is now ${player1.hp}\n`)
         } else {
-            console.log("Dead")
-            isDead = true
+            console.log("\nYOU ARE DEAD!!!! but honestly this is such an easy game.. how did you die???\n")
+            hasQuitOrDead = true
         }
     }
 }
@@ -73,14 +73,14 @@ function enemyAttacksPlayer() {
 function attackSequence() {
     enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 70) ///change to random enemy and hp.
     console.log(`You were attacked by a ${enemy.type}!\n`)
-    var description = readline.keyIn(`Press 'd' to view a description of your enemy or 'c' to conitnue\n`, {limit: 'dc'})
+    var description = readline.keyIn(`\nPress 'd' to view a description of your enemy or 'c' to conitnue\n`, {limit: 'dc'})
     if (description === "d") {
         if (enemy.type === "Grey") {
-            console.log(`\n ${enemy.type}:\nDescription: 3-4ft tall, bluish grey in colour, large bug-like black eyes, slit for a mouth, small nose. 3 fingers and a thumb, long spindly arms and legs. Often seen with small dwarf-like creatures. Type most commonly seen in abduction cases.\n`)
+            console.log(`\n${enemy.type}:\nDescription: 3-4ft tall, bluish grey in colour, large bug-like black eyes, slit for a mouth, small nose. 3 fingers and a thumb, long spindly arms and legs. Often seen with small dwarf-like creatures. Type most commonly seen in abduction cases.\n`)
         } else if (enemy.type === "Reptilian") {
-            console.log(`\n${enemy.type}:\nDescription: 5-7ft in height, red eyes. resembles a lizard, very intelligent, very nasty, in other words don't mess with these guys. Said to live in underground bases, in fact rumoured to have taken over a US military underground base and to live on human blood.. Have been seen in charge of other races. These could be the top guys!!!`)
+            console.log(`\n${enemy.type}:\nDescription: 5-7ft in height, red eyes. resembles a lizard, very intelligent, very nasty, in other words don't mess with these guys. Said to live in underground bases, in fact rumoured to have taken over a US military underground base and to live on human blood.. Have been seen in charge of other races. These could be the top guys!!!\n`)
         } else if (enemy.type === "Nordic") {
-            console.log(`\n${enemy.type}:\nDescription: 6-8Ft, Swedish looking Aliens, Human in appearance, but who knows if this is just a disguise??? Said to be the overseers of abductions, but do not seem to be as malevolent as some of the other species mentioned here`)
+            console.log(`\n${enemy.type}:\nDescription: 6-8Ft, Swedish looking Aliens, Human in appearance, but who knows if this is just a disguise??? Said to be the overseers of abductions, but do not seem to be as malevolent as some of the other species mentioned here\n`)
         }
     }
     else if (description === "c") {
@@ -96,18 +96,18 @@ function attackSequence() {
 
 function run(){
     if(Math.floor((Math.random() * 2) + 1) === 1 && !triedRun){
-        console.log("You got away. That was close!\n")
+        console.log("\nYou got away. That was close!\n")
         triedRun = true
     } else {
-        console.log(`You cannot escape this time! You must fight. It's coming straight for you!\n`)
+        console.log(`\nYou cannot escape this time! You must fight. It's coming straight for you!\n`)
         attackSequence()
-        triedRun === false
+        triedRun = false
     }
 }
 
 
 function fight(){
-    var fightOrRun = readline.keyIn("You have been spotted!!\n\nPress 'r' to run or 'f' to fight\n", {limit: 'rf'})
+    var fightOrRun = readline.keyIn("\nYou have been spotted!!\n\nPress 'r' to run or 'f' to fight\n", {limit: 'rf'})
     if (fightOrRun === 'r'){
         run()
     } else {
@@ -116,66 +116,67 @@ function fight(){
 }
 
 function walk(){
-    var toDo = readline.keyIn(`Press 'w' to walk or 'i' to check inventory and health or 'z' to quit\n`, {limit: 'wiz'})
+    var toDo = readline.keyIn(`\nPress 'w' to walk or 'i' to check inventory and health or 'z' to quit\n`, {limit: 'wiz'})
      if (toDo === 'w'){
          if(Math.floor((Math.random() * 3) + 1) === 1){
              fight()
          } else {
-             console.log("Luckily you ran into no aliens\n")
+             console.log("\nLuckily you ran into no aliens\n")
              walkDistance++
              if(walkDistance === 1) {
-                 console.log(`You have made it ${walkDistance} mile. You have ${10 - walkDistance} to go\n`)
+                 console.log(`\nYou have made it ${walkDistance} mile. You have ${20 - walkDistance} to go\n`)
              } else {
-                console.log(`You have made it ${walkDistance} miles. You have ${10 - walkDistance} to go\n`)
+                console.log(`\nYou have made it ${walkDistance} miles. You have ${20 - walkDistance} to go\n`)
              } 
          } 
          
     }  else if (toDo === 'i') {
          if (player1.inventory.length === 0) {
-             console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: You're inventory is EMPTY!!\n`)
+             console.log(`Name: '${player1.name}'\nHP: ${player1.hp}\nInventory: You're inventory is EMPTY!!\n`)
          } else {
             console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: ${player1.inventory}\n`)
             index = readline.keyInSelect(player1.inventory, 'Choose an Item to use or view')
             if (player1.inventory[index] === "Med Pack") {
                 player1.hp += 20
-                console.log(`You consumed a health pack. Your hp is now ${player1.hp}`)
+                console.log(`\nYou consumed a health pack. Your hp is now ${player1.hp}\n`)
                 player1.inventory.splice(index, 1)
-                console.log(player1.inventory)
+                console.log(`Inventory: ${player1.inventory}`)
             } else if (player1.inventory[index] === "Cool Alien Helmet") {
                 console.log("It wont fit your human head. But might be a cool souvenir if you make it out alive")
             } else if (player1.inventory[index] === "Alien Artifact") { 
-                console.log("This could be helpful. You can't figure out what it is or does though..")
+                var cheat = readline.question("\nHey man, do you know how that thing works?\n")
+                if (cheat === "cheater") {
+                    console.log("\nYou figured out the super power of the Alien Artifact and it has teleported you out of the city to a safe place. WIN\n")
+                    hasQuitOrDead = true 
+                }
+                else {
+                    console.log("\nThis could be helpful. Too bad you can't figure out what it is or does though..\n")
+                }
             } else if (player1.inventory[index] === -1) {
-                console.log("You didn't choose and item. Let's continue")
+                console.log("\nYou didn't choose and item. Let's continue\n")
             }
          }
          
     } else if (toDo === 'z'){
-        console.log("You are a QUITTER!!!! Feel bad about yourself now")
-        hasQuit = true
+        console.log("\nYou are a QUITTER!!!! Feel bad about yourself now\n")
+        hasQuitOrDead = true
     }
 }
 
 ////////////////////////////
 //---Game loop---//
-
-console.log("back story\n")
-player1.name = readline.question("\nMay I have your name?\n ")
+console.log("ILLEGAL ALIENS\n")
+console.log("\nIt is the year 2020. Donald Trump is unfortunatley the President. in 2018 he create the United States Space Force (USSF). That same year itelligent life was found and communications were established. President Trump sent out some interstellar tweets threatening the newly discovered life forms. The aliens promised repercusions.\n\nYou are an aspiring web developer living in your mom's basement in New York City trying to learn to code well enough to obtain a job. You pass out at 4 a.m. after a long frustrating night of trying to understand why nothing in this project you are building is working.\nYou wake up the next afternoon to go grab some late breakfast to find the city has been over run with Alien life forms which are attacking the city. You over hear a radio broadcast telling all survivors to try to get out of the city and make it to the outlying military base for safety. You run into another survivor trying to escape. He says...\n")
+player1.name = readline.question("\nHey man, what's your name?\n ")
 var capName = player1.name.toUpperCase()
-console.log(`Thank you ${capName}, let's begin!\n`)
+console.log(`Alright ${capName}, let's get the hell out of here!\n`)
 
-while(walkDistance < 20 && hasQuit === false && isDead === false) {
+while(walkDistance < 20 && !hasQuitOrDead) {
     walk()
 } 
 
+if (walkDistance === 20) {
+    console.log("Congratulations! You made it out of the city to the military base out side the city and left all your friends to die horrible deaths!!!")
+}
 
-
-
-
-//Donald trump creates space force and discovers aliens. starts war with aliens. aliens invade nyc. you need to escape city. 
-
-//give aliens different weapons and make certain weapons more powerful. random alien type and weapon genration
-
-//give player different types of attacks and weapons 
-
-//enemies become harder as game progresses
+//////attack loop bug? maybe?
