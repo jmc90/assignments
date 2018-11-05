@@ -24,11 +24,21 @@ function Player(name, hp){
         if (player1.playerAttacks[player1.currentAttack] === "Punch") {
             return Math.floor(Math.random() * (50 - 30) + 30)
         } else if (player1.playerAttacks[player1.currentAttack] === "Kick") {
-            return Math.floor(Math.random() * (60 - 40) + 40)
+            if(Math.floor((Math.random() * 2) + 1) === 1) {
+                return Math.floor(Math.random() * (60 - 40) + 40)
+            } else {
+                console.log("Your attack MISSED!!!")
+                return 0
+            }
         } else if (player1.playerAttacks[player1.currentAttack] === "Flying Roundhouse Kick") {
-            return Math.floor(Math.random() * (70 - 50) + 50)
+            if(Math.floor((Math.random() * 3) + 1) === 1) {
+                return Math.floor(Math.random() * (70 - 50) + 50)
+            } else {
+                console.log("\nYour attack MISSED!!!\n")
+                return 0
+            }
         } else if (player1.currentAttack === -1) {
-            console.log("You chose not to attack. You dealt no damage to the enemy!")
+            console.log("\nYou chose not to attack\n")
             return 0
         }
     }
@@ -50,14 +60,14 @@ function playerAttacksEnemy() {
     var attack1 = readline.keyIn("\nPress 'a' to ATTACK!!\n", {limit: 'a'})
     player1.currentAttack = readline.keyInSelect(player1.playerAttacks, 'Which attack do you want to use?')
     var pAttackDamage = player1.attack()
-    console.log(`\n${pAttackDamage} hp damage dealt to enemy\n`)
+    console.log(`\n${pAttackDamage} Hp damage dealt to enemy\n`)
     if(attack1 === 'a') {
         enemy.hp -= pAttackDamage
         if (enemy.hp > 0) {
                 if (pAttackDamage > 0) {
                 console.log(`\nGood shot! Enemy hp is now at ${enemy.hp} hp\n`)
                 } else {
-                    console.log("\nWhy aren't you attacking?!!\n")
+                    console.log(`\nYou did NO damage to the enemy!! The ${enemy.type} still has ${enemy.hp} Hp\n`)
                 }
         } else {
                 var item = alienDrops[Math.floor(Math.random() * (alienDrops.length))]
