@@ -1,16 +1,36 @@
 var readline = require('readline-sync')
 
+///////////////////////////
+//---Global Variables---//
+var player1 = new Player("Jon", 100)
+var hasQuitOrDead = false
+var walkDistance = 0
+var triedRun = false
+var alienTypes = ["Grey", "Reptilian", "Nordic"]
+var alienDrops = ["Med Pack", "Cool Alien Helmet", "Alien Artifact"]
+var enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 50)
+
+
 
 /////////////////////////////////////////
 //---Player and Enemies Constructors---//
-
-
 function Player(name, hp){
     this.name = name
     this.hp = hp
     this.inventory = []
+    this.playerAttacks = ["Punch", "Kick", "Flying Roundhouse Kick"]
+    this.currentAttack = 0
     this.attack = function(){
-        return Math.floor(Math.random() * (50 - 30) + 30)
+        if (player1.playerAttacks[player1.currentAttack] === "Punch") {
+            return Math.floor(Math.random() * (50 - 30) + 30)
+        } else if (player1.playerAttacks[player1.currentAttack] === "Kick") {
+            return Math.floor(Math.random() * (60 - 40) + 40)
+        } else if (player1.playerAttacks[player1.currentAttack] === "Flying Roundhouse Kick") {
+            return Math.floor(Math.random() * (70 - 50) + 50)
+        } else if (player1.currentAttack === -1) {
+            console.log("You chose not to attack. You dealt no damage to the enemy!")
+            return 0
+        }
     }
 }
 
@@ -24,30 +44,21 @@ function Enemy(type, hp){
 
 
 ///////////////////////////
-//---Global Variables---//
-var player1 = new Player("Jon", 100)
-var hasQuitOrDead = false
-var walkDistance = 0
-var triedRun = false
-var alienTypes = ["Grey", "Reptilian", "Nordic"]
-var alienDrops = ["Med Pack", "Cool Alien Helmet", "Alien Artifact"]
-var enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 50)
-var alienWeapons =[]
-
-
-
-
-
-///////////////////////////
 //---Functions---//
 
 function playerAttacksEnemy() {
     var attack1 = readline.keyIn("\nPress 'a' to ATTACK!!\n", {limit: 'a'})
+    player1.currentAttack = readline.keyInSelect(player1.playerAttacks, 'Which attack do you want to use?')
     var pAttackDamage = player1.attack()
+    console.log(`\n${pAttackDamage} hp damage dealt to enemy\n`)
     if(attack1 === 'a') {
         enemy.hp -= pAttackDamage
         if (enemy.hp > 0) {
+                if (pAttackDamage > 0) {
                 console.log(`\nGood shot! Enemy hp is now at ${enemy.hp} hp\n`)
+                } else {
+                    console.log("\nWhy aren't you attacking?!!\n")
+                }
         } else {
                 var item = alienDrops[Math.floor(Math.random() * (alienDrops.length))]
                 player1.inventory.push(item)
@@ -76,11 +87,11 @@ function attackSequence() {
     var description = readline.keyIn(`\nPress 'd' to view a description of your enemy or 'c' to conitnue\n`, {limit: 'dc'})
     if (description === "d") {
         if (enemy.type === "Grey") {
-            console.log(`\n${enemy.type}:\nDescription: 3-4ft tall, bluish grey in colour, large bug-like black eyes, slit for a mouth, small nose. 3 fingers and a thumb, long spindly arms and legs. Often seen with small dwarf-like creatures. Type most commonly seen in abduction cases.\n`)
+            console.log(`\n${enemy.type}: ${enemy.hp} Hp\nDescription: 3-4ft tall, bluish grey in colour, large bug-like black eyes, slit for a mouth, small nose. 3 fingers and a thumb, long spindly arms and legs. Often seen with small dwarf-like creatures. Type most commonly seen in abduction cases.\n`)
         } else if (enemy.type === "Reptilian") {
-            console.log(`\n${enemy.type}:\nDescription: 5-7ft in height, red eyes. resembles a lizard, very intelligent, very nasty, in other words don't mess with these guys. Said to live in underground bases, in fact rumoured to have taken over a US military underground base and to live on human blood.. Have been seen in charge of other races. These could be the top guys!!!\n`)
+            console.log(`\n${enemy.type}: ${enemy.hp} Hp\nDescription: 5-7ft in height, red eyes. resembles a lizard, very intelligent, very nasty, in other words don't mess with these guys. Said to live in underground bases, in fact rumoured to have taken over a US military underground base and to live on human blood.. Have been seen in charge of other races. These could be the top guys!!!\n`)
         } else if (enemy.type === "Nordic") {
-            console.log(`\n${enemy.type}:\nDescription: 6-8Ft, Swedish looking Aliens, Human in appearance, but who knows if this is just a disguise??? Said to be the overseers of abductions, but do not seem to be as malevolent as some of the other species mentioned here\n`)
+            console.log(`\n${enemy.type}: ${enemy.hp} Hp\nDescription: 6-8Ft, Swedish looking Aliens, Human in appearance, but who knows if this is just a disguise??? Said to be the overseers of abductions, but do not seem to be as malevolent as some of the other species mentioned here\n`)
         }
     }
     else if (description === "c") {
@@ -135,7 +146,7 @@ function walk(){
              console.log(`Name: '${player1.name}'\nHP: ${player1.hp}\nInventory: You're inventory is EMPTY!!\n`)
          } else {
             console.log(`Name: '${player1.name}'\n HP: ${player1.hp} \n Inventory: ${player1.inventory}\n`)
-            index = readline.keyInSelect(player1.inventory, 'Choose an Item to use or view')
+            var index = readline.keyInSelect(player1.inventory, 'Choose an Item to use or view')
             if (player1.inventory[index] === "Med Pack") {
                 player1.hp += 20
                 console.log(`\nYou consumed a health pack. Your hp is now ${player1.hp}\n`)
@@ -152,7 +163,7 @@ function walk(){
                 else {
                     console.log("\nThis could be helpful. Too bad you can't figure out what it is or does though..\n")
                 }
-            } else if (player1.inventory[index] === -1) {
+            } else if (index === -1) {
                 console.log("\nYou didn't choose and item. Let's continue\n")
             }
          }
@@ -166,7 +177,7 @@ function walk(){
 ////////////////////////////
 //---Game loop---//
 console.log("ILLEGAL ALIENS\n")
-console.log("\nIt is the year 2020. Donald Trump is unfortunatley the President. in 2018 he create the United States Space Force (USSF). That same year itelligent life was found and communications were established. President Trump sent out some interstellar tweets threatening the newly discovered life forms. The aliens promised repercusions.\n\nYou are an aspiring web developer living in your mom's basement in New York City trying to learn to code well enough to obtain a job. You pass out at 4 a.m. after a long frustrating night of trying to understand why nothing in this project you are building is working.\nYou wake up the next afternoon to go grab some late breakfast to find the city has been over run with Alien life forms which are attacking the city. You over hear a radio broadcast telling all survivors to try to get out of the city and make it to the outlying military base for safety. You run into another survivor trying to escape. He says...\n")
+console.log("\nIt is the year 2020. Donald Trump is unfortunatley the President. in 2018 he create the United States Space Force (USSF). That same year itelligent life was found and communications were established. President Trump sent out some interstellar tweets threatening the newly discovered life forms. The aliens promised repercusions.\n\nYou are an aspiring web developer living in your mom's basement in New York City trying to learn to code well enough to obtain a job. You pass out at 4 a.m. after a long frustrating night of trying to understand why nothing in this project you are building is working.\n\nYou wake up the next afternoon to go grab some late breakfast to find the city has been over run with Alien life forms which are attacking the city. You over hear a radio broadcast telling all survivors to try to get out of the city and make it to the outlying military base for safety. You run into another survivor trying to escape. He says...\n\n")
 player1.name = readline.question("\nHey man, what's your name?\n ")
 var capName = player1.name.toUpperCase()
 console.log(`Alright ${capName}, let's get the hell out of here!\n`)
@@ -176,7 +187,6 @@ while(walkDistance < 20 && !hasQuitOrDead) {
 } 
 
 if (walkDistance === 20) {
-    console.log("Congratulations! You made it out of the city to the military base out side the city and left all your friends to die horrible deaths!!!")
+    console.log("Congratulations! You made it to the military base outside the city and left all your friends to die horrible deaths!!!")
 }
 
-//////attack loop bug? maybe?
