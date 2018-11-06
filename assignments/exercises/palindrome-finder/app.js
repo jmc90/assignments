@@ -35,3 +35,11 @@ function palindrome(str) {
   }
    
   palindrome("A man, a plan, a canal. Panama");
+
+
+  // another solution
+
+  function isPalindrome(str) {
+    var newStr = str.match(/[a-z]/gi).join('').toLowerCase()
+    return newStr === newStr.split('').reverse('').join('')
+  }
