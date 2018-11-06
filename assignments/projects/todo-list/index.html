@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>My ToDo List</h1>
-    </header>
 
-    <form name="todoForm">
-        <input type="text" name="title" placeholder="Title..">
-        <button>Add Todo</button>
-    </form>
+    <div class="flex-container">
+        <header>
+            <h1>My ToDo List</h1>
+        </header>
+   
+        <form name="todoForm">
+            <input type="text" name="title" placeholder="Title..">
+            <input type="text" name="description" placeholder="Description..">
+            <input type="text" name="price" placeholder="Price..">
+            <input type="text" name="image" placeholder="image url..">
+            <button>Add Todo</button>
+        </form>
 
-    <div id="list-container">
+        <div id="list-container">
+        </div>
     </div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
     <script src="app.js"></script>
 </body>
