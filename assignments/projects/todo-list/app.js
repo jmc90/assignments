@@ -14,12 +14,14 @@ function listTodos(arr){
 
         // Create an html element
         var title = document.createElement('h3')
+        var description = document.createElement('p')
 
         // Put the Todo title inside of that element
         title.textContent = arr[i].title
-    
+        description.textContent = arr[i].description
         // Put element on the DOM
         todoContainer.appendChild(title)
+        todoContainer.appendChild(description)
 
         document.getElementById('list-container').appendChild(todoContainer)
     }
