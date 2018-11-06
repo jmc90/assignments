@@ -186,17 +186,17 @@ function walk(){
 
 ////////////////////////////
 //---Game loop---//
-console.log("ILLEGAL ALIENS\n")
-console.log("\nIt is the year 2020. Donald Trump is unfortunatley the President. in 2018 he create the United States Space Force (USSF). That same year itelligent life was found and communications were established. President Trump sent out some interstellar tweets threatening the newly discovered life forms. The aliens promised repercusions.\n\nYou are an aspiring web developer living in your mom's basement in New York City trying to learn to code well enough to obtain a job. You pass out at 4 a.m. after a long frustrating night of trying to understand why nothing in this project you are building is working.\n\nYou wake up the next afternoon to go grab some late breakfast to find the city has been over run with Alien life forms which are attacking the city. You over hear a radio broadcast telling all survivors to try to get out of the city and make it to the outlying military base for safety. You run into another survivor trying to escape. He says...\n\n")
+console.log("\n<<<----------ILLEGAL ALIENS---------->>>\n")
+console.log("\nIt is the year 2020. Donald Trump is unfortunatley the President. in 2018 he create the United States Space Force (USSF). That same year itelligent life was found and communications were established. President Trump sent out some interstellar tweets threatening the newly discovered life forms. The aliens promised repercusions.\n\nYou are an aspiring web developer living in your mom's basement in New York City trying to learn to code well enough to obtain a job. You pass out at 4 a.m. after a long frustrating night of trying to understand why nothing in your project is working.\n\nYou wake up the next afternoon to go grab some late breakfast to find the city has been over run with Alien life forms which are attacking the city. You over hear a radio broadcast telling all survivors to try to get out of the city and make it to the outlying military base for safety. You run into another survivor trying to escape. He says...\n\n")
 player1.name = readline.question("\nHey man, what's your name?\n ")
 var capName = player1.name.toUpperCase()
-console.log(`Alright ${capName}, let's get the hell out of here!\n`)
+console.log(`\nAlright ${capName}, let's get the hell out of here!\n`)
 
 while(walkDistance < 20 && !hasQuitOrDead) {
     walk()
 } 
 
 if (walkDistance === 20) {
-    console.log("Congratulations! You made it to the military base outside the city and left all your friends to die horrible deaths!!!")
+    console.log("\nCongratulations! You made it to the military base outside the city and left all your friends to die horrible deaths!!!\n")
 }
 
