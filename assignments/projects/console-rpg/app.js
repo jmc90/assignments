@@ -1,3 +1,5 @@
+///////////////////////////////////////
+//---readline-sync---//
 var readline = require('readline-sync')
 
 ///////////////////////////
@@ -9,7 +11,6 @@ var triedRun = false
 var alienTypes = ["Grey", "Reptilian", "Nordic"]
 var alienDrops = ["Med Pack", "Cool Alien Helmet", "Alien Artifact"]
 var enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 50)
-
 
 
 /////////////////////////////////////////
@@ -52,7 +53,6 @@ function Enemy(type, hp){
     }
 }
 
-
 ///////////////////////////
 //---Functions---//
 
@@ -92,7 +92,7 @@ function enemyAttacksPlayer() {
 }
 
 function attackSequence() {
-    enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 70) ///change to random enemy and hp.
+    enemy = new Enemy(alienTypes[Math.floor(Math.random() * 3)], 70) 
     console.log(`You were attacked by a ${enemy.type}!\n`)
     var description = readline.keyIn(`\nPress 'd' to view a description of your enemy or 'c' to conitnue\n`, {limit: 'dc'})
     if (description === "d") {
@@ -174,7 +174,7 @@ function walk(){
                     console.log("\nThis could be helpful. Too bad you can't figure out what it is or does though..\n")
                 }
             } else if (index === -1) {
-                console.log("\nYou didn't choose and item. Let's continue\n")
+                console.log("\nYou didn't choose an item. Let's continue\n")
             }
          }
          
