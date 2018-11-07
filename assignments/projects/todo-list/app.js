@@ -4,44 +4,78 @@ const list = document.getElementById('list-container')
 function getData(){
     axios.get('https://api.vschool.io/Jon/todo/').then(function(response){
         listTodos(response.data)
-        console.log(response.data)
+        console.log(response)
     })
 }
 
 function listTodos(arr){
     for(let i = 0; i < arr.length; i++){
-
-        // Create container for specific Todo
+        // Grab todos
+        let todoId = arr[i]._id
+      
         let todoContainer = document.createElement('div')
-        // Add a class to that container (if you want)
         todoContainer.classList.add('todo')
-        // Create an html element
+        
         let title = document.createElement('h3')
-        let description = document.createElement('p')
-        let price = document.createElement('p')
-        let img = document.createElement('img')
-        let button = document.createElement('button')
-        // Put the Todo title inside of that element
         title.textContent = arr[i].title
-        description.textContent = arr[i].description
-        price.textContent = `Price: $${arr[i].price}`
-        img.setAttribute('src', arr[i].imgUrl)
-        img.setAttribute('width', '100px')
-        img.setAttribute('height', '100px')
-        button.textContent = "Delete"
-        //strike through
         if (arr[i].completed) {
             title.classList.add('done')
         } 
+
+        let description = document.createElement('p')
+        description.textContent = arr[i].description
+
+        let checkBox = document.createElement('input')
+        checkBox.setAttribute('type', 'checkbox')
+        checkBox.setAttribute('name', 'completed')
+        checkBox.setAttribute('value', 'item')
+        checkBox.setAttribute('autocomplete', 'off')
+        checkBox.todoId = todoId
+        if (arr[i].completed) {
+            checkBox.checked = true
+        }
         
+        let price = document.createElement('p')
+        price.textContent = `Price: $${arr[i].price}`
+
+        let img = document.createElement('img')
+        img.setAttribute('src', arr[i].imgUrl)
+        img.setAttribute('width', '100px')
+        img.setAttribute('height', '100px')
+        if (!arr[i].imgUrl) {
+            img.classList.add('hide')
+        }
+
+
+        let dButton = document.createElement('button')
+        dButton.textContent = "Delete"
+        dButton.todoId = todoId
+
         // Put element on the DOM
         todoContainer.appendChild(title)
         todoContainer.appendChild(description)
+        todoContainer.appendChild(checkBox)
         todoContainer.appendChild(price)
         todoContainer.appendChild(img)
-        todoContainer.appendChild(button)
+        todoContainer.appendChild(dButton)
 
         list.appendChild(todoContainer)
+
+        checkBox.addEventListener('change', function() {
+            let complete = {}
+            complete.completed = checkBox.checked
+            axios.put(`https://api.vschool.io/Jon/todo/${this.todoId}`, complete).then(function(response){
+                console.log(response.data.completed)
+            })
+        })
+
+        dButton.addEventListener('click', function() {
+            let complete = {}
+            complete.completed = checkBox.checked
+            axios.delete(`https://api.vschool.io/Jon/todo/${this.todoId}`, complete).then(function(response){
+                console.log(response.data)
+            })
+        })
     }
 }
 
@@ -55,6 +89,7 @@ form.addEventListener("submit", function(event){
     let description = form.description.value
     let price = form.price.value
     let img = form.image.value
+    
         // Put that input in a new object
     let newTodo = {}
     newTodo.title = title
@@ -67,5 +102,6 @@ form.addEventListener("submit", function(event){
         // Then refresh page to see item added to existing list.
     })
 })
+
 
 getData()
