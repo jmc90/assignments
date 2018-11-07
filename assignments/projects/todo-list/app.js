@@ -26,10 +26,7 @@ function listTodos(arr){
         description.textContent = arr[i].description
 
         let checkBox = document.createElement('input')
-        checkBox.setAttribute('type', 'checkbox')
-        checkBox.setAttribute('name', 'completed')
-        checkBox.setAttribute('value', 'item')
-        checkBox.setAttribute('autocomplete', 'off')
+        checkBox.type = 'checkbox'
         checkBox.todoId = todoId
         if (arr[i].completed) {
             checkBox.checked = true
@@ -39,13 +36,16 @@ function listTodos(arr){
         price.textContent = `Price: $${arr[i].price}`
 
         let img = document.createElement('img')
-        img.setAttribute('src', arr[i].imgUrl)
-        img.setAttribute('width', '100px')
-        img.setAttribute('height', '100px')
+        img.src = arr[i].imgUrl
+        img.width = "100"
+        img.height = "100"
         if (!arr[i].imgUrl) {
             img.classList.add('hide')
         }
 
+        let editButton = document.createElement('button')
+        editButton.textContent = "Edit"
+        editButton.todoId = todoId
 
         let dButton = document.createElement('button')
         dButton.textContent = "Delete"
@@ -57,6 +57,7 @@ function listTodos(arr){
         todoContainer.appendChild(checkBox)
         todoContainer.appendChild(price)
         todoContainer.appendChild(img)
+        todoContainer.appendChild(editButton)
         todoContainer.appendChild(dButton)
 
         list.appendChild(todoContainer)
@@ -70,9 +71,7 @@ function listTodos(arr){
         })
 
         dButton.addEventListener('click', function() {
-            let complete = {}
-            complete.completed = checkBox.checked
-            axios.delete(`https://api.vschool.io/Jon/todo/${this.todoId}`, complete).then(function(response){
+            axios.delete(`https://api.vschool.io/Jon/todo/${this.todoId}`).then(function(response){
                 console.log(response.data)
             })
         })
