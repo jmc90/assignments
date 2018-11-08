@@ -43,7 +43,7 @@ function listTodos(arr){
             checkBox.checked = true
         }
         
-        let price = document.createElement('p')
+        let price = document.createElement('h4')
         price.textContent = `Price: $${arr[i].price}`
         if (!arr[i].price) {
             price.classList.add('hide')
@@ -67,24 +67,36 @@ function listTodos(arr){
 
         let titleEditInput = document.createElement('input')
         titleEditInput.type = 'text'
-        titleEditInput.placeholder = arr[i].title
+        titleEditInput.value = arr[i].title
         titleEditInput.classList.add('hide')
         
 
         let descripEditInput = document.createElement('input')
         descripEditInput.type = 'text'
-        descripEditInput.placeholder = arr[i].description
+        descripEditInput.value = arr[i].description
         descripEditInput.classList.add('hide')
+
+        let priceEditInput = document.createElement('input')
+        priceEditInput.type = 'text'
+        priceEditInput.value = arr[i].price
+        priceEditInput.classList.add('hide')
+
+        let imgEditInput = document.createElement('input')
+        imgEditInput.type = 'text'
+        imgEditInput.value = arr[i].price
+        imgEditInput.classList.add('hide')
         
 
         // Put element on the DOM
+        todoContainer.appendChild(checkBox)
         todoContainer.appendChild(title)
         todoContainer.appendChild(titleEditInput)
         todoContainer.appendChild(description)
         todoContainer.appendChild(descripEditInput)
-        todoContainer.appendChild(checkBox)
         todoContainer.appendChild(price)
+        todoContainer.appendChild(priceEditInput)
         todoContainer.appendChild(img)
+        todoContainer.appendChild(imgEditInput)
         todoContainer.appendChild(editButton)
         todoContainer.appendChild(dButton)
 
@@ -93,18 +105,60 @@ function listTodos(arr){
         editButton.addEventListener('click', function() {
             title.classList.toggle('hide')
             titleEditInput.classList.toggle('hide')
+            if (!titleEditInput.classList.contains('hide')) {
+                titleEditInput.style.display = "block"
+            } else {
+                titleEditInput.style.display = "none"
+            }
 
             description.classList.toggle('hide')
             descripEditInput.classList.toggle('hide')
+            if (!descripEditInput.classList.contains('hide')) {
+                descripEditInput.style.display = "block"
+            } else {
+                descripEditInput.style.display = "none"
+            }
+            if (!arr[i].description) {
+                descripEditInput.placeholder = "Enter Description.."
+            }
+
+            if (arr[i].price) {
+                price.classList.toggle('hide')
+            }
+            priceEditInput.classList.toggle('hide')
+            if (!priceEditInput.classList.contains('hide')) {
+                priceEditInput.style.display = "block"
+            } else {
+                priceEditInput.style.display = "none"
+                price.classList.toggle('hide')
+            }
+            if (!arr[i].price) {
+                priceEditInput.placeholder = "Enter Price.."
+            }
+
+            if (arr[i].imgUrl) {
+                img.classList.toggle('hide')
+            }
+            imgEditInput.classList.toggle('hide')
+            if (!imgEditInput.classList.contains('hide')) {
+                imgEditInput.style.display = "block"
+            } else {
+                imgEditInput.style.display = "none"
+                price.classList.toggle('hide')
+            }
+            if (!arr[i].img) {
+                imgEditInput.placeholder = "Enter Image URL.."
+            }
+
+
 
             editButtonText(editButton)
-            
-            let titleEdit = titleEditInput.value
-            let descripEdit = descripEditInput.value
 
             let editTodo = {}
-            editTodo.title = titleEdit
-            editTodo.description = descripEdit
+            editTodo.title = titleEditInput.value
+            editTodo.description = descripEditInput.value
+            editTodo.price = priceEditInput.value
+            editTodo.imgUrl = imgEditInput.value
                 
             axios.put(`https://api.vschool.io/Jon/todo/${this.todoId}`, editTodo).then(function(response){
                 console.log(response.data)
@@ -131,14 +185,12 @@ function listTodos(arr){
 const form = document.todoForm
 form.addEventListener("submit", function(event){
     event.preventDefault()
-    // When the user submits
-        // Grab the user input
+    
     let title = form.title.value
     let description = form.description.value
     let price = form.price.value
     let img = form.image.value
     
-        // Put that input in a new object
     let newTodo = {}
     newTodo.title = title
     newTodo.description = description
@@ -146,7 +198,7 @@ form.addEventListener("submit", function(event){
     newTodo.imgUrl = img
         // Send a Post request
     axios.post('https://api.vschool.io/Jon/todo', newTodo).then(function(response){
-        console.log(response.data) // should be new todo with an _id added
+        console.log(response.data._id)
         // Then refresh page to see item added to existing list.
     })
 })
