@@ -83,7 +83,7 @@ function listTodos(arr){
 
         let imgEditInput = document.createElement('input')
         imgEditInput.type = 'text'
-        imgEditInput.value = arr[i].price
+        imgEditInput.value = arr[i].imgUrl
         imgEditInput.classList.add('hide')
         
 
