@@ -12,7 +12,7 @@ function listTodos(arr){
     for(let i = 0; i < arr.length; i++){
         // Grab todos
         let todoId = arr[i]._id
-      
+        
         let todoContainer = document.createElement('div')
         todoContainer.classList.add('todo')
         
@@ -64,7 +64,7 @@ function listTodos(arr){
 
         checkBox.addEventListener('change', function() {
             let complete = {}
-            complete.completed = checkBox.checked
+            complete.completed = this.checked
             axios.put(`https://api.vschool.io/Jon/todo/${this.todoId}`, complete).then(function(response){
                 console.log(response.data.completed)
             })
