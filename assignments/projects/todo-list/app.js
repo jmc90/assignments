@@ -1,5 +1,13 @@
 const list = document.getElementById('list-container')
 
+function editButtonText(button) {
+    if (button.textContent === "Edit") {
+        button.textContent = "Submit"
+    } else {
+        button.textContent ="Edit"
+    }
+}
+
 
 function getData(){
     axios.get('https://api.vschool.io/Jon/todo/').then(function(response){
@@ -24,6 +32,9 @@ function listTodos(arr){
 
         let description = document.createElement('p')
         description.textContent = arr[i].description
+        if (arr[i].completed) {
+            description.classList.add('done')
+        }
 
         let checkBox = document.createElement('input')
         checkBox.type = 'checkbox'
@@ -34,6 +45,9 @@ function listTodos(arr){
         
         let price = document.createElement('p')
         price.textContent = `Price: $${arr[i].price}`
+        if (!arr[i].price) {
+            price.classList.add('hide')
+        }
 
         let img = document.createElement('img')
         img.src = arr[i].imgUrl
@@ -51,9 +65,23 @@ function listTodos(arr){
         dButton.textContent = "Delete"
         dButton.todoId = todoId
 
+        let titleEditInput = document.createElement('input')
+        titleEditInput.type = 'text'
+        titleEditInput.placeholder = arr[i].title
+        titleEditInput.classList.add('hide')
+        
+
+        let descripEditInput = document.createElement('input')
+        descripEditInput.type = 'text'
+        descripEditInput.placeholder = arr[i].description
+        descripEditInput.classList.add('hide')
+        
+
         // Put element on the DOM
         todoContainer.appendChild(title)
+        todoContainer.appendChild(titleEditInput)
         todoContainer.appendChild(description)
+        todoContainer.appendChild(descripEditInput)
         todoContainer.appendChild(checkBox)
         todoContainer.appendChild(price)
         todoContainer.appendChild(img)
@@ -61,6 +89,27 @@ function listTodos(arr){
         todoContainer.appendChild(dButton)
 
         list.appendChild(todoContainer)
+
+        editButton.addEventListener('click', function() {
+            title.classList.toggle('hide')
+            titleEditInput.classList.toggle('hide')
+
+            description.classList.toggle('hide')
+            descripEditInput.classList.toggle('hide')
+
+            editButtonText(editButton)
+            
+            let titleEdit = titleEditInput.value
+            let descripEdit = descripEditInput.value
+
+            let editTodo = {}
+            editTodo.title = titleEdit
+            editTodo.description = descripEdit
+                
+            axios.put(`https://api.vschool.io/Jon/todo/${this.todoId}`, editTodo).then(function(response){
+                console.log(response.data)
+            })
+        })
 
         checkBox.addEventListener('change', function() {
             let complete = {}
