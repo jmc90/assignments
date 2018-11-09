@@ -8,7 +8,6 @@ function editButtonText(button) {
     }
 }
 
-
 function getData(){
     axios.get('https://api.vschool.io/Jon/todo/').then(function(response){
         listTodos(response.data)
@@ -42,6 +41,9 @@ function listTodos(arr){
         if (arr[i].completed) {
             checkBox.checked = true
         }
+
+        let checkBoxText = document.createElement('span')
+        checkBoxText.textContent = ': '
         
         let price = document.createElement('h4')
         price.textContent = `Price: $${arr[i].price}`
@@ -89,6 +91,7 @@ function listTodos(arr){
 
         // Put element on the DOM
         todoContainer.appendChild(checkBox)
+        todoContainer.appendChild(checkBoxText)
         todoContainer.appendChild(title)
         todoContainer.appendChild(titleEditInput)
         todoContainer.appendChild(description)
@@ -130,7 +133,7 @@ function listTodos(arr){
                 priceEditInput.style.display = "block"
             } else {
                 priceEditInput.style.display = "none"
-                price.classList.toggle('hide')
+                
             }
             if (!arr[i].price) {
                 priceEditInput.placeholder = "Enter Price.."
@@ -144,13 +147,11 @@ function listTodos(arr){
                 imgEditInput.style.display = "block"
             } else {
                 imgEditInput.style.display = "none"
-                price.classList.toggle('hide')
+            
             }
             if (!arr[i].img) {
                 imgEditInput.placeholder = "Enter Image URL.."
             }
-
-
 
             editButtonText(editButton)
 
