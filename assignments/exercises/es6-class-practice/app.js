@@ -1,7 +1,7 @@
 
 class Player {
     constructor(totalCoins, status, hasStar, gameActive = true) {
-        this.name = "Luigi"
+        this.name = "Bob"
         this.totalCoins = totalCoins
         this.status = status
         this.hasStar = hasStar
@@ -44,7 +44,7 @@ const player1 = new Player(0, "Powered Up", false)
 player1.setName("Mario")
 
 function random() {
-    var randomNum = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+    var randomNum = Math.floor(Math.random() * 3)
     if (randomNum === 0) {
         player1.gotHit()
     } else if (randomNum === 1) {
@@ -64,4 +64,5 @@ const gameEnds = () => {
 }
 
 let game = setInterval(random, 1500)
+
 
