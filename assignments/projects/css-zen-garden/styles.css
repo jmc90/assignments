@@ -68,17 +68,10 @@ header h2 {
     opacity: 0.6;
     margin-top: 0
 }
-footer p {
-    background-attachment: fixed, fixed, fixed, scroll;
-    background-image: url(./images/contours@2x.png), url(./images/gridlines.png), url(./images/noise.png), url(./images/koi.jpg);
-    background-size: 50% auto, auto, auto, cover;
-    background-position: 0 0, -5px -25px, 0 0, 0 50%;
-    background-repeat: repeat, repeat, repeat, no-repeat;
-    line-height: 2;
-    padding: 2em;
-    font-style: italic;
-    text-align: center;
-    margin-bottom: 0;
+
+.intro {
+    width: 80%;
+    margin: 2.5em auto;
 }
 
 .title {
@@ -108,16 +101,67 @@ footer p {
     opacity: 0.8;
     font-weight: bold;
 }
+
+.middle {
+    background-attachment: scroll, scroll, fixed;
+    background-color: rgba(138,188,159,0.5);
+    background-image: url(./images/contours-opaque.png), url(./images/gridlines-opaque.png), url(./images/bamboo.png);
+    background-repeat: repeat, repeat, no-repeat;
+    background-size: auto, auto, cover;
+    width: 100%;
+    padding: 3em 0;
+}
+
+.middle h3 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.middle p {
+    width: 80%;
+    margin: .75em auto;
+}
+
+.end {
+    width: 80%;
+    margin: 2.5em auto;
+}
+
+.credits p {
+    background-attachment: fixed, fixed, fixed, scroll;
+    background-image: url(./images/contours@2x.png), url(./images/gridlines.png), url(./images/noise.png), url(./images/koi.jpg);
+    background-size: 50% auto, auto, auto, cover;
+    background-position: 0 0, -5px -25px, 0 0, 0 50%;
+    background-repeat: repeat, repeat, repeat, no-repeat;
+    line-height: 2;
+    padding: 1em 0.9em;
+    font-style: italic;
+    text-align: center;
+    font-size: 1.4em;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.credits a {
+    color: rgba(255, 255, 255, 0.7);
+    font-style: normal;
+    text-decoration: none;
+}
+
 .icons {
+    display: flex;
+    justify-content: space-around;
     font-family: verdemoderna;
     font-size: 30px;
     background: #134347;
     margin: 0;
-    padding: 20px 0 20px 0;
+    padding: 25px 30px;
+    text-align: center;
 }
 
 .icons a {
     color: #fff;
     opacity: .5;
     text-decoration: none;
+    font-size: 32px;
 }
