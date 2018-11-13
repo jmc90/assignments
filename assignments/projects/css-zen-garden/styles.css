@@ -13,8 +13,8 @@ html, body {
 }
 
 body {
-    color: #325050;
-    background: #fff;
+    color: rgb(50, 80, 80);
+    background: rgb(255, 255, 255);
     font-family: 'Libre Baskerville', sans-serif;
     font-size: 70%;
 }
@@ -112,17 +112,24 @@ main .middle {
     background-repeat: repeat, repeat, no-repeat;
     background-size: auto, auto, cover;
     width: 100%;
-    padding: 3em 0;
 }
 
 main .middle h3 {
     width: 80%;
-    margin: 0 auto;
+    margin: 0 auto 0 auto;
 }
 
 main .middle p {
     width: 80%;
     margin: .75em auto;
+}
+
+main .participation {
+    padding: 3em 0;
+}
+
+main .benefits {
+    padding-bottom: 3em;
 }
 
 main .end {
@@ -257,5 +264,50 @@ aside .links-div li {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto;
     }
-    
 }
+
+@media screen and (min-width: 768px) {
+    header img {
+        width: 80px;
+        height: 80px;
+        margin-right: 20px;
+    }
+
+    header .title {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin-top: 3em;
+    }
+
+    header .title h1 {
+        font-size: 2.8em;
+    }
+
+    header .banner {
+        padding: 1.7em 0
+    }
+
+    header .banner a {
+        font-size: 1.6em;
+    }
+
+    footer .credits p {
+        padding: 2em 4em;
+    }
+
+    footer .icons {
+        justify-content: center;
+        padding: 1.2em 0;
+    }
+
+    footer .icons a {
+        margin: 0 24px;
+        font-size: 48px;
+    }
+
+    aside li {
+        padding: 1.3em 
+    }
+}
+
