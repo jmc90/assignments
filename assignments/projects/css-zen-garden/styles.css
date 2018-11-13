@@ -37,6 +37,7 @@ h3 {
 header {
     height: 250px;
     border-top: solid 10px rgba(19, 67, 71, 0.9);
+    background-color: rgb(45, 99, 96);
     background-image: url(./images/contours@2x.png), url(./images/noise.png), url(./images/gridlines.png), url(./images/huntington.jpg);
     background-size: 50% auto, auto, auto, cover;
     background-attachment: fixed, fixed, fixed, scroll;
@@ -52,7 +53,9 @@ header {
 header img {
     align-self: center;
     opacity: 0.6;
-    justify-self: center
+    justify-self: center;
+    width: 50px;
+    height: 50px;
 }
 
 header h1 {
@@ -76,14 +79,14 @@ header .title {
 header .banner {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    padding: 2.4em 0 2.4em 0;
+    padding: 1.2em 0 1.2em 0;
     background-color: rgba(255, 255, 255, 0.2);
 }
 
 header .banner a {
     grid-column: 2;
     align-self: center;
-    color:rgba(255, 255, 255, 0.8);
+    color:rgba(255, 255, 255, 0.7);
     text-decoration: none;
     font-size: 1.4em;
     text-transform: uppercase;
@@ -178,6 +181,7 @@ aside li {
     padding: 1em 1.2em;
     color: rgb(192, 202, 195);
 }
+
 aside a{
     text-decoration: none;
     color: rgb(96, 116, 118);
@@ -222,4 +226,36 @@ aside .links-div li {
 
 .container {
     display: grid;
+}
+
+@media screen and (min-width: 375px) {
+    header .title {
+        font-size: 1.3em;
+        margin-top: 1.5em;
+    }
+
+    header h1 {
+        margin: 0.4em 0 0.2em 0;
+    }
+
+    footer .credits p {
+        font-size: 2em;
+    }
+
+    aside li {
+        text-align: center;
+    }
+
+    aside .projects {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    aside .links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    
 }
