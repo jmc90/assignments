@@ -319,9 +319,25 @@ aside .links-div li {
         grid-template-columns: 2fr 1fr;
     }
 
-    header{ 
+    header { 
         grid-column: 1/-1;
         height: 310px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+
+    header .title {
+        align-items: center;
+        margin: 0;
+    }
+
+    header .title img {
+        width: 162px;
+        height: 162px;
+    }
+
+    header .banner span {
+        align-self: center;
     }
 
     main {
