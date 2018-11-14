@@ -4,7 +4,7 @@
 // Have the function return all numbers missing within the range.
 
 
-const findMissingNo = (arr) => {
+const missingNo = (arr) => {
     arr.sort((a, b) => a - b)
     const missing = []
     for (let i = Math.min(...arr); i < Math.max(...arr); i++) {
@@ -15,5 +15,7 @@ const findMissingNo = (arr) => {
     return missing
 }
 
-console.log(findMissingNo([3,3,3,5,4,8,1,2,7,11]))
+console.log(missingNo([3,3,3,5,4,8,1,2,7,11]))
+
+
 

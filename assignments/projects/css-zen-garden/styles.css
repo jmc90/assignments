@@ -148,7 +148,7 @@ footer .credits p {
     font-style: italic;
     text-align: center;
     font-size: 1.4em;
-    margin-bottom: 0;
+    margin: 0;
     color: rgba(255, 255, 255, 0.4);
 }
 
@@ -176,6 +176,12 @@ footer .icons a {
     font-size: 32px;
 }
 
+aside {
+    color: rgb(192, 202, 195);
+    font-style: italic;
+    background-color: rgba(229,237,232, 0.7)
+}
+
 aside ul {
     list-style: none;
     padding: 0;
@@ -197,12 +203,6 @@ aside a{
     font-family: 'Julius Sans One', sans-serif;
     font-size: 1.2em;
     font-style: normal;
-}
-
-aside .projects {
-    color: rgb(192, 202, 195);
-    font-style: italic;
-    background-color: rgba(229,237,232, 0.7)
 }
 
 aside .design {
@@ -231,7 +231,7 @@ aside .links-div li {
     font-style: normal;
 }
 
-.container {
+#container {
     display: grid;
 }
 
@@ -308,6 +308,82 @@ aside .links-div li {
 
     aside li {
         padding: 1.3em 
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    body {
+        font-size: 90%;
+    }
+    #container {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    header{ 
+        grid-column: 1/-1;
+        height: 310px;
+    }
+
+    main {
+        grid-column: 1/2;
+        display: grid;
+        grid-template-rows: 1fr 800px 1fr;
+    }
+
+    main .intro {
+        grid-row: 1
+    }
+
+    main .middle {
+        grid-row: 2;
+    }
+
+    main .end {
+        grid-row: 3;
+    }
+
+    aside{ 
+        grid-column: 2;
+        grid-row: 2/5;
+        display: grid;
+        grid-template-rows: 1fr 800px 1fr;
+    }
+
+    aside ul {
+        padding-left: 4em;
+        padding-top: 4em;
+    }
+
+    aside li {
+        text-align: left;
+        width: 70%;
+        padding-left: 0;
+    }
+
+    aside .aside-div {
+        grid-row: 1;
+    }
+
+    aside .links-div {
+        background-attachment: scroll, scroll, fixed;
+        background-color: rgba(138,188,159,0.5);
+        background-image: url(./images/contours-opaque.png), url(./images/gridlines-opaque.png), url(./images/bamboo.png);
+        background-repeat: repeat, repeat, no-repeat;
+        background-size: auto, auto, cover;
+    }
+
+    aside .projects {
+        display: flex;
+        flex-direction: column;
+    }
+
+    aside .links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer{
+        grid-column:1/-1;
     }
 }
 
