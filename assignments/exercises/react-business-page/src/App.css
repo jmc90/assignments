@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#f4f4f4;
+    font-size: 16px;
+}
+
+/* Navbar */
+#nav {
+    display: flex;
+    justify-content: flex-start;
+    background-color: whitesmoke;
+    border-bottom: solid 5px rgb(0, 0, 206);
+}
+
+.navList {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin-left: auto;
+}
+
+#nav li {
+    padding: 15px;
+}
+
+/* Showcase */
+
+#showcase {
+    background: url(./images/business.jpg) center center;
+    background-size: cover;
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.attention {
+    width: 50%;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2em;
+}
+
+/* Main */
+
+#main h1{
+    text-align: center;
+    width: 20%;
+    border-bottom: 2px solid black;
+}
+
+#boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.services {
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    width: 300px;
+    height: 450px;
+    padding: 2em;
+    background-color: white;
+    border: solid 2px black;
+    box-shadow: 3px 3px 5px 6px #ccc;
+}
