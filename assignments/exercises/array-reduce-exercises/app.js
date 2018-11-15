@@ -55,7 +55,7 @@ var wishlist = [
 ]
 
 function shoppingSpree(arr) {
-    return wishlist.reduce((total, item) => {
+    return arr.reduce((total, item) => {
         return total + item.price
     }, 0)
 }
