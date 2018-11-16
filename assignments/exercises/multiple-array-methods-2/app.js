@@ -96,7 +96,7 @@ const peopleAndPets = [
 
 // Create an array of pets' names.
 const findPets = (array) => {
-  let animalNames = []
+  const animalNames = []
   array.forEach(element => {
       element.pets.forEach(pet => {
           if (pet.type === "dog") {
@@ -111,17 +111,17 @@ const findPets = (array) => {
 
 // Display the pets' names in <li>s.
 
-// const createPetListItems = (array) => {
-//     let animalsNamesLi = []
-//     array.forEach(element => {
-//        element.pets.forEach(pet => {
-//             if (pet.type === "dog") {
-//                 animalsNamesLi.push(`<li>${pet.name}</li>`) 
-//             }
-//         })
-//     })
-//     return animalsNamesLi
-// }
+const createPetListItems = (array) => {
+    let animalsNamesLi = []
+    array.forEach(element => {
+       element.pets.forEach(pet => {
+            if (pet.type === "dog") {
+                animalsNamesLi.push(`<li>${pet.name}</li>`) 
+            }
+        })
+    })
+    return animalsNamesLi
+}
 
 // console.log(createPetListItems(peopleAndPets))
 
@@ -147,13 +147,11 @@ const findPets = (array) => {
 // Only display pets who have nicknames.
 
 const createPetListWithNickNames = (array) => {
-    let animalsNamesLi = []
+    const animalsNamesLi = []
     array.forEach(element => {
         element.pets.forEach(pet => {
-            if (pet.type === "dog") {
-                if(pet.nickNames.length > 0) {
-                    animalsNamesLi.push(`<li>${pet.name}</li>`) 
-                }
+            if(pet.nickNames.length > 0) {
+                animalsNamesLi.push(`<li>${pet.name}</li>`) 
             }
         })
        
@@ -163,5 +161,5 @@ const createPetListWithNickNames = (array) => {
 
 console.log(createPetListWithNickNames(peopleAndPets))
 
-// // Create an array of everyone that has at least one dog and sort them by age.
+// Create an array of everyone that has at least one dog and sort them by age.
 
