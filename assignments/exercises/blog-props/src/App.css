@@ -18,12 +18,18 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 70px;
-    background-color: rgba(255, 255, 255, 0.5);
     color: white;
+    width:90%;
+    margin: auto;
 }
 
 #navbar h3 {
     font-size: 1.3em;
+}
+
+#navbar h3:hover {
+    color: rgba(255,255,255,.8);
+    cursor: pointer;
 }
 
 #navbar ul {
@@ -32,27 +38,153 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    font-weight: 800;
+    font-size: .9em;
 }
 
 #navbar li {
     list-style: none;
     display: inline;
-    padding: 0 10px;
-    
+    padding: 0 5px;
+    letter-spacing: 1px;
+}
+
+#navbar li:hover {
+    color: rgba(255,255,255,.8);
+    cursor: pointer;
 }
 
 #showcase {
     min-height: 530px;
     background:  linear-gradient(
-        rgba(0, 0, 0, 0.5), 
-        rgba(0, 0, 0, 0.5)
+        rgba(0, 0, 0, 0.45), 
+        rgba(0, 0, 0, 0.45)
       ), url('./home-bg.jpg') no-repeat center center;
     background-size: cover;
     color: white;
 }
 
 #title {
-    margin-top: 150px;
+    margin-top: 125px;
     text-align: center;
     font-size: 1.5em
+}
+
+#title h1 {
+    margin: 0;
+}
+
+#title p {
+    margin-top: 0px;
+    line-height: 1.1;
+}
+
+/* BlogList */
+
+#blog-list {
+    width: 90%;
+    margin: auto;
+    font-size: 1.3em;
+    margin-top: 80px;
+}
+
+.post h2 {
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.post  h3 {
+    font-weight: 300;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+}
+
+.post p {
+    font-family: 'Lora', serif;
+    margin: 0 0 30px 0;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.5;
+    color: rgb(134, 142, 150);
+}
+
+.post span {
+    color: black;
+}
+
+.post span:hover {
+    color: #0085a1;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.post-title:hover {
+    color: #0085a1;
+    cursor: pointer;
+}
+.btnDiv {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btnDiv button {
+    font-size: 14px;
+    font-weight: 800;
+    padding: 15px 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: rgb(0, 133, 161);
+    border-color: rgb(0, 133, 161);
+    color: rgb(255, 255, 255);
+    margin: 10px 0 10px 0;
+}
+
+.btnDiv button:hover {
+    background-color: rgb(0, 101, 123);
+    cursor: pointer;
+}
+
+/* Footer */
+
+#footer {
+    text-align: center;
+    padding: 50px 0 65px 0;
+}
+
+.fa-stack:hover .fa-circle {
+    color: rgb(0, 133, 161);
+}
+
+#footer span:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    #navbar {
+        flex-direction: row;
+        width:75%;
+        margin: auto;
+    }
+
+    #navbar ul {
+        margin-left: auto;
+    }
+
+    #navbar li {
+        padding: 0 20px;
+    }
+
+    #title h1 {
+        font-size: 80px;
+    }
+
+    #blog-list {
+        width: 50%;
+        font-size: 1.5em;
+    }
+
+    #footer span {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
 }

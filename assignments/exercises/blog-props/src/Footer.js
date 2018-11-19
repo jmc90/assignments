@@ -4,7 +4,7 @@ import React from 'react';
 const Footer = () => {
 
     return (
-        <div >
+        <div id="footer">
             <div>
                 <span className="fa-stack fa-lg">
                     <i className="fas fa-circle fa-stack-2x"></i>

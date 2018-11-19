@@ -1,16 +1,19 @@
 import React from 'react';
 
 
-const BlogPost = ({title, subTitle, author, date}) => {
+const BlogPost = ({ title, subTitle, author, date }) => {
 
     return (
-      <div >
-        <div>
-            <h1>{title}</h1>
-            <h2>{subTitle}</h2>
-            <p>Posted by <span>{author}</span> on {date} </p>
+        <div className="post">
+            <div>
+                <div className="post-title">
+                    <h2>{title}</h2>
+                    <h3>{subTitle}</h3>
+                </div>
+                <p>Posted by <span>{author}</span> on {date} </p>
+                <hr />
+            </div>
         </div>
-      </div>
     );
 
 }

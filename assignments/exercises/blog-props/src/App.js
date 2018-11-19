@@ -12,6 +12,7 @@ const App = () => {
       <div >
         <Header />
         <BlogList blogs={ blogs }/>
+        <hr/>
         <Footer />
       </div>
     );
