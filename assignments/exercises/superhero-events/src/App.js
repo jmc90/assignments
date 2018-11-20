@@ -3,11 +3,17 @@ import heros from './data.json'
 import SuperHero from './SuperHero'
 
 const App = () => {
+  
+  const handleClick = (phrase) => {
+    alert(phrase)
+  }
 
-  const mappedHeros = heros.data.map(hero => 
+  const mappedHeros = heros.data.map((hero) => 
     <SuperHero  
         name={hero.name} 
-        image={hero.image} />)
+        image={hero.image}
+        handleClick={handleClick}
+        catchPhrase={hero.catchPhrase}/>)
 
     return (
       <div>
