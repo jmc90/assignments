@@ -1,28 +1,19 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import heros from './data.json'
+import SuperHero from './SuperHero'
 
-class App extends Component {
-  render() {
+const App = () => {
+
+  const mappedHeros = heros.data.map(hero => 
+    <SuperHero  
+        name={hero.name} 
+        image={hero.image} />)
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        {mappedHeros}
       </div>
     );
-  }
 }
 
 export default App;
