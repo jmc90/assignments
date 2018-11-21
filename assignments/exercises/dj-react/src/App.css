@@ -22,6 +22,10 @@ body {
   background-color: purple;
 }
 
+.blue {
+  background-color: blue;
+}
+
 #box-div{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

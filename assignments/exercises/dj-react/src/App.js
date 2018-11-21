@@ -33,14 +33,15 @@ class App extends Component {
    }
 
    handleClick2 = () => {
-     this.setState(prevState => {
-       return {
-         box1: "purple",
-         box2: "purple",
-         box3: prevState.box3,
-         box4: prevState.box4
-       }
-     })
+    this.setState({box1: "purple", box2: "purple"})
+   }
+
+   handleClick3 = () => {
+    this.setState({box3: "blue"})
+   }
+
+   handleClick4 = () => {
+    this.setState({box4: "blue"})
    }
 
 
@@ -52,7 +53,9 @@ class App extends Component {
                       box3={this.state.box3} 
                       box4={this.state.box4}/>
         <Buttons handleClick={this.handleClick}
-                 handleClick2={this.handleClick2} />
+                 handleClick2={this.handleClick2}
+                 handleClick3={this.handleClick3}
+                 handleClick4={this.handleClick4} />
       </div>
     );
   }
