@@ -13,15 +13,7 @@ class App extends Component {
       phone: '',
       favoriteFood: '',
       about: '',
-      badge: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        placeOfBirth: '',
-        phone: '',
-        favoriteFood: '',
-        about: ''
-      }
+      badges: []
     }
   }
 
@@ -44,20 +36,22 @@ class App extends Component {
       favoriteFood: this.state.favoriteFood,
       about: this.state.about
     }
-    this.setState({
-      badge: newBadge,
-      firstName: '',
-      lastName: '',
-      email: '',
-      placeOfBirth: '',
-      phone: '',
-      favoriteFood: '',
-      about: ''
+    this.setState(prevState => {
+      return {
+        firstName: '',
+        lastName: '',
+        email: '',
+        placeOfBirth: '',
+        phone: '',
+        favoriteFood: '',
+        about: '',
+        badges: [...prevState.badges, newBadge]
+      }
     })
   }
 
   render() {
-    const { firstName, lastName, email, placeOfBirth, phone, favoriteFood, about, badge} = this.state
+    const { firstName, lastName, email, placeOfBirth, phone, favoriteFood, about, badges} = this.state
     return (
       <div>
         <Form
@@ -71,13 +65,7 @@ class App extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit} />
         <Badge
-          firstName={badge.firstName}
-          lastName={badge.lastName}
-          emai={badge.email}
-          placeOfBirth={badge.placeOfBirth}
-          phone={badge.phone}
-          favoriteFood={badge.favoriteFood}
-          about={badge.about} />
+          badges={badges} />
       </div>
     );
   }
