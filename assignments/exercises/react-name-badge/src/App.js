@@ -3,47 +3,64 @@ import Form from './Form'
 import Badge from './Badge'
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
+      firstName: '',
+      lastName: '',
+      email: '',
+      placeOfBirth: '',
+      phone: '',
+      favoriteFood: '',
+      about: '',
+      badge: {
         firstName: '',
         lastName: '',
         email: '',
         placeOfBirth: '',
         phone: '',
         favoriteFood: '',
-        about: '',
-        badge: {
-          firstName: '',
-          lastName: '',
-          email: '',
-          placeOfBirth: '',
-          phone: '',
-          favoriteFood: '',
-          about: ''
-        }
+        about: ''
+      }
     }
   }
 
   handleChange = e => {
-    const {name, value} = e.target
+    const { name, value } = e.target
     this.setState({
       [name]: value
-  })
+    })
   }
 
-  
-// continue here
+
   handleSubmit = e => {
     e.preventDefault()
+    const newBadge = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      placeOfBirth: this.state.placeOfBirth,
+      phone: this.state.phone,
+      favoriteFood: this.state.favoriteFood,
+      about: this.state.about
+    }
+    this.setState({
+      badge: newBadge,
+      firstName: '',
+      lastName: '',
+      email: '',
+      placeOfBirth: '',
+      phone: '',
+      favoriteFood: '',
+      about: ''
+    })
   }
 
   render() {
-    const {firstName, lastName, email, placeOfBirth, phone, favoriteFood, about} = this.state
-    const {badge} = this.state.badge
+    const { firstName, lastName, email, placeOfBirth, phone, favoriteFood, about, badge} = this.state
     return (
       <div>
-        <Form 
+        <Form
           firstName={firstName}
           lastName={lastName}
           emai={email}
@@ -51,8 +68,16 @@ class App extends Component {
           phone={phone}
           favoriteFood={favoriteFood}
           about={about}
-          handleChange={this.handleChange} />
-        <Badge />
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit} />
+        <Badge
+          firstName={badge.firstName}
+          lastName={badge.lastName}
+          emai={badge.email}
+          placeOfBirth={badge.placeOfBirth}
+          phone={badge.phone}
+          favoriteFood={badge.favoriteFood}
+          about={badge.about} />
       </div>
     );
   }

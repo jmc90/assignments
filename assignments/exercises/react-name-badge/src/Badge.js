@@ -1,22 +1,22 @@
 import React from 'react'
 
-const Badge = () => {
+const Badge = ({firstName, lastName, email, placeOfBirth, phone, favoriteFood, about}) => {
     return (
         <div>
-            <h1>Badge:</h1>
+            <h2>Badge:</h2>
             <div>
-                <h4>Name: </h4>
-                <h4>Phone: </h4>
+                <h4>Name: {firstName} {lastName}</h4>
+                <h4>Phone: {phone}</h4>
             </div>
             <div>
-                <h4>Place of Birth: </h4>
-                <h4>Favorite Food: </h4>
+                <h4>Place of Birth: {placeOfBirth}</h4>
+                <h4>Favorite Food: {favoriteFood}</h4>
             </div>
             <div>
-                <h4>E-mail: </h4>
+                <h4>E-mail: {email}</h4>
             </div>
             <div>
-                <p>About: </p>
+                <p>About: {about}</p>
             </div>
         </div>
     )

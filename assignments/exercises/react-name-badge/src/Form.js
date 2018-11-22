@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Form = ({firstName, lastName, email, placeOfBirth, phone, favoriteFood, about, handleChange}) => {
+const Form = ({firstName, lastName, email, placeOfBirth, phone, favoriteFood, about, handleChange, handleSubmit}) => {
   return (
     <div>
-      <form onSubmit={}>
+      <form onSubmit={handleSubmit}>
         <input 
             type="text" 
             name="firstName"
