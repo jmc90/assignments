@@ -4,7 +4,7 @@ const Badge = ({ badges }) => {
 
     const mappedBadeges = badges.map(badge => {
         return (
-            <div>
+            <div className="badge-div">
                 <h2>Badge:</h2>
                 <div>
                     <h4>Name: {badge.firstName} {badge.lastName}</h4>

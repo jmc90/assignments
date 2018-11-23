@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Form from './Form'
 import Badge from './Badge'
+import './App.css'
 
 class App extends Component {
   constructor() {
@@ -12,7 +13,7 @@ class App extends Component {
       placeOfBirth: '',
       phone: '',
       favoriteFood: '',
-      about: '',
+      about: 'Tell us about yourself..',
       badges: []
     }
   }
