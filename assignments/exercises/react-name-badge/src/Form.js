@@ -10,13 +10,17 @@ const Form = ({firstName, lastName, email, placeOfBirth, phone, favoriteFood, ab
                 name="firstName"
                 value={firstName} 
                 onChange={handleChange} 
-                placeholder="First Name"/>
+                placeholder="First Name"
+                required
+                minLength="3" />
             <input 
                 type="text" 
                 name="lastName"
                 value={lastName}  
                 onChange={handleChange} 
-                placeholder="Last Name"/>
+                placeholder="Last Name"
+                required
+                minLength="3" />
         </div>
         <div className="input-div">
             <input 
@@ -24,13 +28,17 @@ const Form = ({firstName, lastName, email, placeOfBirth, phone, favoriteFood, ab
                 name="email"  
                 value={email}
                 onChange={handleChange} 
-                placeholder="e-mail"/>
+                placeholder="e-mail"
+                required
+                minLength="3" />
             <input 
                 type="text" 
                 name="placeOfBirth" 
                 value={placeOfBirth} 
                 onChange={handleChange} 
-                placeholder="Place of Birth"/>
+                placeholder="Place of Birth"
+                required
+                minLength="3" />
         </div>
         <div className="input-div">
             <input 
@@ -38,19 +46,24 @@ const Form = ({firstName, lastName, email, placeOfBirth, phone, favoriteFood, ab
                 name="phone"  
                 value={phone}
                 onChange={handleChange} 
-                placeholder="Phone Number"/>
+                placeholder="Phone Number"
+                required
+                minLength="3" />
             <input 
                 type="text" 
                 name="favoriteFood"  
                 value={favoriteFood}
                 onChange={handleChange} 
-                placeholder="Favorite Food"/>
+                placeholder="Favorite Food"
+                required
+                minLength="3" />
         </div>
         <div className="textarea-div">
             <textarea 
                 name= "about"
                 value={about} 
-                onChange={handleChange} />
+                onChange={handleChange}
+                required />
         </div>
         <div className="button-div">
             <button>Submit</button>

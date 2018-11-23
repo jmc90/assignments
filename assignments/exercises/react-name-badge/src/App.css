@@ -58,3 +58,14 @@ button {
     width: 60%;
     margin: 2.5% auto;
 }
+
+.badge-text-div {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between
+}
+
+.badge-text {
+    width: 30%;
+}

@@ -5,19 +5,21 @@ const Badge = ({ badges }) => {
     const mappedBadeges = badges.map(badge => {
         return (
             <div className="badge-div">
-                <h2>Badge:</h2>
-                <div>
-                    <h4>Name: {badge.firstName} {badge.lastName}</h4>
-                    <h4>Phone: {badge.phone}</h4>
+                <div className="badge-header">
+                    <h2>Badge:</h2>
                 </div>
-                <div>
-                    <h4>Place of Birth: {badge.placeOfBirth}</h4>
-                    <h4>Favorite Food: {badge.favoriteFood}</h4>
+                <div className="badge-text-div">
+                    <h4 className="badge-text">Name: {badge.firstName} {badge.lastName}</h4>
+                    <h4 className="badge-text">Phone: {badge.phone}</h4>
                 </div>
-                <div>
+                <div className="badge-text-div">
+                    <h4 className="badge-text">Place of Birth: {badge.placeOfBirth}</h4>
+                    <h4 className="badge-text">Favorite Food: {badge.favoriteFood}</h4>
+                </div>
+                <div className="badge-text-div">
                     <h4>E-mail: {badge.email}</h4>
                 </div>
-                <div>
+                <div className="badge-about">
                     <p>About: {badge.about}</p>
                 </div>
             </div>
