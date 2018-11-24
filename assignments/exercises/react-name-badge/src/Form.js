@@ -24,7 +24,7 @@ const Form = ({firstName, lastName, email, placeOfBirth, phone, favoriteFood, ab
         </div>
         <div className="input-div">
             <input 
-                type="text" 
+                type="email" 
                 name="email"  
                 value={email}
                 onChange={handleChange} 
@@ -62,8 +62,7 @@ const Form = ({firstName, lastName, email, placeOfBirth, phone, favoriteFood, ab
             <textarea 
                 name= "about"
                 value={about} 
-                onChange={handleChange}
-                required />
+                onChange={handleChange} />
         </div>
         <div className="button-div">
             <button>Submit</button>
