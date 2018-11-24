@@ -69,3 +69,15 @@ button {
 .badge-text {
     width: 30%;
 }
+
+.badge-about-div {
+    display: flex;
+    justify-content: center;
+}
+
+.badge-about {
+    width: 80%;
+    height: 175px;
+    border: 2px solid black;
+    margin: 10px;
+}

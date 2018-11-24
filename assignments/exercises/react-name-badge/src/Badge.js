@@ -19,8 +19,8 @@ const Badge = ({ badges }) => {
                 <div className="badge-text-div">
                     <h4>E-mail: {badge.email}</h4>
                 </div>
-                <div className="badge-about">
-                    <p>About: {badge.about}</p>
+                <div className="badge-about-div">
+                    <p className="badge-about"><strong>About:</strong> {badge.about}</p>
                 </div>
             </div>
         )
