@@ -1,11 +1,17 @@
 import React from 'react'
 
 const Badge = ({ badges }) => {
-
-    const mappedBadeges = badges.map(badge => {
+    
+    const mappedBadeges = badges.map((badge, i) => {
+        let badgeColor;
+        if (i % 2 === 0) {
+            badgeColor = "red"
+        } else {
+            badgeColor = "blue"
+        }
         return (
             <div className="badge-div">
-                <div className="badge-header">
+                <div className={`badge-header ${badgeColor}`}>
                     <h2>Badge:</h2>
                 </div>
                 <div className="badge-text-div">
