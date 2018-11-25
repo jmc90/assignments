@@ -44,6 +44,22 @@ class App extends Component {
     this.setState({box4: "blue"})
    }
 
+   handleClick5 = () => {
+     this.setState({box1: "fuchsia"})
+   }
+
+   handleClick6 = () => {
+    this.setState({box2: "gold"})
+  }
+
+  handleClick7 = () => {
+    this.setState({box3: "aquamarine"})
+  }
+
+  handleClick8 = () => {
+    this.setState({box4: "yellow"})
+  }
+
 
   render() {
     return (
@@ -55,7 +71,11 @@ class App extends Component {
         <Buttons handleClick={this.handleClick}
                  handleClick2={this.handleClick2}
                  handleClick3={this.handleClick3}
-                 handleClick4={this.handleClick4} />
+                 handleClick4={this.handleClick4} 
+                 handleClick5={this.handleClick5}
+                 handleClick6={this.handleClick6}
+                 handleClick7={this.handleClick7}
+                 handleClick8={this.handleClick8} />
       </div>
     );
   }

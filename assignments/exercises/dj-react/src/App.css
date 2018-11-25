@@ -26,6 +26,22 @@ body {
   background-color: blue;
 }
 
+.fuchsia {
+  background-color: fuchsia
+}
+
+.gold {
+  background-color: gold
+}
+
+.aquamarine {
+  background-color: aquamarine
+}
+
+.yellow {
+  background-color: yellow
+}
+
 #box-div{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
