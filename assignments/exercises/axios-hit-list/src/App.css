@@ -1,0 +1,40 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: whitesmoke;
+}
+
+.header {
+    display: flex;
+    background-color: black;
+    color: red;
+    align-items: center;
+}
+
+.header img {
+    margin-right: 40px;
+}
+
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 60%;
+    margin: auto;
+}
+
+.card {
+    margin: 30px;
+}
+
+.name {
+    background-color: rgba(0, 0, 255, 0.5);
+    width: 100%;
+    text-align: center;
+    color: white;
+    
+}
