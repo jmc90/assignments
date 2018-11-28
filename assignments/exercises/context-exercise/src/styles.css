@@ -8,14 +8,64 @@ body {
 }
 
 .navbar {
-    height: 50px;
-}
-
-.navbar ul {
     display: flex;
-    list-style: none;
     justify-content: space-around;
     align-items: center;
-    padding: 0;
+    height: 15vh;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
+
+.light-nav {
+    background-color: aqua;
+    color: black
+}
+
+.dark-nav {
+    background-color: black;
+    color: white;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 75vh;
+    width: 100%;
+}
+
+.dark-main {
+    background-color: midnightblue;
+    color: orangered;
+}
+
+.main button {
+    width: 100px;
+    height: 50px;
+    margin-top: 50px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.dark-footer {
+    background-color: black;
+    color: white;
+}
+
+.light-footer {
+    background-color: aqua;
+    color: black;
+}
+
+
 

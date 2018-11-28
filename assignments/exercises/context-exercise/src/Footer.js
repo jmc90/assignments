@@ -1,11 +1,12 @@
 import React from 'react'
+import { withTheme } from './ThemeProvider'
 
-const Footer = () => {
+const Footer = (props) => {
   return (
-    <div>
+    <div className={`${props.theme}-footer footer`}>
       <p>This is a footer I guess</p>
     </div>
   )
 }
 
-export default Footer
+export default withTheme(Footer)
