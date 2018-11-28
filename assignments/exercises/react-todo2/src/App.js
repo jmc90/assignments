@@ -58,6 +58,18 @@ class App extends Component {
         })
   }
 
+  handleEdit = (id, updates) => {
+    axios.put(`https://api.vschool.io/Jon/todo/${id}`, updates)
+        .then (response => {
+          console.log(response.data)
+          this.setState(prevState => {
+            return {
+              todos: prevState.todos.map(todo => todo._id === id ? response.data : todo)
+            }
+          })
+        })
+  }
+
   render() {
 
     const mappedTodos = this.state.todos.map(todo => 
@@ -65,7 +77,8 @@ class App extends Component {
                           title={todo.title}
                           id={todo._id} 
                           key={todo._id}
-                          handleDelete={this.handleDelete} />)
+                          handleDelete={this.handleDelete}
+                          handleEdit={this.handleEdit} />)
     return (
       <div >
         <TodoForm 
