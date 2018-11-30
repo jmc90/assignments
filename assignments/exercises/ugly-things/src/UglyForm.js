@@ -4,26 +4,26 @@ import { withUglyThings } from './UglyThingsProvider'
 const UglyForm = (props) => {
   return (
     <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={props.handleSubmit}>
             <input 
                 type="text" 
                 name="title" 
-                value={props.Uglytitle} 
+                value={props.uglyTitle} 
                 onChange={props.handleChange} 
                 placeholder="Title" />
             <input 
                 type="text" 
                 name="description" 
-                value={props.description} 
+                value={props.uglyDescription} 
                 onChange={props.handleChange} 
                 placeholder="Description" />
             <input 
                 type="text" 
                 name="imgUrl" 
-                value={props.imgUrl} 
+                value={props.uglyImgUrl} 
                 onChange={props.handleChange} 
                 placeholder="Image" />
-            <button>Add Todo</button>
+            <button>Submit Ugly Thing</button>
         </form>
     </div>
   )
