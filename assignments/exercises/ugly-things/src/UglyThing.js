@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
 import { withUglyThings } from './UglyThingsProvider'
 
 class UglyThing extends Component {
@@ -46,11 +46,42 @@ class UglyThing extends Component {
 
   render() {
     return (
-      <div>
-        <h1>{this.props.title}</h1>
-        <p>{this.props.description}</p>
-        <img src={this.props.imgUrl} alt="ugly"/>
-      </div>
+      <Fragment>
+        {this.state.isEditing ?
+          <div>
+            <form onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                value={this.state.title}
+                name="title"
+                onChange={this.handleChange}
+                placeholder={this.props.title} />
+                <input
+                  type="text"
+                  value={this.state.description}
+                  name="description"
+                  onChange={this.handleChange}
+                  placeholder={this.props.description} />
+                <input
+                  type="text"
+                  value={this.state.imgUrl}
+                  name="imgUrl"
+                  onChange={this.handleChange}
+                  placeholder={this.props.imgUrl} />
+                <button>Submit Edit</button>
+            </form>
+            <button onClick={this.editToggler}>Close</button>
+          </div>
+          :
+          <div>
+            <h1>{this.props.title}</h1>
+            <p>{this.props.description}</p>
+            <img src={this.props.imgUrl} alt="ugly"/>
+            <button onClick={() => this.props.handleDelete(this.props._id)}>Delete</button>
+            <button onClick={this.editToggler}>Edit</button>
+          </div>
+        }
+      </Fragment>
     )
   }
 }
