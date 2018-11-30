@@ -49,6 +49,30 @@ class UglyThingsProvider extends Component {
             })
       }
     
+      handleDelete = (id) => {
+        axios.delete(`https://api.vschool.io/Jon/todo/${id}`)
+            .then(response => {
+              alert(response.data.msg)
+              this.setState(prevState => {
+                return {
+                  uglyThings: prevState.uglyThings.filter(thing => thing._id !== id)
+                }
+              })
+            })
+      }
+    
+      handleEdit = (id, updates) => {
+        axios.put(`https://api.vschool.io/Jon/todo/${id}`, updates)
+            .then (response => {
+              console.log(response.data)
+              this.setState(prevState => {
+                return {
+                  uglyThings: prevState.uglyThings.map(thing => thing._id === id ? response.data : thing)
+                }
+              })
+            })
+      }
+    
 
     render(){
         return (
@@ -57,6 +81,8 @@ class UglyThingsProvider extends Component {
                 getUglyThings: this.getUglyThings,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
+                handleDelete: this.handleDelete,
+                handleEdit: this.handleEdit,
                 uglyTitle: this.state.title,
                 uglyDescription: this.state.description,
                 uglyImgUrl: this.state.imgUrl
