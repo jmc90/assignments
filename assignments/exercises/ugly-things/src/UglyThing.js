@@ -55,19 +55,22 @@ class UglyThing extends Component {
                 value={this.state.title}
                 name="title"
                 onChange={this.handleChange}
-                placeholder={this.props.title} />
+                placeholder={this.props.title}
+                required />
                 <input
                   type="text"
                   value={this.state.description}
                   name="description"
                   onChange={this.handleChange}
-                  placeholder={this.props.description} />
+                  placeholder={this.props.description}
+                  required />
                 <input
                   type="text"
                   value={this.state.imgUrl}
                   name="imgUrl"
                   onChange={this.handleChange}
-                  placeholder={this.props.imgUrl} />
+                  placeholder={this.props.imgUrl}
+                  required />
                 <button>Submit Edit</button>
             </form>
             <button onClick={this.editToggler}>Close</button>
