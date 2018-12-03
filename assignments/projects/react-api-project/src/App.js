@@ -3,8 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import NavbarContainer from "./NavbarContainer";
 import Footer from "./Footer";
 import Home from "./Home";
-import Apod from "./Apod";
-import About from "./About";
+import ApodContainer from './ApodContainer';
+
+
 
 
 const App = () => {
@@ -12,9 +13,8 @@ const App = () => {
     <div>
       <NavbarContainer/>  
       <Switch>
-          <Route path="/" component={Home}/>
-          <Route path="/apod" component={Apod}/>
-          <Route path="/about" component={About}/>
+          <Route exact path="/" component={Home}/>
+          <Route path="/apodContainer" component={ApodContainer}/>
       </Switch>
       <Footer />
     </div>
