@@ -8,7 +8,8 @@ class ApodContainer extends Component {
     constructor() {
         super()
         this.state = {
-            apodData: []
+            apodData: [],
+            date: ""
         }
     }
 
@@ -23,14 +24,20 @@ class ApodContainer extends Component {
              .catch(err => console.log(err))
     }
 
+    handleChange = e => {
+        const { name, value } = e.target
+        this.setState({
+          [name]: value
+        })
+      }
+
 
   render() {
     const { apodData } = this.state
     return (
       <div>
-        <ApodCard
-            apodData={apodData} />
-        <DateInput />
+        <ApodCard apodData={apodData} />
+        <DateInput handleChange={this.handleChange} />
       </div>
     )
   }

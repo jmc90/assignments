@@ -4,6 +4,7 @@ import NavbarContainer from "./NavbarContainer";
 import Footer from "./Footer";
 import Home from "./Home";
 import ApodContainer from './ApodContainer';
+import RoverContainer from './RoverContainer';
 
 
 
@@ -14,7 +15,8 @@ const App = () => {
       <NavbarContainer/>  
       <Switch>
           <Route exact path="/" component={Home}/>
-          <Route path="/apodContainer" component={ApodContainer}/>
+          <Route path="/apodContainer" component={ApodContainer} />
+          <Route path="/roverGallery" component={RoverContainer} />
       </Switch>
       <Footer />
     </div>

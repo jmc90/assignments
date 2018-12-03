@@ -1,10 +1,11 @@
 import React from 'react'
 
-const DateInput = () => {
+const DateInput = ({ handleChange }) => {
   return (
     <div>
       <form>
-          <input type=""/>
+          <input type="date" name="date" onChange={handleChange} />
+          
       </form>
     </div>
   )

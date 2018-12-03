@@ -5,7 +5,7 @@ const NavbarContainer = () => {
   return (
     <div>
         <Link to="/">Home</Link>
-        <Link to="/apodContainer">About</Link>
+        <Link to="/apodContainer">APOD</Link>
     </div>
   )
 }
