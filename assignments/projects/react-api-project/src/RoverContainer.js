@@ -10,16 +10,10 @@ class RoverContainer extends Component {
         super()
         this.state = {
             roverPhotos: [],
-            rover: "Curiosity"
+            rover: "curiosity",
+            sol: ""
         }
     }
-
-    handleChange = e => {
-        const { name, value } = e.target
-        this.setState({
-          [name]: value
-        })
-      }
 
     componentDidMount() {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=1&api_key=${API_KEY}`)
@@ -32,12 +26,30 @@ class RoverContainer extends Component {
              .catch(err => console.log(err))
     }
 
+    handleChange = e => {
+        const { name, value } = e.target
+        this.setState({
+          [name]: value
+        })
+      }
+
+      handleSubmit = e => {
+        e.preventDefault()
+        axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.rover}/photos?sol=${this.state.sol}&page=1&api_key=${API_KEY}`)
+            .then(response => {
+              this.setState({
+                  roverPhotos: response.data.photos
+              })
+            })
+      }
+
   render() {
     const { roverPhotos } = this.state
     return (
       <div>
         <RoverSelect 
-            handleChange={this.handleChange} />
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit} />
         {roverPhotos.map(photo => 
             <RoverImage 
                 url={photo.img_src}
