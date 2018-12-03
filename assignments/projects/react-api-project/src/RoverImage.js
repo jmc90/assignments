@@ -1,9 +1,9 @@
 import React from 'react'
 
-const RoverImage = () => {
+const RoverImage = ({url}) => {
   return (
     <div>
-      
+      <img src={url} alt="mars pic"/>
     </div>
   )
 }
