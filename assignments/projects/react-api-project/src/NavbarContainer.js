@@ -5,7 +5,9 @@ const NavbarContainer = () => {
   return (
     <div>
         <Link to="/">Home</Link>
-        <Link to="/apodContainer">APOD</Link>
+        <Link to="/apod">APOD</Link>
+        <Link to="/rovergallery">Rover Gallery</Link>
+
     </div>
   )
 }

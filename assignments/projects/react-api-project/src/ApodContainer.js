@@ -3,6 +3,7 @@ import axios from 'axios'
 import ApodCard from './ApodCard'
 import DateInput from './DateInput'
 
+const API_KEY = process.env.REACT_APP_NASA_API_KEY
 
 class ApodContainer extends Component {
     constructor() {
@@ -14,7 +15,7 @@ class ApodContainer extends Component {
     }
 
     componentDidMount() {
-        axios.get(`https://api.nasa.gov/planetary/apod?api_key=5JfuhmidZ7zeIkYNuoNzTwsG3nzseaYFfiSamsb3`)
+        axios.get(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`)
              .then(response => {
                console.log(response)
                 this.setState({
