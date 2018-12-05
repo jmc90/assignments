@@ -25,20 +25,20 @@ class NavbarContainer extends React.Component {
   }
   render() {
     return (
-      <div >
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Nasa</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
+      <div>
+        <Navbar color="dark" light expand="md">
+          <NavbarBrand className="text-light" href="/">Nasa</NavbarBrand>
+          <NavbarToggler className="bg-light" onClick={this.toggle} />
           <Collapse  isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <Link to="/">Home</Link>
+                <Link className="text-light p-2 border-left border-light" to="/">Home</Link>
               </NavItem>
               <NavItem>
-                <Link to="/apod">Picture of The Day</Link>
+                <Link className="text-light p-2 border-left border-light" to="/apod">Picture of The Day</Link>
               </NavItem>
               <NavItem>
-                <Link to="/rovergallery">Rover Gallery</Link>
+                <Link className="text-light p-2 border-left border-light" to="/rovergallery">Rover Gallery</Link>
               </NavItem>
             </Nav>
           </Collapse>
