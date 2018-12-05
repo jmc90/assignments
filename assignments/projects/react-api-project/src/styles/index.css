@@ -30,8 +30,8 @@ footer {
 
 /* ApodCard */
 
-.image-card img, iframe {
-    max-height: 500px;
+.image-card img {
+    max-height: 600px;
 
 }
 
