@@ -3,7 +3,7 @@ import RoverImage from './RoverImage'
 import { Button } from 'reactstrap'
 import alien from './styles/images/alien.jpeg'
 
-const RoverList = ({ roverPhotos, noPhotos }) => {
+const RoverList = ({ roverPhotos, noPhotos, handleMoreClick }) => {
     return (
         !roverPhotos.length  && noPhotos 
             ? <div>
@@ -14,12 +14,12 @@ const RoverList = ({ roverPhotos, noPhotos }) => {
             ?
             <div className="container">
                 <div className="row justify-contnent-center">
-                    {roverPhotos.map(photo =>
+                    {roverPhotos.map((photo, i) =>
                         <RoverImage
                             url={photo.img_src}
-                            key={photo.id} />)} 
+                            key={i} />)} 
                 </div>
-                <Button color="primary" size="lg" block>More..</Button>
+                <Button className="my-3" color="primary" size="lg" block onClick={handleMoreClick}>More..</Button>
             </div>
             :
             <div>

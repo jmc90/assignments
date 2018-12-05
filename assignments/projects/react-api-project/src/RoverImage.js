@@ -1,9 +1,15 @@
 import React from 'react'
+import ModalImage from 'react-modal-image'
 
 const RoverImage = ({url}) => {
   return (
-    <div className="col-12 col-md-3 rover-image-div">
-        <img src={url} alt="mars pic" className="img-thumbnail"/>
+    <div className="col-12 col-md-4 col-lg-3 text-center rover-image-div">
+        <ModalImage
+          className="my-2 img-thumbnail mars-img"
+          small={url}
+          large={url}
+          alt="Mars Photo"
+/>
     </div>
   )
 }

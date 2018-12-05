@@ -27,7 +27,7 @@ class NavbarContainer extends React.Component {
     return (
       <div>
         <Navbar color="dark" light expand="md">
-          <NavbarBrand className="text-light text-uppercase font-weight-bold" href="/">Nasa</NavbarBrand>
+          <NavbarBrand className="text-light text-uppercase font-weight-bold" href="/">Nasa Image Gallery</NavbarBrand>
           <NavbarToggler className="bg-light" onClick={this.toggle} />
           <Collapse  isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

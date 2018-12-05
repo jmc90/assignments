@@ -11,7 +11,7 @@ import RoverContainer from './RoverContainer';
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-light">
       <NavbarContainer/>  
       <Switch>
           <Route exact path="/" component={Home}/>

@@ -11,62 +11,86 @@ class RoverContainer extends Component {
         this.state = {
             roverPhotos: [],
             rover: "curiosity",
-            sol: "",
-            noPhotos: false
+            sol: "1000",
+            noPhotos: false,
+            page: 1
         }
     }
 
     componentDidMount() {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=1&api_key=${API_KEY}`)
-             .then(response => {
-               console.log(response)
+            .then(response => {
+                console.log(response)
                 this.setState({
                     roverPhotos: response.data.photos
                 })
-             })
-             .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
     }
 
     handleChange = e => {
         const { name, value } = e.target
         this.setState({
-          [name]: value
+            [name]: value
         })
-      }
+    }
 
-      handleSubmit = e => {
+    handleSubmit = e => {
         e.preventDefault()
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.rover}/photos?sol=${this.state.sol}&page=1&api_key=${API_KEY}`)
             .then(response => {
                 console.log(response)
-            if (response.data.photos.length) {
-            this.setState({
-                roverPhotos: response.data.photos,
-                noPhotos: false
-            }) 
-            } else {
-                this.setState({
-                    noPhotos: true,
-                    roverPhotos: []
-                })
-            }    
+                if (response.data.photos.length) {
+                    this.setState({
+                        roverPhotos: response.data.photos,
+                        noPhotos: false,
+                        page: 1
+                    })
+                } else {
+                    this.setState({
+                        noPhotos: true,
+                        roverPhotos: [],
+                        page: 1
+                    })
+                }
             })
             .catch(err => console.log(err))
-      }
+    }
 
-  render() {
-    const { roverPhotos, noPhotos } = this.state
-    return (
-      <div>
-        <RoverSelectForm 
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit} />
-        <RoverList
-            roverPhotos={roverPhotos}
-            noPhotos={noPhotos} />
-      </div>
-    )
-  }
+    handleMoreClick = () => {
+        this.setState(prevState => {
+            return { page: prevState.page + 1 }
+        }, () => {
+            const pageNumber = this.state.page.toString()
+            axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.rover}/photos?sol=${this.state.sol}&page=${pageNumber}&api_key=${API_KEY}`)
+                .then(response => {
+                    console.log(response)
+                    if (response.data.photos.length) {
+                        this.setState(prevState => {
+                            return { roverPhotos: [...prevState.roverPhotos, ...response.data.photos] }
+                        })
+                    } else {
+                        alert("No More Photos Available")
+                    }
+                })
+        })
+
+    }
+
+    render() {
+        const { roverPhotos, noPhotos } = this.state
+        return (
+            <div>
+                <RoverSelectForm
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit} />
+                <RoverList
+                    roverPhotos={roverPhotos}
+                    noPhotos={noPhotos}
+                    handleMoreClick={this.handleMoreClick} />
+            </div>
+        )
+    }
 }
 
 export default RoverContainer

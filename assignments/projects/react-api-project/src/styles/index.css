@@ -35,14 +35,11 @@ footer {
 
 }
 
-/* ApodDateInput */
-
-
-
 /* RoverImage */
- .rover-image-div img {
+ .rover-image-div .mars-img {
      width: 250px;
      height: 200px;
+     object-fit: cover;
  }
 
 
