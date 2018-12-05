@@ -11,7 +11,8 @@ class RoverContainer extends Component {
         this.state = {
             roverPhotos: [],
             rover: "curiosity",
-            sol: ""
+            sol: "",
+            noPhotos: false
         }
     }
 
@@ -38,21 +39,31 @@ class RoverContainer extends Component {
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.rover}/photos?sol=${this.state.sol}&page=1&api_key=${API_KEY}`)
             .then(response => {
                 console.log(response)
-              this.setState({
-                  roverPhotos: response.data.photos
-              })
+            if (response.data.photos.length) {
+            this.setState({
+                roverPhotos: response.data.photos,
+                noPhotos: false
+            }) 
+            } else {
+                this.setState({
+                    noPhotos: true,
+                    roverPhotos: []
+                })
+            }    
             })
+            .catch(err => console.log(err))
       }
 
   render() {
-    const { roverPhotos } = this.state
+    const { roverPhotos, noPhotos } = this.state
     return (
       <div>
         <RoverSelectForm 
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit} />
         <RoverList
-            roverPhotos={roverPhotos} />
+            roverPhotos={roverPhotos}
+            noPhotos={noPhotos} />
       </div>
     )
   }

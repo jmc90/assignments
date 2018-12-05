@@ -2,11 +2,15 @@ import React from 'react'
 import RoverImage from './RoverImage'
 import alien from './styles/images/alien.jpeg'
 
-const RoverList = ({ roverPhotos }) => {
+const RoverList = ({ roverPhotos, noPhotos }) => {
     return (
-
-        // not able to show messages when no pictures are available because it will show during loading time. FIX THIS!!!!!!!
-        roverPhotos.length ? 
+        !roverPhotos.length  && noPhotos 
+            ? <div>
+                <h1>No Photos Available for this Sol</h1>
+                <img src={alien} alt="alien"/>
+            </div>
+            : roverPhotos.length 
+            ?
             <div>
                 {roverPhotos.map(photo =>
                     <RoverImage
@@ -17,6 +21,7 @@ const RoverList = ({ roverPhotos }) => {
             <div>
                 <h1>Loading...</h1>
             </div>
+
     )
 }
 
