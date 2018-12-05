@@ -7,7 +7,7 @@ import roverPic from './styles/images/curiosity-selfie.jpg'
 const Home = () => {
   return (
     <div>
-      <div className="home">
+      <div className="home border-bottom border-primary">
         <div className="home-title-div d-flex justify-content-center align-items-center">
           <div className="title d-flex flex-column align-items-center">
             <img src={logo} alt="nasa" width="200" />
@@ -26,14 +26,14 @@ const Home = () => {
           <div className="col-12 d-flex flex-column flex-md-row mb-4">
             <img className="mr-md-4 align-self-center" src={astronomyPic} alt="astronomy-pic" width="200" />
             <div className="align-self-center">
-              <h3 className="my-3">Astronomy Picture of the Day</h3>
+              <h3 className="my-3">View the Astronomy Picture of the Day</h3>
               <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab at saepe in odit. Numquam corporis quam ad cumque! Temporibus cumque ut natus ipsam quis doloremque quibusdam in labore totam impedit.</p>
             </div>
           </div>
           <div className="col-12 d-flex flex-column flex-md-row mb-5">
             <img className="mr-md-4 align-self-center" src={roverPic} alt="rover-pic" width="200" />
             <div className="align-self-center">
-              <h3 className="my-3">Mars Rover Photos</h3>
+              <h3 className="my-3">Explore Mars Rover Photos</h3>
               <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab at saepe in odit. Numquam corporis quam ad cumque! Temporibus cumque ut natus ipsam quis doloremque quibusdam in labore totam impedit.</p>
             </div>
           </div>

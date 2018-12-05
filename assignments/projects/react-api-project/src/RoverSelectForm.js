@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RoverSelect = ({ handleChange, handleSubmit }) => {
+const RoverSelectForm = ({ handleChange, handleSubmit }) => {
   return (
     <div>
         <form onSubmit={handleSubmit}>
@@ -25,4 +25,4 @@ const RoverSelect = ({ handleChange, handleSubmit }) => {
   )
 }
 
-export default RoverSelect
+export default RoverSelectForm

@@ -47,12 +47,13 @@ class ApodContainer extends Component {
   render() {
     const { apodData, date} = this.state
     return (
-      <div>
-        <ApodCard apodData={apodData} />
-        <ApodDateInput 
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            date={date} />
+        <div className="container">
+            <ApodDateInput 
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                    date={date} />
+            <ApodCard apodData={apodData} />
+       
       </div>
     )
   }

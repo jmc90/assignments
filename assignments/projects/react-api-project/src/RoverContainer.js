@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import RoverImage from './RoverImage'
-import RoverSelect from './RoverSelect'
+import RoverList from './RoverList'
+import RoverSelectForm from './RoverSelectForm'
 
 const API_KEY = process.env.REACT_APP_NASA_API_KEY
 
@@ -37,6 +37,7 @@ class RoverContainer extends Component {
         e.preventDefault()
         axios.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/${this.state.rover}/photos?sol=${this.state.sol}&page=1&api_key=${API_KEY}`)
             .then(response => {
+                console.log(response)
               this.setState({
                   roverPhotos: response.data.photos
               })
@@ -47,13 +48,11 @@ class RoverContainer extends Component {
     const { roverPhotos } = this.state
     return (
       <div>
-        <RoverSelect 
+        <RoverSelectForm 
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit} />
-        {roverPhotos.map(photo => 
-            <RoverImage 
-                url={photo.img_src}
-                key={photo.id} />)}
+        <RoverList
+            roverPhotos={roverPhotos} />
       </div>
     )
   }

@@ -11,14 +11,15 @@ const ApodCard = ({ apodData }) => {
     
   return (
       media_type === "image" ?
-        <div>
-            <h1>{title}</h1>
-            <a href={hdurl}><img src={url} alt={title} /></a>
-            <p>{explanation}</p>
-            <span>{date}</span>
+        <div className="image-card d-flex flex-column align-items-center">
+            <h3 className="">Date: {date}</h3>
+            <h1 className="">{title}</h1>
+            <a href={hdurl}><img className="img-fluid" src={url} alt={title} /></a>
+            <p className="text-center">{explanation}</p>
         </div>
         :
         <div>
+            <h3>Date: {date}</h3>
             <h1>{title}</h1>
             <iframe
                 allowFullScreen
@@ -29,7 +30,6 @@ const ApodCard = ({ apodData }) => {
                 src={url}>
             </iframe>
             <p>{explanation}</p>
-            <span>{date}</span>
         </div>
   )
 }

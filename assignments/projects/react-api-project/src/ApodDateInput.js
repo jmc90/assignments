@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 const ApodDateInput = ({ handleChange, handleSubmit, date }) => {
 
@@ -18,9 +19,10 @@ const ApodDateInput = ({ handleChange, handleSubmit, date }) => {
   today = `${year}-${month}-${day}`
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="row justify-content-center text-center">
+      {/* <form onSubmit={handleSubmit}>
           <input 
+            className="date-select"
             type="date" 
             name="date" 
             value={date}
@@ -28,8 +30,22 @@ const ApodDateInput = ({ handleChange, handleSubmit, date }) => {
             min="1995-06-16"
             max={today}
             required />
-          <button>Submit</button>
-      </form>
+            <Button color="primary">primary</Button>{' '}
+      </form> */}
+      <Form inline onSubmit={handleSubmit}>
+        <FormGroup>
+          <Label for="exampleDate" className="mr-sm-2">Date</Label>
+          <Input 
+            type="date"
+            name="date" 
+            value={date}
+            onChange={handleChange}
+            min="1995-06-16"
+            max={today}
+            required />
+            <Button color="primary">Submit</Button>{' '}
+          </FormGroup>
+        </Form>
     </div>
   )
 }
