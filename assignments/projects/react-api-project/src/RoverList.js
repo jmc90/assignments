@@ -1,5 +1,6 @@
 import React from 'react'
 import RoverImage from './RoverImage'
+import { Button } from 'reactstrap'
 import alien from './styles/images/alien.jpeg'
 
 const RoverList = ({ roverPhotos, noPhotos }) => {
@@ -11,11 +12,14 @@ const RoverList = ({ roverPhotos, noPhotos }) => {
             </div>
             : roverPhotos.length 
             ?
-            <div>
-                {roverPhotos.map(photo =>
-                    <RoverImage
-                        url={photo.img_src}
-                        key={photo.id} />)}
+            <div className="container">
+                <div className="row justify-contnent-center">
+                    {roverPhotos.map(photo =>
+                        <RoverImage
+                            url={photo.img_src}
+                            key={photo.id} />)} 
+                </div>
+                <Button color="primary" size="lg" block>More..</Button>
             </div>
             :
             <div>
