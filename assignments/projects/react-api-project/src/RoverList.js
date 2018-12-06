@@ -6,13 +6,15 @@ import alien from './styles/images/alien.jpeg'
 const RoverList = ({ roverPhotos, noPhotos, handleMoreClick }) => {
     return (
         !roverPhotos.length  && noPhotos 
-            ? <div>
-                <h1>No Photos Available for this Sol</h1>
-                <img src={alien} alt="alien"/>
+            ? <div className="container rover-list">
+                <div className="row justify-content-center">
+                    <h1 className="col-12 text-center">No Photos Available for this Sol</h1>
+                    <img classname="col-12" src={alien} alt="alien"/>
+                </div>
             </div>
             : roverPhotos.length 
             ?
-            <div className="container">
+            <div className="container rover-list">
                 <div className="row justify-contnent-center">
                     {roverPhotos.map((photo, i) =>
                         <RoverImage
@@ -22,8 +24,10 @@ const RoverList = ({ roverPhotos, noPhotos, handleMoreClick }) => {
                 <Button className="my-3" color="primary" size="lg" block onClick={handleMoreClick}>More..</Button>
             </div>
             :
-            <div>
-                <h1>Loading...</h1>
+            <div className="container rover-list">
+                <div className="row">
+                    <h1>Loading...</h1>
+                </div>
             </div>
 
     )

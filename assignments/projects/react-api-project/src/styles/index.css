@@ -28,11 +28,28 @@ footer {
     font-size: 3em;
 }
 
+/* ApodContainer */
+.apod-container {
+    min-height: 700px
+}
+
 /* ApodCard */
 
-.image-card img {
-    max-height: 600px;
+.image-card img  {
+   max-height: 600px;
 
+}
+
+/* RoverContainer */
+
+/* .rover-container {
+    height: 95vh;
+    overflow: auto;
+} */
+
+.rover-list {
+    height: 700px;
+    overflow-y: scroll;
 }
 
 /* RoverImage */
@@ -41,5 +58,7 @@ footer {
      height: 200px;
      object-fit: cover;
  }
+
+
 
 

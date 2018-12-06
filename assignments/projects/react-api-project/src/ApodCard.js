@@ -1,15 +1,17 @@
 import React from 'react'
 
+
 const ApodCard = ({ apodData }) => {
     const {title,
-        url,
-        hdurl,
-        explanation,
-        date,
-        media_type
+            url,
+            hdurl,
+            explanation,
+            date,
+            media_type
                     } = apodData
     
   return (
+    url ?
       media_type === "image" ?
         <div className="image-card d-flex flex-column align-items-center">
             <h3 className="text-center">Date: {date}</h3>
@@ -33,6 +35,10 @@ const ApodCard = ({ apodData }) => {
                 </iframe>
             </div>
             <p>{explanation}</p>
+        </div>
+        :
+        <div className="row">
+            <h1>Loading...</h1>
         </div>
   )
 }

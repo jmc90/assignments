@@ -80,7 +80,7 @@ class RoverContainer extends Component {
     render() {
         const { roverPhotos, noPhotos } = this.state
         return (
-            <div>
+            <div className="rover-container">
                 <RoverSelectForm
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit} />

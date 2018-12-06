@@ -9,7 +9,7 @@ const RoverImage = ({url}) => {
           small={url}
           large={url}
           alt="Mars Photo"
-/>
+        />
     </div>
   )
 }
