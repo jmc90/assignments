@@ -1,5 +1,5 @@
 import React from 'react'
-import { withApod } from './context/ApodProvider'
+import { withApod } from '../../context/ApodProvider'
 
 const ApodCard = props => {
     const {title,

@@ -1,8 +1,8 @@
 import React from 'react'
-import './styles/stars.css'
-import logo from './styles/images/nasa.png'
-import astronomyPic from './styles/images/apod-example.jpg'
-import roverPic from './styles/images/curiosity-selfie.jpg'
+import '../styles/stars.css'
+import logo from '../styles/images/nasa.png'
+import astronomyPic from '../styles/images/apod-example.jpg'
+import roverPic from '../styles/images/curiosity-selfie.jpg'
 
 const Home = () => {
   return (

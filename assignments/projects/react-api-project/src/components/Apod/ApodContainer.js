@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withApod } from './context/ApodProvider'
+import { withApod } from '../../context/ApodProvider'
 import ApodCard from './ApodCard'
 import ApodDateInput from './ApodDateInput'
 

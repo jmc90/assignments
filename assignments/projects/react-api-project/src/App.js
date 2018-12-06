@@ -1,13 +1,10 @@
 import React from 'react'
 import { Switch, Route } from "react-router-dom";
-import NavbarContainer from "./NavbarContainer";
-import Footer from "./Footer";
-import Home from "./Home";
-import ApodContainer from './ApodContainer';
-import RoverContainer from './RoverContainer';
-
-
-
+import NavbarContainer from "./components/NavbarContainer";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
+import ApodContainer from './components/Apod/ApodContainer';
+import RoverContainer from './components/Rover/RoverContainer';
 
 const App = () => {
   return (

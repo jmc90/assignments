@@ -5,12 +5,15 @@ import { BrowserRouter } from "react-router-dom";
 import 'bootswatch/dist/cosmo/bootstrap.css'
 import './styles/index.css'
 import ApodProvider from './context/ApodProvider';
+import RoverProvider from './context/RoverProvider'
 
 
 ReactDOM.render(
     <BrowserRouter>
         <ApodProvider>
-            <App/>
+            <RoverProvider>
+                <App/>
+            </RoverProvider>
         </ApodProvider>
     </BrowserRouter>
 , document.getElementById("root"));

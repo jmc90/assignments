@@ -1,7 +1,8 @@
 import React from 'react'
+import { withRover } from '../../context/RoverProvider'
 import RoverImage from './RoverImage'
 import { Button } from 'reactstrap'
-import alien from './styles/images/alien.jpeg'
+import alien from '../../styles/images/alien.jpeg'
 
 const RoverList = ({ roverPhotos, noPhotos, handleMoreClick }) => {
     return (
@@ -33,4 +34,4 @@ const RoverList = ({ roverPhotos, noPhotos, handleMoreClick }) => {
     )
 }
 
-export default RoverList
+export default withRover(RoverList)

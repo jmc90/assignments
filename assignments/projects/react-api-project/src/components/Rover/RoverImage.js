@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRover } from '../../context/RoverProvider'
 import ModalImage from 'react-modal-image'
 
 const RoverImage = ({url}) => {
@@ -14,4 +15,4 @@ const RoverImage = ({url}) => {
   )
 }
 
-export default RoverImage
+export default withRover(RoverImage)
