@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { withApod } from './context/ApodProvider'
 
 const ApodDateInput = ({ handleChange, handleSubmit, date }) => {
 
@@ -20,18 +21,6 @@ const ApodDateInput = ({ handleChange, handleSubmit, date }) => {
 
   return (
     <div className="row justify-content-center text-center">
-      {/* <form onSubmit={handleSubmit}>
-          <input 
-            className="date-select"
-            type="date" 
-            name="date" 
-            value={date}
-            onChange={handleChange}
-            min="1995-06-16"
-            max={today}
-            required />
-            <Button color="primary">primary</Button>{' '}
-      </form> */}
       <Form inline onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="exampleDate" className="mr-sm-2">Date</Label>
@@ -50,4 +39,4 @@ const ApodDateInput = ({ handleChange, handleSubmit, date }) => {
   )
 }
 
-export default ApodDateInput
+export default withApod(ApodDateInput)

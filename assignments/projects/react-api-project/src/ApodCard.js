@@ -1,14 +1,14 @@
 import React from 'react'
+import { withApod } from './context/ApodProvider'
 
-
-const ApodCard = ({ apodData }) => {
+const ApodCard = props => {
     const {title,
             url,
             hdurl,
             explanation,
             date,
             media_type
-                    } = apodData
+                    } = props.apodData
     
   return (
     url ?
@@ -43,4 +43,4 @@ const ApodCard = ({ apodData }) => {
   )
 }
 
-export default ApodCard
+export default withApod(ApodCard)

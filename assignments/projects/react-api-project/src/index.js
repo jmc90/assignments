@@ -4,11 +4,14 @@ import App from './App';
 import { BrowserRouter } from "react-router-dom";
 import 'bootswatch/dist/cosmo/bootstrap.css'
 import './styles/index.css'
+import ApodProvider from './context/ApodProvider';
 
 
 ReactDOM.render(
     <BrowserRouter>
-        <App/>
+        <ApodProvider>
+            <App/>
+        </ApodProvider>
     </BrowserRouter>
 , document.getElementById("root"));
 
