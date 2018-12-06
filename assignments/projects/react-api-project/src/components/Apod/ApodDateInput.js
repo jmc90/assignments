@@ -20,11 +20,12 @@ const ApodDateInput = ({ handleChange, handleSubmit, date }) => {
   today = `${year}-${month}-${day}`
 
   return (
-    <div className="row justify-content-center text-center">
+    <div className="row justify-content-center text-center my-4">
       <Form inline onSubmit={handleSubmit}>
         <FormGroup>
-          <Label for="exampleDate" className="mr-sm-2">Date</Label>
+          <Label for="date" className="">Date:</Label>
           <Input 
+            className="m-2"
             type="date"
             name="date" 
             value={date}

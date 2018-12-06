@@ -24,14 +24,14 @@ const Home = () => {
             <h1>What is this?</h1>
           </div>
           <div className="col-12 d-flex flex-column flex-md-row mb-4">
-            <img className="mr-md-4 align-self-center" src={astronomyPic} alt="astronomy-pic" width="200" />
+            <img className="shadow mr-md-4 align-self-center" src={astronomyPic} alt="astronomy-pic" width="200" />
             <div className="align-self-center">
               <h3 className="my-3 text-center text-md-left">View the Astronomy Picture of the Day</h3>
               <p className="my-3 text-center text-md-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab at saepe in odit. Numquam corporis quam ad cumque! Temporibus cumque ut natus ipsam quis doloremque quibusdam in labore totam impedit.</p>
             </div>
           </div>
           <div className="col-12 d-flex flex-column flex-md-row my-5">
-            <img className="mr-md-4 align-self-center" src={roverPic} alt="rover-pic" width="200" />
+            <img className="shadow mr-md-4 align-self-center" src={roverPic} alt="rover-pic" width="200" />
             <div className="align-self-center">
               <h3 className="my-3 text-center text-md-left">Explore Mars Rover Photos</h3>
               <p className="my-3 text-center text-md-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab at saepe in odit. Numquam corporis quam ad cumque! Temporibus cumque ut natus ipsam quis doloremque quibusdam in labore totam impedit.</p>

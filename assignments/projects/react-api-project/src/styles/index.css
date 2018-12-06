@@ -1,5 +1,12 @@
-/* Navbar */
+body {
+	font-family: 'Space Mono', monospace;
+	letter-spacing: 1px;
+}
 
+@font-face { 
+	font-family: Nasa; 
+	src: url('./nasalization-rg.ttf'); 
+} 
 
 /* footer */
 
@@ -92,6 +99,7 @@
 }
 
 .title h1 {
+	font-family: Nasa;
     font-size: 3em;
 }
 
@@ -105,6 +113,13 @@
 .image-card img  {
    max-height: 600px;
 
+}
+
+@media (min-width: 768px) {
+	.apod-explanation {
+		line-height: 30px;
+		font-size: 20px;
+	}
 }
 
 

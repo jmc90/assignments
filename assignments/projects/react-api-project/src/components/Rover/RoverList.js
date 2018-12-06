@@ -10,7 +10,7 @@ const RoverList = ({ roverPhotos, noPhotos, handleMoreClick }) => {
             ? <div className="container rover-list">
                 <div className="row justify-content-center">
                     <h1 className="col-12 text-center">No Photos Available for this Sol</h1>
-                    <img classname="col-12" src={alien} alt="alien"/>
+                    <img src={alien} alt="alien" />
                 </div>
             </div>
             : roverPhotos.length 

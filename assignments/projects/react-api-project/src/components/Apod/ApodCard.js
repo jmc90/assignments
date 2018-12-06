@@ -16,14 +16,14 @@ const ApodCard = props => {
         <div className="image-card d-flex flex-column align-items-center">
             <h3 className="text-center">Date: {date}</h3>
             <h1 className="text-center">{title}</h1>
-            <a href={hdurl}><img className="img-fluid" src={url} alt={title} /></a>
-            <p className="text-center">{explanation}</p>
+            <a className="mb-4 shadow" href={hdurl}><img className="img-fluid" src={url} alt={title} /></a>
+            <p className="text-center apod-explanation">{explanation}</p>
         </div>
         :
         <div className="d-flex flex-column align-items-center">
             <h3 className="text-center">Date: {date}</h3>
             <h1 className="text-center">{title}</h1>
-            <div className="embed-responsive embed-responsive-16by9">
+            <div className="mb-4 shadow embed-responsive embed-responsive-16by9">
                 <iframe
                     className="embed-responsive-item"
                     allowFullScreen
@@ -34,7 +34,7 @@ const ApodCard = props => {
                     src={url}>
                 </iframe>
             </div>
-            <p>{explanation}</p>
+            <p className="text-center apod-explanation">{explanation}</p>
         </div>
         :
         <div className="row">

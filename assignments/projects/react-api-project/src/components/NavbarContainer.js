@@ -30,7 +30,7 @@ class NavbarContainer extends React.Component {
           <NavbarBrand className="text-light text-uppercase font-weight-bold" href="/">Nasa Image Gallery</NavbarBrand>
           <NavbarToggler className="bg-light" onClick={this.toggle} />
           <Collapse  isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className="ml-auto my-3" navbar>
               <NavItem>
                 <Link className="text-light text-uppercase font-weight-bold p-2 border-left border-light" to="/">Home</Link>
               </NavItem>
