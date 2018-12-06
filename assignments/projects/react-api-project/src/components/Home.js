@@ -30,7 +30,7 @@ const Home = () => {
               <p className="my-3 text-center text-md-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab at saepe in odit. Numquam corporis quam ad cumque! Temporibus cumque ut natus ipsam quis doloremque quibusdam in labore totam impedit.</p>
             </div>
           </div>
-          <div className="col-12 d-flex flex-column flex-md-row mb-5">
+          <div className="col-12 d-flex flex-column flex-md-row my-5">
             <img className="mr-md-4 align-self-center" src={roverPic} alt="rover-pic" width="200" />
             <div className="align-self-center">
               <h3 className="my-3 text-center text-md-left">Explore Mars Rover Photos</h3>

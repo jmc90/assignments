@@ -5,6 +5,12 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import ApodContainer from './components/Apod/ApodContainer';
 import RoverContainer from './components/Rover/RoverContainer';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fab)
+
+
 
 const App = () => {
   return (

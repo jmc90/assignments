@@ -11,7 +11,7 @@ class RoverContainer extends Component {
 
     render() {
         return (
-            <div className="rover-container">
+            <div className="container">
                 <RoverSelectForm />
                 <RoverList />
             </div>

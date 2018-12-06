@@ -4,26 +4,27 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 const RoverSelectForm = ({ handleChange, handleSubmit }) => {
     return (
-        <div className="d-flex justify-content-center mb-3">
+        <div className="row d-flex justify-content-center m-3">
             <Form onSubmit={handleSubmit} inline>
                 <FormGroup>
-                    <Label for="rover">Rover:</Label>
-                    <Input className="mx-2" type="select" name="rover" onChange={handleChange}>
+                    <Label className="ml-2" for="rover">Rover:</Label>
+                    <Input className="m-2" type="select" name="rover" onChange={handleChange}>
                         <option value="Curiosity">Curiosity</option>
                         <option value="Opportunity">Opportunity</option>
                         <option value="Spirit">Spirit</option>
                     </Input>
-                    <Label className="mx-2" for="sol">Martian Day (sol): (Enter value between 1000-5000) </Label>
+                    <Label className="m-2" for="sol">Martian Day (sol): (Enter value between 1000-5000) </Label>
                     <Input
-                        className="mx-2"
+                        className="m-2"
+                        size="500"
                         onChange={handleChange}
                         name="sol"
                         type="number"
                         min="1000"
                         max="5000"
-                        placeholder="Enter Number"
+                        placeholder="1000"
                         required />
-                    <Button color="primary">Submit</Button>{' '}
+                    <Button className="m-2" color="primary">Submit</Button>{' '}
                 </FormGroup>
             </Form>
         </div>
