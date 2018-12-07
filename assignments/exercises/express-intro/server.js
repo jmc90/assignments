@@ -9,6 +9,15 @@ app.get('/', (req, res) => {
 
 
 
+// URL:  www.google.com/photos?type=nike&size=9
+// ENDPOINT: /photos
+// QUERY:    ?key=value   => Filtering data from database
+// PARAMS:   Requesting a specific item from db
+
+
+// DATA IN A DATABASE
+    // Collection: Todos
+    // Resource:   Todo
 
 
 
