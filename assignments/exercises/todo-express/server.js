@@ -3,7 +3,7 @@ const app = express()
 const uuid = require('uuid/v4')
 
 // Simulated Database of Todos
-const todosCollection = [
+let todosCollection = [
     {
         name: "Todo 1",
         description: "The description of the todo",
@@ -41,8 +41,8 @@ app.get('/todos', (req, res) => {
 
 // Get individual todo
 app.get('/todos/:id', (req, res) => {
-    const id = req.params.id
-    const foundTodo = todosCollection.find(todo => todo._id === id)
+    const todoId = req.params.id
+    const foundTodo = todosCollection.find(todo => todo._id === todoId)
     res.send(foundTodo)
 })
 
@@ -56,7 +56,22 @@ app.post('/todos', (req, res) => {
 })
 
 
+// Delete todo
 
+app.delete('/todos/:id', (req, res) => {
+    const todoId = req.params.id
+    const updatedTodos = todosCollection.filter(todo => todo._id !== todoId)
+    todosCollection = updatedTodos
+    res.send(todosCollection)
+})
+
+// Edit Todo 
+app.put('/todos/:id', (req, res) => {
+    const todoId = req.params.id
+    const todoUpdates = req.body
+    const updatedCollection = todosCollection.map(todo => todo._id === todoId ? {...todo, ...todoUpdates} : todo)
+    res.send(updatedCollection)
+})
 
 
 // Server

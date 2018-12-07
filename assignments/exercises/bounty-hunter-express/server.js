@@ -37,20 +37,28 @@ app.get('/bounties', (req, res) => {
     res.send(bountiesCollection)
 })
 
-// Get individual bountie
+// Get individual bounty
 app.get('/bounties/:id', (req, res) => {
     const id = req.params.id
-    const foundBountie = bountiesCollection.find(bountie => bountie._id === id)
-    res.send(foundBountie)
+    const foundBounty = bountiesCollection.find(bounty => bounty._id === id)
+    res.send(foundBounty)
 })
 
-// Post new bountie
+// Post new bounty
 app.post('/bounties', (req, res) => {
-    const newBountie = req.body
-    newBountie._id = uuid()
-    bountiesCollection.push(newBountie)
+    const newBounty = req.body
+    newBounty._id = uuid()
+    bountiesCollection.push(newBounty)
     res.send(bountiesCollection)
     
+})
+
+// Edit bounty
+app.put('/bounties/:id', (req, res) => {
+    const bountyId = req.params.id
+    const bountyUpdates = req.body
+    const updatedCollection = bountiesCollection.map(bounty => bounty._id === bountyId ? {...bounty, ...bountyUpdates} : bounty)
+    res.send(updatedCollection)
 })
 
 // Server
