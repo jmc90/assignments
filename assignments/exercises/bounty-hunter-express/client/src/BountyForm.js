@@ -7,16 +7,16 @@ class BountyForm extends Component {
 
         }
     }
-
+// Ask nate about checked!!!!!!
     render() {
-        const {firstName, lastName, bountyAmount, type, handleSubmit, handleChange} = this.props
+        const {firstName, lastName, bountyAmount, living, type, handleSubmit, handleChange} = this.props
         return (
             <div>
               <form onSubmit={handleSubmit}>
                   <input type="text" name="firstName" value={firstName} placeholder="First Name" onChange={handleChange} />
                   <input type="text" name="lastName" value={lastName} placeholder="Last Name" onChange={handleChange}/>
-                  <input type="radio" name="living" value="alive" onChange={handleChange}  /> Alive
-                  <input type="radio" name="living" value="dead" onChange={handleChange} /> Dead
+                  <input type="radio" name="living" value="alive" onChange={handleChange} checked={living === true}  /> Alive
+                  <input type="radio" name="living" value="dead" onChange={handleChange}  checked={living === false} /> Dead
                   <input type="number" name="bountyAmount" value={bountyAmount} placeholder="Bounty Amount" onChange={handleChange}/>
                   <select name="type" value={type} onChange={handleChange}>
                     <option value="Sith">Sith</option>

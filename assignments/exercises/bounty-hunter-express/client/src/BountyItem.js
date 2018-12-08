@@ -1,7 +1,6 @@
 import React from 'react'
 
 const BountyItem = ({ firstName, lastName, living, bountyAmount, type, id, handleDelete }) => {
-    
     let livingStatus
     if (living) {
         livingStatus = "Alive"

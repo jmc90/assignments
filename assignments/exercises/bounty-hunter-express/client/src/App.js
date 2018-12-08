@@ -28,14 +28,22 @@ componentDidMount(){
 
   handleChange = event => {
     const name = event.target.name
-    const value = event.target.type === "radio" ? event.target.value === "alive" ? true : false : event.target.value
-    this.setState({
+    const value = event.target.value
+    if (event.target.type === "radio") {
+      if (value === "alive") {
+        this.setState({living: true})
+      } else if (value === "dead") {
+        this.setState({living: false})
+      }
+    } else {
+      this.setState({
         [name]: value
-    })
+      })
+    }
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
+  handleSubmit = event => {
+    event.preventDefault()
     const newBounty = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
