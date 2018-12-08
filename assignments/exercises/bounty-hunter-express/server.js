@@ -2,26 +2,27 @@ const express = require('express')
 const app = express()
 const uuid = require('uuid/v4')
 
+
 const bountiesCollection = [
     {
-        firstName: "Dude 1 first",
-        lastName: "Dude 1 last",
+        firstName: "Jon",
+        lastName: "Mcneil",
         living: true,
         bountyAmount: 200,
         type: "Sith",
         _id: uuid()
     },
     {
-        firstName: "Dude 2 first",
-        lastName: "Dude 2 last",
+        firstName: "Tyler",
+        lastName: "Palmer",
         living: true,
         bountyAmount: 200,
         type: "Sith",
         _id: uuid()
     },
     {
-        firstName: "Dude 3 first",
-        lastName: "Dude 3 last",
+        firstName: "Scott",
+        lastName: "Ashcroft",
         living: true,
         bountyAmount: 200,
         type: "Sith",
@@ -31,6 +32,7 @@ const bountiesCollection = [
 
 // Middleware
 app.use(express.json())
+
 
 // Get collection
 app.get('/bounties', (req, res) => {
@@ -49,7 +51,7 @@ app.post('/bounties', (req, res) => {
     const newBounty = req.body
     newBounty._id = uuid()
     bountiesCollection.push(newBounty)
-    res.send(bountiesCollection)
+    res.send(newBounty)
     
 })
 
