@@ -1,21 +1,23 @@
 import React from 'react'
-import BountyItem from './BountyItem';
-import BountyItem
+import BountyItem from './BountyItem'
 
-const BountyList = ({firstName, lastName, living, bountyAmount, type}) => {
-    let livingStatus
-    if (living) {
-        livingStatus = "Alive"
-    } else {
-        livingStatus = "Dead"
-    }
+
+const BountyList = ({ bounties, handleDelete }) => {
+    
+    const mappedBountyItem = bounties.map(b => 
+        <BountyItem 
+          firstName={b.firstName}
+          lastName={b.lastName}
+          living={b.living}
+          bountyAmount={b.bountyAmount}
+          type={b.type}
+          id={b._id}
+          key={b._id}
+          handleDelete={handleDelete} />)
 
   return (
     <div>
-      <h1>{firstName} {lastName}</h1>
-      <h3>{livingStatus}</h3>
-      <h3>{bountyAmount}</h3>
-      <h3>{type}</h3>
+      {mappedBountyItem}
     </div>
   )
 }

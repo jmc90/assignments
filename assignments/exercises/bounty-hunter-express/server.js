@@ -3,7 +3,7 @@ const app = express()
 const uuid = require('uuid/v4')
 
 
-const bountiesCollection = [
+let bountiesCollection = [
     {
         firstName: "Jon",
         lastName: "Mcneil",
@@ -53,6 +53,14 @@ app.post('/bounties', (req, res) => {
     bountiesCollection.push(newBounty)
     res.send(newBounty)
     
+})
+
+//Delete bounty
+app.delete('/bounties/:id', (req, res) => {
+    const bountyId = req.params.id
+    const updatedBounties = bountiesCollection.filter(bounty => bounty._id !== bountyId)
+    bountiesCollection = updatedBounties
+    res.send(bountiesCollection)
 })
 
 // Edit bounty

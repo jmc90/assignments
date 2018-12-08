@@ -51,28 +51,28 @@ componentDidMount(){
             bounties: [...prevState.bounties, res.data],
             firstName: '',
             lastName: '',
-            living: '',
             bountyAmount: '',
-            type: ''
       }
     })
   })
 }
 
+handleDelete = (id) => {
+  axios.delete(`/bounties/${id}`)
+      .then(res => {
+        console.log(res.data)
+          this.setState({
+            bounties: res.data
+          })
+      })
+}
 
   
 
 
   render() {
-    const {firstName, lastName, living, bountyAmount, type} = this.state
-    const mappedBounties = this.state.bounties.map(b => 
-      <BountyList 
-        firstName={b.firstName}
-        lastName={b.lastName}
-        living={b.living}
-        bountyAmount={b.bountyAmount}
-        type={b.type}
-        key={b._id} />)
+    const {firstName, lastName, living, bountyAmount, type, bounties} = this.state
+    
 
     return (
       <div>
@@ -84,9 +84,11 @@ componentDidMount(){
           type={type}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit} />
-        {mappedBounties}
+        <BountyList 
+          bounties={bounties}
+          handleDelete={this.handleDelete} />
       </div>
-    );
+    )
   }
 }
 
