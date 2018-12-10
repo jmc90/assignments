@@ -53,7 +53,6 @@ componentDidMount(){
     }
     
     axios.post('/bounties', newBounty).then(res => {
-      console.log(res)
       this.setState(prevState => {
         return {
             bounties: [...prevState.bounties, res.data],
@@ -68,14 +67,21 @@ componentDidMount(){
 handleDelete = (id) => {
   axios.delete(`/bounties/${id}`)
       .then(res => {
-        console.log(res.data)
           this.setState({
             bounties: res.data
           })
       })
 }
 
-  
+handleEdit = (id, updates) => {
+  axios.put(`/bounties/${id}`, updates)
+      .then (res => {
+        console.log(res.data)
+        this.setState({
+          bounties: res.data
+          })
+      })
+} 
 
 
   render() {
@@ -94,7 +100,8 @@ handleDelete = (id) => {
           handleSubmit={this.handleSubmit} />
         <BountyList 
           bounties={bounties}
-          handleDelete={this.handleDelete} />
+          handleDelete={this.handleDelete}
+          handleEdit={this.handleEdit} />
       </div>
     )
   }

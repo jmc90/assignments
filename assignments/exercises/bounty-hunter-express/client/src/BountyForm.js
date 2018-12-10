@@ -1,15 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class BountyForm extends Component {
-    constructor() {
-        super()
-        this.state = {
-
-        }
-    }
-// Ask nate about checked!!!!!!
-    render() {
-        const {firstName, lastName, bountyAmount, living, type, handleSubmit, handleChange} = this.props
+const BountyForm = (props) => {
+    
+// Ask nate about checked!!!!!
+        const {firstName, lastName, bountyAmount, living, type, handleSubmit, handleChange} = props
         return (
             <div>
               <form onSubmit={handleSubmit}>
@@ -26,7 +20,6 @@ class BountyForm extends Component {
               </form>
             </div>
           )
-    }
   
 }
 

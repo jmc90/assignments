@@ -2,7 +2,7 @@ import React from 'react'
 import BountyItem from './BountyItem'
 
 
-const BountyList = ({ bounties, handleDelete }) => {
+const BountyList = ({ bounties, handleDelete, handleEdit}) => {
     
     const mappedBountyItem = bounties.map(b => 
         <BountyItem 
@@ -13,7 +13,8 @@ const BountyList = ({ bounties, handleDelete }) => {
           type={b.type}
           id={b._id}
           key={b._id}
-          handleDelete={handleDelete} />)
+          handleDelete={handleDelete}
+          handleEdit={handleEdit} />)
 
   return (
     <div>
