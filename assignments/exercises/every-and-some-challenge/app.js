@@ -14,7 +14,7 @@ function every(arr, callback) {
     return result
   }
   
-console.log(every([1,2, 3], (num)=>{
+console.log(every([1, 2, 3], (num)=>{
     return typeof num === "number";
     }))
 
