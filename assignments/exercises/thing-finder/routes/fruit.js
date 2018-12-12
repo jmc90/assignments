@@ -1,15 +1,35 @@
 const express = require('express')
 const fruitRouter = express.Router()
-const Fruit = require('../models/inventory')
+const Fruit = require('../models/fruit')
 
-// Get All
-fruitRouter.get('/', (req, res) => {
-    Fruit.find((err, data) => {
-        if(err) {
-            console.log(err)
-        }
-        return res.status(200).send(data)
-    })
+
+fruitRouter.get('/searh', (req, res) => {
+    console.log(req.query)
+    const q = req.query
+    if(q.type) {
+        Fruit.find({type: q.type}, (err, data) => {
+            if (err) {
+                console.log(err)
+            }
+            return res.status(200).send(data)
+        })
+    } else if (q.minprice && q.maxprice) {
+        Fruit.where("price").gt(q.minprice).exec((err, foind))
+        Fruit.find({ price: { $gt: q.minprice, $lt: q.maxprice } } , (err, data) => {
+            if (err) {
+                console.log(err)
+            }
+            return res.status(200).send(data)
+        })
+    } else {
+        Fruit.find((err, data) => {
+            if(err) {
+                console.log(err)
+            }
+            return res.status(200).send(data)
+        })
+    }
+   
 })
 
 // Get one 
@@ -21,6 +41,7 @@ fruitRouter.get('/:id', (req, res) => {
         return res.status(200).send(item)
     })
 })
+
 
 // Post
 fruitRouter.post('/', (req, res) => {

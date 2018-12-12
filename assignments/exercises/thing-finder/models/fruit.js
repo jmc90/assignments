@@ -1,13 +1,15 @@
 const mongoose = require('mongoose')
 
 const FruitSchema = new mongoose.Schema({
-    itemName: {
+    type: {
         type: String,
         required: true,
-        unique: true,
         lowercase: true
     },
-    quantity: Number,
+    brand: {
+        type: String,
+        lowercase: true
+    },
     price: Number
 
 })
