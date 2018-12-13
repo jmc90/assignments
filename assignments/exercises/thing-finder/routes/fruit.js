@@ -3,7 +3,7 @@ const fruitRouter = express.Router()
 const Fruit = require('../models/fruit')
 
 
-fruitRouter.get('/searh', (req, res) => {
+fruitRouter.get('/', (req, res) => {
     console.log(req.query)
     const q = req.query
     if(q.type) {
@@ -14,7 +14,6 @@ fruitRouter.get('/searh', (req, res) => {
             return res.status(200).send(data)
         })
     } else if (q.minprice && q.maxprice) {
-        Fruit.where("price").gt(q.minprice).exec((err, foind))
         Fruit.find({ price: { $gt: q.minprice, $lt: q.maxprice } } , (err, data) => {
             if (err) {
                 console.log(err)

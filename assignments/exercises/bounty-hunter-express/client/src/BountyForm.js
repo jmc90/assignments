@@ -2,7 +2,7 @@ import React from 'react'
 
 const BountyForm = (props) => {
     
-// Ask nate about checked!!!!!
+
         const {firstName, lastName, bountyAmount, living, type, handleSubmit, handleChange} = props
         return (
             <div>
