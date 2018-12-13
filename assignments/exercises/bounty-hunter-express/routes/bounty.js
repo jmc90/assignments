@@ -32,7 +32,7 @@ bountyRouter.post('/', (req, res) => {
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(bounty)
+        return res.status(201).send(bounty)
     })
 })
 
@@ -43,7 +43,7 @@ bountyRouter.delete('/:id', (req, res) => {
             res.status(500)
             return next(err)
         }
-        return res.status(200).send("Successfully deleted bounty")
+        return res.status(202).send("Successfully deleted bounty")
     })
 })
 
@@ -58,7 +58,7 @@ bountyRouter.put('/:id', (req, res) => {
                 res.status(500)
                 return next(err)
             }
-            return res.status(200).send(updatedBounty)
+            return res.status(201).send(updatedBounty)
         })
 })
 
