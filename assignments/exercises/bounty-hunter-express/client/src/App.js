@@ -63,13 +63,20 @@ componentDidMount(){
     })
   })
 }
-
+//********************************************************//
+///////////////////////////////////////////////////////////
+// fix delete in server//////////////////////////////////////
+////////////////////////////////////////////////////////////
 handleDelete = (id) => {
   axios.delete(`/bounties/${id}`)
       .then(res => {
-          this.setState({
-            bounties: res.data
-          })
+          if (res.data === "Successfully deleted bounty") {
+            this.setState(prevState => {
+              return {
+                bounties: prevState.bounties.filter(bounty => bounty._id !== id )
+              }
+            })
+          }
       })
 }
 
@@ -79,7 +86,7 @@ handleEdit = (id, updates) => {
         console.log(res.data)
         this.setState(prevState => {
           return {
-            bounties: [...prevState.bounties, res.data]
+            bounties: prevState.bounties.map(bounty => bounty._id === id ? res.data : bounty) 
           }
         })
       })
