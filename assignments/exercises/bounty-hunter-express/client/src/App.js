@@ -77,9 +77,11 @@ handleEdit = (id, updates) => {
   axios.put(`/bounties/${id}`, updates)
       .then (res => {
         console.log(res.data)
-        this.setState({
-          bounties: res.data
-          })
+        this.setState(prevState => {
+          return {
+            bounties: [...prevState.bounties, res.data]
+          }
+        })
       })
 } 
 

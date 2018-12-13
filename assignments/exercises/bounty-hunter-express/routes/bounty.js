@@ -1,40 +1,65 @@
 const express = require('express')
-const planetRouter = express.Router()
+const bountyRouter = express.Router()
 const Bounty = require('../models/bounty')
 
 // Get collection
-app.get('/bounties', (req, res) => {
-    res.send(bountiesCollection)
+bountyRouter.get('/', (req, res, next) => {
+    Bounty.find((err, data) => {
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(data)
+    })
 })
 
 // Get individual bounty
-app.get('/bounties/:id', (req, res) => {
-    const id = req.params.id
-    const foundBounty = bountiesCollection.find(bounty => bounty._id === id)
-    res.send(foundBounty)
+bountyRouter.get('/:id', (req, res, next) => {
+    Bounty.findOne({_id: req.params.id}, (err, bounty) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(bounty)
+    })
 })
 
 // Post new bounty
-app.post('/bounties', (req, res) => {
-    const newBounty = req.body
-    newBounty._id = uuid()
-    bountiesCollection.push(newBounty)
-    res.send(newBounty)
-    
+bountyRouter.post('/', (req, res) => {
+    const newBounty = new Bounty(req.body)
+    newBounty.save((err, bounty) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(bounty)
+    })
 })
 
 //Delete bounty
-app.delete('/bounties/:id', (req, res) => {
-    const bountyId = req.params.id
-    const updatedBounties = bountiesCollection.filter(bounty => bounty._id !== bountyId)
-    bountiesCollection = updatedBounties
-    res.send(bountiesCollection)
+bountyRouter.delete('/:id', (req, res) => {
+    Bounty.findOneAndDelete({_id: req.params.id}, (err, deletedBounty) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send("Successfully deleted bounty")
+    })
 })
 
 // Edit bounty
-app.put('/bounties/:id', (req, res) => {
-    const bountyId = req.params.id
-    const bountyUpdates = req.body
-    const updatedCollection = bountiesCollection.map(bounty => bounty._id === bountyId ? {...bounty, ...bountyUpdates} : bounty)
-    res.send(updatedCollection)
+bountyRouter.put('/:id', (req, res) => {
+    Bounty.findOneAndUpdate(
+        {_id: req.params.id}, 
+        req.body, 
+        {new: true},
+        (err, updatedBounty) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(updatedBounty)
+        })
 })
+
+module.exports = bountyRouter
