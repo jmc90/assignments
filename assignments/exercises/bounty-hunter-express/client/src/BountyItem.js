@@ -13,10 +13,22 @@ class BountyItem extends Component {
         }
     }
 
-    editToggler = () => {
+    editToggler = (id) => {
+        const { bounties } = this.props
+        for (let i = 0; i < bounties.length; i++) {
+            if (bounties[i]._id === id) {
+                this.setState({
+                    firstName: bounties[i].firstName,
+                    lastName: bounties[i].lastName,
+                    living: bounties[i].living,
+                    bountyAmount: bounties[i].bountyAmount,
+                    type: bounties[i].type
+                })
+            }
+        }
         this.setState(prevState => {
           return {
-            isEditing: !prevState.isEditing
+            isEditing: !prevState.isEditing,
           }
         })
       }
@@ -90,7 +102,7 @@ class BountyItem extends Component {
                     <h3>{bountyAmount}</h3>
                     <h3>{type}</h3>
                     <button onClick={() => handleDelete(id)}>Delete</button>
-                    <button onClick={this.editToggler}>Edit</button>
+                    <button onClick={() => this.editToggler(id)}>Edit</button>
                 </div>
                 
                 }
