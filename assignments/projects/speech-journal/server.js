@@ -6,6 +6,7 @@ const express = require('express');
 const app = express();
 const AuthorizationV1 = require('watson-developer-cloud/authorization/v1');
 const SpeechToTextV1 = require('watson-developer-cloud/speech-to-text/v1'); 
+const vcapServices = require('vcap_services');
 
 // allows environment properties to be set in a file named .env
 require('dotenv').load({ silent: true });
@@ -40,9 +41,8 @@ app.use(express.static(__dirname + '/static'));
 var sttAuthService = new AuthorizationV1(
   Object.assign(
     {
-      username: process.env.SPEECH_TO_TEXT_USERNAME, // or hard-code credentials here
-      password: process.env.SPEECH_TO_TEXT_PASSWORD,
-      iam_apikey: process.env.SPEECH_TO_TEXT_IAM_APIKEY // if using an RC service
+      iam_apikey: process.env.SPEECH_TO_TEXT_IAM_APIKEY, 
+      url: "https://stream.watsonplatform.net/speech-to-text/api"
     },
     vcapServices.getCredentials('speech_to_text') // pulls credentials from environment in bluemix, otherwise returns {}
   )
