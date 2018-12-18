@@ -12,6 +12,16 @@ entryRouter.get('/:userId', (req, res, next) => {
     })
 })
 
+entryRouter.get('/:entryId', (req, res, next) => {
+    Entry.findOne({_id: req.params.entryId}, (err, entry) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(userEntries)
+    })
+})
+
 entryRouter.post('/:userId', (req, res, next) => {
     const newEntry = new Entry(req.body)
     newEntry.user = req.params.userId
@@ -30,7 +40,7 @@ entryRouter.delete('/:entryId', (req, res, next) => {
             res.status(500)
             return next(err)
         }
-        return res.status(202).send(deletedEntry)
+        return res.status(202).send("Successfully deleted entry!")
     })
 })
 
