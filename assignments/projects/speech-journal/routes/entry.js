@@ -24,4 +24,14 @@ entryRouter.post('/:userId', (req, res, next) => {
     })
 })
 
+entryRouter.delete('/:entryId', (req, res, next) => {
+    Entry.findOneAndDelete({_id: req.params.entryId}, (err, deletedEntry) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(202).send(deletedEntry)
+    })
+})
+
 module.exports = entryRouter
