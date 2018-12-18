@@ -2,6 +2,18 @@ const express = require('express')
 const authRouter = express.Router()
 const User = require('../models/user')
 
+
+// delete this 
+authRouter.get('/', (req, res, next) => {
+    User.find((err, users) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(users)
+    })
+})
+
 authRouter.post('/signup', (req, res, next) => {
     User.findOne({username: req.body.username}, (err, user) => {
         if (err) {
