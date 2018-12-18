@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {Component} from 'react'
+import SignInForm from './SignInForm'
 
-const SignIn = () => {
-  return (
-    <div>
-      <SignInForm />
-    </div>
-  )
+class SignIn extends Component {
+  render() {
+    return (
+      <div>
+        <SignInForm />
+      </div>
+    )
+  }
+  
 }
 
 export default SignIn
