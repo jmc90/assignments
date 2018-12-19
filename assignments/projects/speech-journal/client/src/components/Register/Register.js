@@ -1,12 +1,24 @@
-import React from 'react'
+import React, {Component} from 'react'
 import RegisterForm from './RegisterForm'
 
-const Register = () => {
-  return (
-    <div>
-      <RegisterForm />
-    </div>
-  )
+class Register extends Component  {
+  constructor() {
+    super() 
+    this.state = {
+      firstName: "",
+      username: "",
+      password: ""
+    }
+  }
+  
+  render() {
+    return (
+      <div>
+        <RegisterForm />
+      </div>
+    )
+  }
+  
 }
 
 export default Register

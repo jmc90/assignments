@@ -6,13 +6,21 @@ const RegisterForm = () => {
         <form onSubmit={}>
             <input 
                 type="text"
+                name="firstName"
+                value={}
+                placeholder="First Name" 
+                onChange={} />
+            <input 
+                type="text"
                 name="username"
-                value={} 
+                value={}
+                placeholder="Username"  
                 onChange={} />
             <input 
                 type="password"
                 name="password"
                 value={} 
+                placeholder="Password" 
                 onChange={} />
             <button>Register</button>
         </form>
