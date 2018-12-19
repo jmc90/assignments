@@ -9,13 +9,15 @@ const SignInForm = () => {
           <input 
             type="text"
             name="username"
-            value={} 
+            value={}
+            placeholder="Username" 
             onChange={} />
           <input 
             type="password"
             name="password"
             value={} 
-            onChange={} />
+            placeholder="Password"
+            onChange={} />               
             <button>Sign In</button>
       </form>
       <Link to="/register">Register</Link>
