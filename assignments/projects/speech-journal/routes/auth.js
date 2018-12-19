@@ -14,7 +14,7 @@ authRouter.get('/', (req, res, next) => {
     })
 })
 
-authRouter.post('/signup', (req, res, next) => {
+authRouter.post('/register', (req, res, next) => {
     User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
         if (err) {
             res.status(500)
@@ -35,7 +35,7 @@ authRouter.post('/signup', (req, res, next) => {
     })
 })
 
-authRouter.post('/login', (req, res, next) => {
+authRouter.post('/signin', (req, res, next) => {
     User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
         if (err) {
             res.status(500)
