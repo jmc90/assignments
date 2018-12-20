@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { withUser } from '../context/UserProvider'
 import SignInForm from './SignInForm'
 
 class SignIn extends Component {
@@ -11,6 +12,20 @@ class SignIn extends Component {
   }
 
   handleChange = e => this.setState({[e.target.name]: e.target.value})
+
+  handleSignIn = e => {
+    e.preventDefault()
+    const userInfo = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    this.props.login(userInfo)
+    this.setState({
+      username: '',
+      password: ''
+    })
+    
+  }
   
   render() {
     return (
@@ -22,4 +37,4 @@ class SignIn extends Component {
   
 }
 
-export default SignIn
+export default withUser(SignIn)
