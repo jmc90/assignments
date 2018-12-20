@@ -7,7 +7,7 @@ import SignIn from "./components/SignIn/SignIn"
 import Register from "./components/Register/Register"
 import Journal from "./components/Journal/Journal"
 import EntryHistory from "./components/EntryHistory/EntryHistory"
-import Entry from "./components/Entry"
+
 
 
 class App extends Component {
