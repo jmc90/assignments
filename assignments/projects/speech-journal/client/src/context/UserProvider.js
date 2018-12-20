@@ -25,7 +25,7 @@ class UserProvider extends Component {
     }
 
     signIn = userInfo => {
-        axios.post('/auth/sigin', userInfo).then(res => {
+        axios.post('/auth/signin', userInfo).then(res => {
             localStorage.setItem("user", JSON.stringify(res.data))
             this.setState({
                 user: res.data,
@@ -42,6 +42,7 @@ class UserProvider extends Component {
     }
 
     logOut = () => {
+        localStorage.removeItem("user")
         this.setState({
             user: {},
             isAuthenticated: false
@@ -65,7 +66,7 @@ class UserProvider extends Component {
                     isAuthenticated: this.state.isAuthenticated,
                     autherr:this.state.autherr,
                     register: this.register,
-                    signIn: this.signin,
+                    signIn: this.signIn,
                     logOut: this.logOut,
                     handleError: this.handleError,
                     verify: this.verify,

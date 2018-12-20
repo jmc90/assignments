@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 const RegisterForm = ({handleChange, handleRegister, firstName, username, password}) => {
   return (
@@ -25,7 +26,7 @@ const RegisterForm = ({handleChange, handleRegister, firstName, username, passwo
                 onChange={handleChange} />
             <button>Register</button>
         </form>
-    
+        <Link to="/signin">Sign In</Link>
     </div>
   )
 }

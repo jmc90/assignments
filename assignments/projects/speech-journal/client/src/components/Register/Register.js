@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withUser } from '../context/UserProvider'
+import { withUser } from '../../context/UserProvider'
 import RegisterForm from './RegisterForm'
 
 class Register extends Component  {

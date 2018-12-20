@@ -12,6 +12,10 @@ import EntryHistory from "./components/EntryHistory/EntryHistory"
 
 
 class App extends Component {
+  componentDidMount(){
+    this.props.verify()
+  }
+  
   render() {
     return (
       <div>

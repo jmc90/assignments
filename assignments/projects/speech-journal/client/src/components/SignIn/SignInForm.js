@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
 
 const SignInForm = ({handleChange, handleSignIn, username, password}) => {
@@ -14,7 +14,7 @@ const SignInForm = ({handleChange, handleSignIn, username, password}) => {
             placeholder="Username" 
             onChange={handleChange} />
           <input 
-            type="password"
+            type="text"
             name="password"
             value={password} 
             placeholder="Password"
