@@ -19,12 +19,11 @@ class SignIn extends Component {
       username: this.state.username,
       password: this.state.password
     }
-    this.props.login(userInfo)
+    this.props.signIn(userInfo)
     this.setState({
       username: '',
       password: ''
     })
-    
   }
   
   render() {
