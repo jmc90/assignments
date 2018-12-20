@@ -5,11 +5,12 @@ class SignIn extends Component {
   constructor() {
     super()
     this.state = {
-      username: "",
-      password: ""
+      username: '',
+      password: ''
     }
   }
 
+  handleChange = e => this.setState({[e.target.name]: e.target.value})
   
   render() {
     return (

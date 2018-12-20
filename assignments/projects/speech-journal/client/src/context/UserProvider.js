@@ -8,12 +8,14 @@ class UserProvider extends Component {
         super()
         this.state = {
             user: {},
-            isAuthenticated: false
+            isAuthenticated: false,
+            autherr: ''
         }
     }
 
     register = userInfo => {
         axios.post('/auth/register', userInfo).then(res => {
+            localStorage.setItem("user", JSON.stringify(res.data))
             this.setState({
                 user: res.data,
                 isAuthenticated: true
@@ -24,12 +26,19 @@ class UserProvider extends Component {
 
     signIn = userInfo => {
         axios.post('/auth/sigin', userInfo).then(res => {
+            localStorage.setItem("user", JSON.stringify(res.data))
             this.setState({
                 user: res.data,
                 isAuthenticated: true
             })
         })
         .catch(err => console.log(err))
+    }
+
+    handleError = err => {
+        this.setState({
+            authErr: err
+        })
     }
 
     logOut = () => {
@@ -39,15 +48,28 @@ class UserProvider extends Component {
         })
     }
 
+    verify = () => {
+        if (localStorage.getItem("user")) {
+            this.setState({
+                user: JSON.parse(localStorage.getItem("user")),
+                isAuthenticated: true
+            })
+        }
+    }
 
     render(){
         return (
             <UserContext.Provider
                 value={{
                     user: this.state.user,
+                    isAuthenticated: this.state.isAuthenticated,
+                    autherr:this.state.autherr,
                     register: this.register,
                     signIn: this.signin,
-                    logOut: this.logOut
+                    logOut: this.logOut,
+                    handleError: this.handleError,
+                    verify: this.verify,
+                    
                 }}>
                 { this.props.children }
             </UserContext.Provider>
