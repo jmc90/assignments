@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route, Redirect } from "react-router-dom"
+import { withUser } from './context/UserProvider'
 import Navbar from "./components/Navbar/Navbar"
 import Footer from "./components/Footer/Footer"
 import LandingPage from "./components/LandingPage/LandingPage"
@@ -16,11 +17,26 @@ class App extends Component {
       <div>
         <Navbar />
         <Switch>
-          <Route exact path="/" component={LandingPage}/>
-          <Route path="/signin" component={SignIn}/>
-          <Route path="/register" component={Register}/>
-          <Route path="/journal" component={Journal}/>
-          <Route path="/entryhistory" component={EntryHistory}/>
+          <Route exact path="/" render={routerProps => 
+                                          this.props.isAuthenticated 
+                                          ? <Redirect to="/journal"/> 
+                                          : <LandingPage {...routerProps}/>} />
+          <Route path="/signin" render={routerProps => 
+                                          this.props.isAuthenticated 
+                                          ? <Redirect to="/journal"/> 
+                                          : <SignIn {...routerProps}/>} />
+          <Route path="/register" render={routerProps => 
+                                          this.props.isAuthenticated 
+                                          ? <Redirect to="/journal"/> 
+                                          : <Register {...routerProps}/>} />
+          <Route path="/journal" render={routerProps => 
+                                          !this.props.isAuthenticated 
+                                          ? <Redirect to="/" /> 
+                                          : <Journal {...routerProps}/>} />
+          <Route path="/entryhistory" render={routerProps => 
+                                          !this.props.isAuthenticated 
+                                          ? <Redirect to="/" /> 
+                                          : <EntryHistory {...routerProps}/>} />
         </Switch>
         <Footer /> 
       </div>
@@ -28,4 +44,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withUser(App)
