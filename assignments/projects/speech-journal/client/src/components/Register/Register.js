@@ -32,7 +32,12 @@ class Register extends Component  {
   render() {
     return (
       <div>
-        <RegisterForm />
+        <RegisterForm
+          handleChange={this.handleChange}
+          handleRegister={this.handleRegister}
+          firstName={this.firstName}
+          username={this.username}
+          password={this.password} />
       </div>
     )
   }

@@ -1,27 +1,28 @@
 import React from 'react'
 
-const RegisterForm = () => {
+const RegisterForm = ({handleChange, handleRegister, firstName, username, password}) => {
   return (
     <div>
-        <form onSubmit={}>
+        <h1>Register</h1>
+        <form onSubmit={handleRegister}>
             <input 
                 type="text"
                 name="firstName"
-                value={}
+                value={firstName}
                 placeholder="First Name" 
-                onChange={} />
+                onChange={handleChange} />
             <input 
                 type="text"
                 name="username"
-                value={}
+                value={username}
                 placeholder="Username"  
-                onChange={} />
+                onChange={handleChange} />
             <input 
                 type="password"
                 name="password"
-                value={} 
+                value={password} 
                 placeholder="Password" 
-                onChange={} />
+                onChange={handleChange} />
             <button>Register</button>
         </form>
     
