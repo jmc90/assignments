@@ -2,22 +2,23 @@ import React from 'react'
 import { Link } from "react-router-dom";
 
 
-const SignInForm = () => {
+const SignInForm = ({handleChange, handleSignIn, username, password}) => {
   return (
     <div>
-      <form onSubmit={}>
+      <h1>Sign In</h1>
+      <form onSubmit={handleSignIn}>
           <input 
             type="text"
             name="username"
-            value={}
+            value={username}
             placeholder="Username" 
-            onChange={} />
+            onChange={handleChange} />
           <input 
             type="password"
             name="password"
-            value={} 
+            value={password} 
             placeholder="Password"
-            onChange={} />               
+            onChange={handleChange} />               
             <button>Sign In</button>
       </form>
       <Link to="/register">Register</Link>

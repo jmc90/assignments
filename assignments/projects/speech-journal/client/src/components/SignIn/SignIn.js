@@ -29,7 +29,11 @@ class SignIn extends Component {
   render() {
     return (
       <div>
-        <SignInForm />
+        <SignInForm
+          handleChange={this.handleChange}
+          handleSignIn={this.handleSignIn}
+          username={this.username}
+          password={this.password} />
       </div>
     )
   }
