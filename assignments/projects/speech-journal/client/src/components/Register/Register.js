@@ -37,7 +37,8 @@ class Register extends Component  {
           handleRegister={this.handleRegister}
           firstName={this.firstName}
           username={this.username}
-          password={this.password} />
+          password={this.password}
+          authErr={this.props.authErr} />
       </div>
     )
   }

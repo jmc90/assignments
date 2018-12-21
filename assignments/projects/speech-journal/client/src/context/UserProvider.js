@@ -9,7 +9,7 @@ class UserProvider extends Component {
         this.state = {
             user: {},
             isAuthenticated: false,
-            autherr: ''
+            authErr: ''
         }
     }
 
@@ -21,7 +21,7 @@ class UserProvider extends Component {
                 isAuthenticated: true
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => this.handleError(err.response.data.errMsg))
     }
 
     signIn = userInfo => {
@@ -32,7 +32,7 @@ class UserProvider extends Component {
                 isAuthenticated: true
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => this.handleError(err.response.data.errMsg))
     }
 
     handleError = err => {
@@ -64,7 +64,7 @@ class UserProvider extends Component {
                 value={{
                     user: this.state.user,
                     isAuthenticated: this.state.isAuthenticated,
-                    autherr:this.state.autherr,
+                    authErr:this.state.authErr,
                     register: this.register,
                     signIn: this.signIn,
                     logOut: this.logOut,

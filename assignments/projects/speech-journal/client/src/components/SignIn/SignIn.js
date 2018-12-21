@@ -33,7 +33,8 @@ class SignIn extends Component {
           handleChange={this.handleChange}
           handleSignIn={this.handleSignIn}
           username={this.username}
-          password={this.password} />
+          password={this.password}
+          authErr={this.props.authErr} />
       </div>
     )
   }
