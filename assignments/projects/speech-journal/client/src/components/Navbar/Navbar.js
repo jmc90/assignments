@@ -13,19 +13,6 @@ const Navbar = (props) => {
       { isAuthenticated && <Link to="/journal">Journal</Link>}
       { isAuthenticated && <Link to="/entryhistory">View Entries</Link>}
       { isAuthenticated && <Link to="/" onClick={logOut}>Logout</Link>}
-
-      {/* {props.isAuthenticated ? 
-        <Fragment>
-          <Link to="/journal">Journal</Link>
-          <Link to="/entryhistory">View Entries</Link>
-        </Fragment>
-        :
-        <Fragment>
-          <Link to="/">Landing Page</Link>
-          <Link to="/signin">Sign In</Link>
-          <Link to="/register">Register</Link>
-        </Fragment>
-        } */}
     </div>
   )
 }
