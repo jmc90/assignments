@@ -35,9 +35,9 @@ class Register extends Component  {
         <RegisterForm
           handleChange={this.handleChange}
           handleRegister={this.handleRegister}
-          firstName={this.firstName}
-          username={this.username}
-          password={this.password}
+          firstName={this.state.firstName}
+          username={this.state.username}
+          password={this.state.password}
           authErr={this.props.authErr} />
       </div>
     )
