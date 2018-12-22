@@ -15,7 +15,7 @@ class App extends Component {
   componentDidMount(){
     this.props.verify()
   }
-  
+
   render() {
     return (
       <div>
@@ -38,6 +38,10 @@ class App extends Component {
                                           ? <Redirect to="/" /> 
                                           : <Journal {...routerProps}/>} />
           <Route path="/entryhistory" render={routerProps => 
+                                          !this.props.isAuthenticated 
+                                          ? <Redirect to="/" /> 
+                                          : <EntryHistory {...routerProps}/>} />
+          <Route path="/entryhistory/:id" render={routerProps => 
                                           !this.props.isAuthenticated 
                                           ? <Redirect to="/" /> 
                                           : <EntryHistory {...routerProps}/>} />

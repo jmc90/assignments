@@ -70,7 +70,6 @@ class UserProvider extends Component {
           logOut: this.logOut,
           handleError: this.handleError,
           verify: this.verify,
-
         }}>
         {this.props.children}
       </UserContext.Provider>

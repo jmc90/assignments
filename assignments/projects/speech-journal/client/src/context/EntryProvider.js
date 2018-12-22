@@ -59,7 +59,11 @@ class EntryProvider extends Component {
       <EntryContext.Provider
         value={{
           entries: this.state.entries,
-          singleEntry: this.state.singleEntry
+          singleEntry: this.state.singleEntry,
+          getUserEntries: this.getUserEntries,
+          getSingleEntry: this.getSingleEntry,
+          addEntry: this.addEntry,
+          deleteEntry: this.deleteEntry
         }}>
         {this.props.children}
       </EntryContext.Provider>

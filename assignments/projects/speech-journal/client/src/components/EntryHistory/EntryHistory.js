@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { withEntry } from '../../context/EntryProvider'
+import { withUser } from '../../context/UserProvider'
+import { Link } from 'react-router-dom'
 
-const EntryHistory = () => {
-  return (
-    <div>
-      view entries here
-    </div>
-  )
+class EntryHistory extends Component {
+  componentDidMount() {
+    this.props.getUserEntries(this.props.user._id)
+  }
+
+  render() {
+    console.log(this.props.entries)
+    return (
+      <div>
+      {this.props.entries.map(entry => <div><Link to={`/entryhistory/${entry._id}`}>{entry.title}</Link></div>)}
+      </div>
+    )
+  }
+  
 }
 
-export default EntryHistory
+export default withEntry(withUser(EntryHistory))
