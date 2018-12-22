@@ -32,8 +32,8 @@ class SignIn extends Component {
         <SignInForm
           handleChange={this.handleChange}
           handleSignIn={this.handleSignIn}
-          username={this.username}
-          password={this.password}
+          username={this.state.username}
+          password={this.state.password}
           authErr={this.props.authErr} />
       </div>
     )
