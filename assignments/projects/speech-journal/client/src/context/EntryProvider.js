@@ -21,8 +21,8 @@ class EntryProvider extends Component {
     .catch(err => console.log(err))
   }
 
-  getSingleEntry = entryId => {
-    axios.get(`/entry/${entryId}`).then(res => {
+  getSingleEntry = (userId, entryId) => {
+    axios.get(`/entry/${userId}/${entryId}`).then(res => {
       this.setState({
         singleEntry: res.data
       })

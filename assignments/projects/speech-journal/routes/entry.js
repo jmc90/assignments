@@ -2,6 +2,17 @@ const express = require('express')
 const entryRouter = express.Router()
 const Entry = require('../models/entry')
 
+// get all. delete this after
+entryRouter.get('/', (req, res, next) => {
+    Entry.find((err, entries)=> {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(entries)
+    })
+})
+
 entryRouter.get('/:userId', (req, res, next) => {
     Entry.find({user: req.params.userId}, (err, userEntries)=> {
         if (err) {
@@ -12,13 +23,15 @@ entryRouter.get('/:userId', (req, res, next) => {
     })
 })
 
-entryRouter.get('/:entryId', (req, res, next) => {
-    Entry.findOne({_id: req.params.entryId}, (err, entry) => {
+
+// ask nate why it didnt work with just entry id
+entryRouter.get('/:userId/:entryId', (req, res, next) => {
+    Entry.findOne({user: req.params.userId, _id: req.params.entryId}, (err, entry) => {
         if (err) {
             res.status(500)
             return next(err)
         }
-        return res.status(200).send(userEntries)
+        return res.status(200).send(entry)
     })
 })
 

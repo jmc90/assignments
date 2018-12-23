@@ -8,6 +8,7 @@ import SignIn from "./components/SignIn/SignIn"
 import Register from "./components/Register/Register"
 import Journal from "./components/Journal/Journal"
 import EntryHistory from "./components/EntryHistory/EntryHistory"
+import Entry from "./components/EntryHistory/Entry"
 
 
 
@@ -41,10 +42,10 @@ class App extends Component {
                                           !this.props.isAuthenticated 
                                           ? <Redirect to="/" /> 
                                           : <EntryHistory {...routerProps}/>} />
-          <Route path="/entryhistory/:id" render={routerProps => 
+          <Route path="/entry/:id" render={routerProps => 
                                           !this.props.isAuthenticated 
                                           ? <Redirect to="/" /> 
-                                          : <EntryHistory {...routerProps}/>} />
+                                          : <Entry {...routerProps}/>} />
         </Switch>
         <Footer /> 
       </div>

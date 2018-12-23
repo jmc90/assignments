@@ -9,10 +9,9 @@ class EntryHistory extends Component {
   }
 
   render() {
-    console.log(this.props.entries)
     return (
       <div>
-      {this.props.entries.map(entry => <div><Link to={`/entryhistory/${entry._id}`}>{entry.title}</Link></div>)}
+      {this.props.entries.map(entry => <div key={entry._id}><Link to={`/entry/${entry._id}`}>Title: {entry.title}</Link></div>)}
       </div>
     )
   }
