@@ -1,11 +1,38 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 
 const SignInForm = ({ handleChange, handleSignIn, username, password, authErr }) => {
   return (
-    <div>
-      <div>
+    <div className="page d-flex justify-content-center align-items-center">
+      <Form className="register-signin bg-info text-center rounded" onSubmit={handleSignIn}>
+        <h1>Sign In</h1>
+        <FormGroup>
+          <Label for="username">Username</Label>
+          <Input
+            type="text"
+            name="username"
+            id="username"
+            value={username}
+            placeholder="Username"
+            onChange={handleChange} />
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password</Label>
+          <Input
+            type="text"
+            name="password"
+            id="password"
+            value={password}
+            placeholder="Password"
+            onChange={handleChange} />
+        </FormGroup>
+        <Button>Sign In</Button>
+        <Link className="d-block" to="/register">Don't have an account?</Link>
+        <p>{authErr}</p>
+      </Form>
+      {/* <div>
         <h1>Sign In</h1>
         <form onSubmit={handleSignIn}>
           <input
@@ -24,7 +51,7 @@ const SignInForm = ({ handleChange, handleSignIn, username, password, authErr })
         </form>
         <Link to="/register">Register</Link>
       </div>
-      <p>{authErr}</p>
+      <p>{authErr}</p> */}
     </div>
   )
 }
