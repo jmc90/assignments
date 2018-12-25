@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import JournalForm from './JournalForm'
 import { withEntry } from '../../context/EntryProvider'
+import { withUser } from '../../context/UserProvider'
 
 class Journal extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class Journal extends Component {
       title: this.state.title,
       content: this.state.content
     }
-    this.props.addEntry(newEntry)
+    this.props.addEntry(newEntry, this.props.user._id)
     this.setState({
       title: '',
       content: ''
@@ -33,10 +34,11 @@ class Journal extends Component {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           title={this.state.title}
-          content={this.state.content} />
+          content={this.state.content}
+          success={this.props.success} />
       </div>
     )
   }
 }
 
-export default withEntry(Journal)
+export default withUser(withEntry(Journal))

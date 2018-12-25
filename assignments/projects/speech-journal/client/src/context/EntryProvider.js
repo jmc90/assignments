@@ -8,7 +8,8 @@ class EntryProvider extends Component {
     super()
     this.state = {
       entries: [],
-      singleEntry: {}
+      singleEntry: {},
+      success: ''
     }
   }
 
@@ -30,13 +31,9 @@ class EntryProvider extends Component {
     .catch(err => console.log(err))
   }
 
-  addEntry = (entry, userId) => {
-    axios.post(`/entry/${userId}`, entry).then(res => {
-      this.setState(prevState => {
-        return {
-          entries: [...prevState.entries, res.data]
-        }
-      })
+  addEntry = (post, userId) => {
+    axios.post(`/entry/${userId}`, post).then(res => {
+      this.handleSuccessPost()
     })
     .catch(err => console.log(err))
   }
@@ -54,12 +51,17 @@ class EntryProvider extends Component {
     .catch(err => console.log(err))
   }
 
+  handleSuccessPost = () => {
+    this.setState({success: "Succesfully Added New Entry!"})
+  }
+
   render() {
     return (
       <EntryContext.Provider
         value={{
           entries: this.state.entries,
           singleEntry: this.state.singleEntry,
+          success: this.state.success,
           getUserEntries: this.getUserEntries,
           getSingleEntry: this.getSingleEntry,
           addEntry: this.addEntry,

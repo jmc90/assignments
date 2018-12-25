@@ -1,6 +1,6 @@
 import React from 'react'
 
-const JournalForm = ({handleChange, handleSubmit, title, content}) => {
+const JournalForm = ({handleChange, handleSubmit, title, content, success}) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -18,7 +18,9 @@ const JournalForm = ({handleChange, handleSubmit, title, content}) => {
           onChange={handleChange}
           cols="30" 
           rows="10"/>
+          <button>Submit</button>
       </form>
+      <p>{success}</p>
     </div>
   )
 }

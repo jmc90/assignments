@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const LandingPage = () => {
   return (
     <div className="page container text-center text-white d-flex flex-column justify-content-center align-items-center">
