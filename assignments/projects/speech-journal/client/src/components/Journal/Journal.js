@@ -29,7 +29,7 @@ class Journal extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container my-5">
         <JournalForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
