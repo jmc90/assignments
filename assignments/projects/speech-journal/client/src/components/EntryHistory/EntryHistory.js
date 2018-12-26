@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withEntry } from '../../context/EntryProvider'
 import { withUser } from '../../context/UserProvider'
-import { Link } from 'react-router-dom'
+import EntryDiv from './EntryDiv'
 
 class EntryHistory extends Component {
   componentDidMount() {
@@ -11,11 +11,11 @@ class EntryHistory extends Component {
   render() {
     return (
       <div>
-      {this.props.entries.map(entry => <div key={entry._id}><Link to={`/entry/${entry._id}`}>Title: {entry.title}</Link></div>)}
+      {this.props.entries.map(entry => <EntryDiv key={entry._id} entryId={entry._id} title={entry.title} />)}
       </div>
     )
   }
-  
+
 }
 
 export default withEntry(withUser(EntryHistory))
