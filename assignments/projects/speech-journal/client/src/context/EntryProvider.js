@@ -9,7 +9,6 @@ class EntryProvider extends Component {
     this.state = {
       entries: [],
       singleEntry: {},
-      success: ''
     }
   }
 
@@ -49,10 +48,6 @@ class EntryProvider extends Component {
       }
     })
     .catch(err => console.log(err))
-  }
-
-  handleSuccessPost = () => {
-    this.setState({success: "Succesfully Added New Entry!"})
   }
 
   render() {

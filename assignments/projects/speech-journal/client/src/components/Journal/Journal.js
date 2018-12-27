@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import JournalForm from './JournalForm'
 import { withEntry } from '../../context/EntryProvider'
 import { withUser } from '../../context/UserProvider'
+import { Button } from 'reactstrap'
 
 class Journal extends Component {
-  constructor() {
-    super() 
+  constructor(props) {
+    super(props) 
     this.state = {
       title: '',
       content: '',
@@ -13,7 +14,19 @@ class Journal extends Component {
     }
   }
 
-  
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps)
+    if(this.state.recordingState === "title"){
+      this.setState({
+        title: nextProps.transcript
+      })
+    }
+    else if(this.state.recordingState === "content"){
+      this.setState({
+        content: nextProps.transcript
+      })
+    }
+  }
 
   handleChange = (e) => this.setState({[e.target.name]: e.target.value})
 
@@ -28,22 +41,27 @@ class Journal extends Component {
       title: '',
       content: ''
     })
+    this.props.history.push('/entryhistory')
   }
 
-  handleTitleRecord = () => {
-    this.setState({recordingState: 'title'})
-    this.props.resetTranscript()
+  handleRecord = stateKey => {
+    this.setState({recordingState: stateKey}, () =>  this.props.resetTranscript())
     this.props.startListening()
-   
   }
+
+  handleStopRecord = () => {
+    this.props.stopListening()
+  }
+
 
   render() {
     return (
       <div className="container my-5">
+        <h1 className="text-white text-capitalize">Welcome {this.props.user.firstName}</h1>
         <h1 className="text-white mb-5">Journal Entry</h1>
-        <button onClick={this.handleTitleRecord}>Record Title</button>
-        <button>Record Entry</button>
-        <button>Stop Recording</button>
+        <Button color="success" onClick={() => this.handleRecord('title')}>Record Title</Button>
+        <Button color="success" onClick={() => this.handleRecord('content')}>Record Entry</Button>
+        <Button color="primary" onClick={this.handleStopRecord}>Stop Recording</Button>
         <JournalForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}

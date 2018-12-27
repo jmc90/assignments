@@ -1,6 +1,6 @@
 import React from 'react'
 import { withUser } from '../../context/UserProvider'
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import {
   Collapse,
   Navbar,
@@ -28,15 +28,15 @@ class NavbarContainer extends React.Component {
     return (
       <div className="container">
         <Navbar dark expand="md">
-          {isAuthenticated && <Link to="/journal">Journal</Link>}
+          {isAuthenticated && <NavLink to="/journal">Journal</NavLink>}
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="px-2">
-                {!isAuthenticated ? <Link to="/signin">Sign In</Link> : <Link to="/entryhistory">View Entries</Link>}
+                {!isAuthenticated ? <NavLink to="/signin">Sign In</NavLink> : <NavLink to="/entryhistory">View Entries</NavLink>}
               </NavItem>
               <NavItem className="px-2">
-                {!isAuthenticated ? <Link to="/register">Register</Link> : <Link to="/" onClick={logOut}>Logout</Link>}
+                {!isAuthenticated ? <NavLink to="/register">Register</NavLink> : <NavLink to="/" onClick={logOut}>Logout</NavLink>}
               </NavItem>
             </Nav>
           </Collapse>

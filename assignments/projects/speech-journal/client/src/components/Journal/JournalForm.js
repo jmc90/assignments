@@ -12,7 +12,7 @@ const JournalForm = ({handleChange, handleSubmit, title, content, success, recor
             name="title"
             id="title"
             placeholder="Title.."
-            value={recordingState === 'title' ? transcript : title}
+            value={title}
             onChange={handleChange} />
         </FormGroup>
         <FormGroup>
@@ -26,7 +26,7 @@ const JournalForm = ({handleChange, handleSubmit, title, content, success, recor
             value={content}
             onChange={handleChange} />
         </FormGroup>
-        <Button>Submit</Button>
+        <Button color="info" block>Submit</Button>
         {/* <input 
           type="text"
           name="title"
