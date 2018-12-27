@@ -10,6 +10,7 @@ import Journal from "./components/Journal/Journal"
 import EntryHistory from "./components/EntryHistory/EntryHistory"
 import Entry from "./components/EntryHistory/Entry"
 import './App.css'
+import SpeechRecognition from 'react-speech-recognition'
 
 
 
@@ -19,6 +20,7 @@ class App extends Component {
   }
 
   render() {
+    const { transcript, resetTranscript, startListening, stopListening } = this.props
     return (
       <div>
         <NavbarContainer />
@@ -38,7 +40,11 @@ class App extends Component {
           <Route path="/journal" render={routerProps => 
                                           !this.props.isAuthenticated 
                                           ? <Redirect to="/" /> 
-                                          : <Journal {...routerProps}/>} />
+                                          : <Journal {...routerProps} 
+                                                    transcript={transcript} 
+                                                    resetTranscript={resetTranscript}
+                                                    startListening={startListening}
+                                                    stopListening={stopListening} />} />
           <Route path="/entryhistory" render={routerProps => 
                                           !this.props.isAuthenticated 
                                           ? <Redirect to="/" /> 
@@ -54,4 +60,8 @@ class App extends Component {
   }
 }
 
-export default withUser(App)
+const options = {
+  autoStart: false
+}
+
+export default SpeechRecognition(options)(withUser(App))

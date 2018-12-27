@@ -8,9 +8,12 @@ class Journal extends Component {
     super() 
     this.state = {
       title: '',
-      content: ''
+      content: '',
+      recordingState: ''
     }
   }
+
+  
 
   handleChange = (e) => this.setState({[e.target.name]: e.target.value})
 
@@ -27,15 +30,28 @@ class Journal extends Component {
     })
   }
 
+  handleTitleRecord = () => {
+    this.setState({recordingState: 'title'})
+    this.props.resetTranscript()
+    this.props.startListening()
+   
+  }
+
   render() {
     return (
       <div className="container my-5">
+        <h1 className="text-white mb-5">Journal Entry</h1>
+        <button onClick={this.handleTitleRecord}>Record Title</button>
+        <button>Record Entry</button>
+        <button>Stop Recording</button>
         <JournalForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
           title={this.state.title}
           content={this.state.content}
-          success={this.props.success} />
+          success={this.props.success}
+          transcript={this.props.transcript}
+          recordingState={this.state.recordingState} />
       </div>
     )
   }

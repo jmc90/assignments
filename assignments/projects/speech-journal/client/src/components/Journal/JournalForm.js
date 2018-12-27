@@ -1,10 +1,9 @@
 import React from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
-const JournalForm = ({handleChange, handleSubmit, title, content, success}) => {
+const JournalForm = ({handleChange, handleSubmit, title, content, success, recordingState, transcript}) => {
   return (
     <div>
-      <h1 className="text-white mb-5">Journal Entry</h1>
       <Form className="text-white" onSubmit={handleSubmit}>
         <FormGroup>
           <Label for="title">Title</Label>
@@ -13,7 +12,7 @@ const JournalForm = ({handleChange, handleSubmit, title, content, success}) => {
             name="title"
             id="title"
             placeholder="Title.."
-            value={title}
+            value={recordingState === 'title' ? transcript : title}
             onChange={handleChange} />
         </FormGroup>
         <FormGroup>
