@@ -8,3 +8,9 @@
   margin: auto;
   word-wrap: break-word;
 }
+
+/* paper */
+.entry {
+  background-color: #fff;
+  height: 90vh;
+}

@@ -8,10 +8,14 @@ class Entry extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>{this.props.singleEntry.title}</h1>
-        <p>{this.props.singleEntry.content}</p>
-        <p>This is an individual entry</p>
+      <div className="container">
+        <div className="entry">
+          <h3>Date: {this.props.singleEntry.entryDate}</h3>
+          <h3>Title: {this.props.singleEntry.title} </h3>
+        </div>
+        
+        {/* <h1>{this.props.singleEntry.title}</h1>
+        <p>{this.props.singleEntry.content}</p> */}
       </div>
     )
   }
