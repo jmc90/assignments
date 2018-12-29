@@ -1,0 +1,10 @@
+.entries-container {
+  height: 75vh;
+  overflow-y: auto;
+}
+
+.entry-div {
+  width: 80%;
+  margin: auto;
+  word-wrap: break-word;
+}
