@@ -56,9 +56,11 @@ class Journal extends Component {
 
   render() {
     return (
-      <div className="container my-5">
-        <h1 className="text-white text-capitalize">Welcome {this.props.user.firstName}</h1>
-        <h1 className="text-white mb-5">Journal Entry</h1>
+      <div className="container my-5 text-white">
+        <h1 className="text-center text-capitalize">Welcome {this.props.user.firstName}</h1>
+        <h1 className="text-white">Journal Entry</h1>
+        <p>Type or record your thoughts!</p>
+        <p>(Speech to text will only work in Chrome browser!)</p>
         <Button color="success" onClick={() => this.handleRecord('title')}>Record Title</Button>
         <Button color="success" onClick={() => this.handleRecord('content')}>Record Entry</Button>
         <Button color="primary" onClick={this.handleStopRecord}>Stop Recording</Button>

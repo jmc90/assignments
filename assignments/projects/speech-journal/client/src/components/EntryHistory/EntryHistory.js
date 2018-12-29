@@ -10,7 +10,8 @@ class EntryHistory extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <h1 className="text-center text-white m-3">Past Entries</h1>
       {this.props.entries.map(entry => <EntryDiv key={entry._id} entryId={entry._id} title={entry.title} />)}
       </div>
     )
