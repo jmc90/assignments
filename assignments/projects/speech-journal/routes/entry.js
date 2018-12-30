@@ -14,7 +14,6 @@ entryRouter.get('/', (req, res, next) => {
 })
 
 
-// ask nate why it didnt work with just entry id
 entryRouter.get('/:entryId', (req, res, next) => {
     Entry.findOne({user: req.user._id, _id: req.params.entryId}, (err, entry) => {
         if (err) {
