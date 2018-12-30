@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import JournalForm from './JournalForm'
-import { withEntry } from '../../context/EntryProvider'
 import { withUser } from '../../context/UserProvider'
 import { Button } from 'reactstrap'
 

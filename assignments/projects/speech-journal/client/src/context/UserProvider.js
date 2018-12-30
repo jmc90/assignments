@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+const todoAxios = axios.create();
+
+todoAxios.interceptors.request.use((config)=>{
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
 
 const UserContext = React.createContext()
 
@@ -15,8 +22,12 @@ class UserProvider extends Component {
     }
   }
 
+  componentDidMount() {
+    this.getUserEntries();
+}
+
   register = userInfo => {
-    axios.post('/auth/register', userInfo).then(res => {
+    todoAxios.post('/auth/register', userInfo).then(res => {
       const { user, token } = res.data
       localStorage.setItem("user", JSON.stringify(user))
       localStorage.setItem("token", token)
@@ -30,7 +41,7 @@ class UserProvider extends Component {
   }
 
   signIn = userInfo => {
-    axios.post('/auth/signin', userInfo).then(res => {
+    todoAxios.post('/auth/signin', userInfo).then(res => {
       const { token, user } = res.data
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
@@ -62,7 +73,7 @@ class UserProvider extends Component {
   }
 
   getUserEntries = ()=> {
-    axios.get('/api/entry').then(res => {
+    todoAxios.get('/api/entry').then(res => {
       this.setState({
         entries: res.data
       })
@@ -71,7 +82,7 @@ class UserProvider extends Component {
   }
 
   getSingleEntry = entryId => {
-    axios.get(`/api/entry/${entryId}`).then(res => {
+    todoAxios.get(`/api/entry/${entryId}`).then(res => {
       this.setState({
         singleEntry: res.data
       })
@@ -80,7 +91,7 @@ class UserProvider extends Component {
   }
 
   addEntry = post => {
-    axios.post('/api/entry', post).then(res => {
+    todoAxios.post('/api/entry', post).then(res => {
       this.setState(prevState => {
         return {
           entries: [...prevState.entries, res.data]
@@ -91,7 +102,7 @@ class UserProvider extends Component {
   }
 
   deleteEntry = entryId => {
-    axios.delete(`/api/entry/${entryId}`).then(res => {
+    todoAxios.delete(`/api/entry/${entryId}`).then(res => {
       if (res.data === "Successfully deleted entry!") {
         this.setState(prevState => {
           return {

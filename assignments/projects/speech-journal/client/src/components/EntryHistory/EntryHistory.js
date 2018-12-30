@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withEntry } from '../../context/EntryProvider'
 import { withUser } from '../../context/UserProvider'
 import EntryDiv from './EntryDiv'
 import './EntryHistory.css'
