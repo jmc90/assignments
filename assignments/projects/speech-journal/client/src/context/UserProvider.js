@@ -26,6 +26,7 @@ class UserProvider extends Component {
       })
       return res
     })
+    .catch(err => this.handleError(err.response.data.errMsg))
   }
 
   signIn = userInfo => {
@@ -40,6 +41,7 @@ class UserProvider extends Component {
       this.getUserEntries()
       return res
     })
+    .catch(err => this.handleError(err.response.data.errMsg))
   }
 
   handleError = err => {
