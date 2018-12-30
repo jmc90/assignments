@@ -29,11 +29,13 @@ class SignIn extends Component {
       password: this.state.password
     }
     this.props.signIn(userInfo)
-      .then(() => this.props.history.push("/journal"))
-      .catch(err => {
-        this.setState({errorMessage: err.response.data.errMsg})
-      })
-    this.clearInputs()
+      // .then()
+      // .catch(err => {
+      //   console.dir(err)
+      //   this.setState({errorMessage: err.response.data.errMsg})
+      // })
+      this.clearInputs()
+    
   }
   
   render() {
@@ -44,7 +46,7 @@ class SignIn extends Component {
           handleSignIn={this.handleSignIn}
           username={this.state.username}
           password={this.state.password}
-          errorMessage={this.state.errorMessage} />
+          errorMessage={this.props.errorMessage} />
       </div>
     )
   }

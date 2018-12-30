@@ -32,14 +32,11 @@ class Register extends Component  {
       firstName: this.state.firstName
     }
     this.props.register(userInfo)
-    .then(() => {
-      this.props.history.push("/journal")
-    })
-    .catch(err => {
-      console.dir(err)
-      this.setState({errorMessage: err.response.data.errMsg})
-
-    }) 
+    // .then()
+    // .catch(err => {
+    //   console.dir(err)
+    //   this.setState({errorMessage: err.response.data.errMsg})
+    // }) 
     this.clearInputs()
   }
 

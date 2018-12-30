@@ -17,12 +17,13 @@ class UserProvider extends Component {
       user: JSON.parse(localStorage.getItem("user")) || {},
       token: localStorage.getItem("token") || "",
       entries: [],
-      singleEntry: {}
+      singleEntry: {},
+      errorMessage: ""
     }
   }
 
   register = userInfo => {
-   return axios.post('/auth/register', userInfo).then(res => {
+   axios.post('/auth/register', userInfo).then(res => {
       const { user, token } = res.data
       localStorage.setItem("user", JSON.stringify(user))
       localStorage.setItem("token", token)
@@ -30,12 +31,12 @@ class UserProvider extends Component {
         user: user,
         token: token,
       })
-      return res
     })
+    .catch(err => this.handleError(err.response.data.errMsg))
   }
 
   signIn = userInfo => {
-    return axios.post('/auth/signin', userInfo).then(res => {
+    axios.post('/auth/signin', userInfo).then(res => {
       const { token, user } = res.data
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
@@ -44,9 +45,15 @@ class UserProvider extends Component {
         token: token
       })
       this.getUserEntries()
-      return res
     })
+    .catch(err => this.handleError(err.response.data.errMsg))
   }
+
+  handleError = err => {
+    this.setState({
+        errorMessage: err
+    })
+}
 
   logOut = () => {
     localStorage.removeItem("user");
