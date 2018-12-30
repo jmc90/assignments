@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 
-const SignInForm = ({ handleChange, handleSignIn, username, password, authErr }) => {
+const SignInForm = ({ handleChange, handleSignIn, username, password, errorMessage }) => {
   return (
     <div className="page d-flex justify-content-center align-items-center">
       <Form className="register-signin bg-info text-center rounded" onSubmit={handleSignIn}>
@@ -30,7 +30,10 @@ const SignInForm = ({ handleChange, handleSignIn, username, password, authErr })
         </FormGroup>
         <Button>Sign In</Button>
         <Link className="d-block" to="/register">Don't have an account?</Link>
-        <p>{authErr}</p>
+        {
+          errorMessage &&
+          <p style={{color: "red"}}>{errorMessage}</p>
+        }
       </Form>
       {/* <div>
         <h1>Sign In</h1>

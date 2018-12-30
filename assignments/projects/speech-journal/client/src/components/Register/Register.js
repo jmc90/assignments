@@ -8,25 +8,39 @@ class Register extends Component  {
     this.state = {
       firstName: "",
       username: "",
-      password: ""
+      password: "",
+      errorMessage: ""
     }
   }
   
   handleChange = e => this.setState({[e.target.name]: e.target.value})
 
+  clearInputs = () => {
+    this.setState({
+        username: "",
+        password: "",
+        errorMessage: ""
+    })
+  }
+
   handleRegister = e => {
     e.preventDefault()
+    console.log(this.state)
     const userInfo = {
       username: this.state.username,
       password: this.state.password,
       firstName: this.state.firstName
     }
-    this.props.register(userInfo).then(() => this.props.history.push("/journal"))
-    this.setState({
-      firstName: "",
-      username: "",
-      password: ""
+    this.props.register(userInfo)
+    .then(() => {
+      this.props.history.push("/journal")
     })
+    .catch(err => {
+      console.dir(err)
+      this.setState({errorMessage: err.response.data.errMsg})
+
+    }) 
+    this.clearInputs()
   }
 
   render() {
@@ -38,7 +52,7 @@ class Register extends Component  {
           firstName={this.state.firstName}
           username={this.state.username}
           password={this.state.password}
-          authErr={this.props.authErr} />
+          errorMessage={this.state.errorMessage} />
       </div>
     )
   }

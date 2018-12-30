@@ -16,18 +16,13 @@ class UserProvider extends Component {
     this.state = {
       user: JSON.parse(localStorage.getItem("user")) || {},
       token: localStorage.getItem("token") || "",
-      authErr: '',
       entries: [],
       singleEntry: {}
     }
   }
 
-  componentDidMount() {
-    this.getUserEntries();
-}
-
   register = userInfo => {
-    todoAxios.post('/auth/register', userInfo).then(res => {
+   return todoAxios.post('/auth/register', userInfo).then(res => {
       const { user, token } = res.data
       localStorage.setItem("user", JSON.stringify(user))
       localStorage.setItem("token", token)
@@ -37,11 +32,10 @@ class UserProvider extends Component {
       })
       return res
     })
-    .catch(err => this.handleError(err.response.data.errMsg))
   }
 
   signIn = userInfo => {
-    todoAxios.post('/auth/signin', userInfo).then(res => {
+    return todoAxios.post('/auth/signin', userInfo).then(res => {
       const { token, user } = res.data
       localStorage.setItem("token", token)
       localStorage.setItem("user", JSON.stringify(user))
@@ -51,13 +45,6 @@ class UserProvider extends Component {
       })
       this.getUserEntries()
       return res
-    })
-    .catch(err => this.handleError(err.response.data.errMsg))
-  }
-
-  handleError = err => {
-    this.setState({
-      authErr: err
     })
   }
 
@@ -77,6 +64,7 @@ class UserProvider extends Component {
       this.setState({
         entries: res.data
       })
+      return res
     })
     .catch(err => console.log(err))
   }
@@ -86,6 +74,7 @@ class UserProvider extends Component {
       this.setState({
         singleEntry: res.data
       })
+      return res
     })
     .catch(err => console.log(err))
   }
@@ -97,6 +86,7 @@ class UserProvider extends Component {
           entries: [...prevState.entries, res.data]
         }
       })
+      return res
     })
     .catch(err => console.log(err))
   }
@@ -110,6 +100,7 @@ class UserProvider extends Component {
           }
         })
       }
+      return res
     })
     .catch(err => console.log(err))
   }
@@ -122,7 +113,6 @@ class UserProvider extends Component {
           register: this.register,
           signIn: this.signIn,
           logOut: this.logOut,
-          handleError: this.handleError,
           getUserEntries: this.getUserEntries,
           getSingleEntry: this.getSingleEntry,
           addEntry: this.addEntry,
