@@ -15,7 +15,8 @@ const RegisterForm = ({ handleChange, handleRegister, firstName, username, passw
             name="firstName"
             value={firstName}
             placeholder="First Name"
-            onChange={handleChange} />
+            onChange={handleChange}
+            required />
         </FormGroup>
         <FormGroup>
           <Label for="username">Username</Label>
@@ -24,7 +25,8 @@ const RegisterForm = ({ handleChange, handleRegister, firstName, username, passw
             name="username"
             value={username}
             placeholder="Username"
-            onChange={handleChange} />
+            onChange={handleChange}
+            required />
         </FormGroup>
         <FormGroup>
           <Label for="password">Password</Label>
@@ -33,7 +35,8 @@ const RegisterForm = ({ handleChange, handleRegister, firstName, username, passw
             name="password"
             value={password}
             placeholder="Password"
-            onChange={handleChange} />
+            onChange={handleChange}
+            required />
         </FormGroup>
         <Button>Register</Button>
         <Link className="d-block" to="/signin">Already Registered?</Link>

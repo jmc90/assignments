@@ -16,7 +16,8 @@ const SignInForm = ({ handleChange, handleSignIn, username, password, errorMessa
             id="username"
             value={username}
             placeholder="Username"
-            onChange={handleChange} />
+            onChange={handleChange}
+            required />
         </FormGroup>
         <FormGroup>
           <Label for="password">Password</Label>
@@ -26,7 +27,8 @@ const SignInForm = ({ handleChange, handleSignIn, username, password, errorMessa
             id="password"
             value={password}
             placeholder="Password"
-            onChange={handleChange} />
+            onChange={handleChange}
+            required />
         </FormGroup>
         <Button>Sign In</Button>
         <Link className="d-block" to="/register">Don't have an account?</Link>
