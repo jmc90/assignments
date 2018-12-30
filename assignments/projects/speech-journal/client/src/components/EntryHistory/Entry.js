@@ -9,9 +9,9 @@ class Entry extends Component {
   render() {
     return (
       <div>
+        <h3>{this.props.singleEntry.entryDate}</h3>
         <h1>{this.props.singleEntry.title}</h1>
         <p>{this.props.singleEntry.content}</p>
-        <p>This is an individual entry</p>
       </div>
     )
   }
