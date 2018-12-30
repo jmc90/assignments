@@ -77,4 +77,4 @@ class Journal extends Component {
   }
 }
 
-export default withUser(withEntry(Journal))
+export default withUser(Journal)

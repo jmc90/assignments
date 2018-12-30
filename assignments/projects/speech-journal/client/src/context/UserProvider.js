@@ -7,32 +7,39 @@ class UserProvider extends Component {
   constructor() {
     super()
     this.state = {
-      user: {},
-      isAuthenticated: false,
-      authErr: ''
+      user: JSON.parse(localStorage.getItem("user")) || {},
+      token: localStorage.getItem("token") || "",
+      authErr: '',
+      entries: [],
+      singleEntry: {}
     }
   }
 
   register = userInfo => {
     axios.post('/auth/register', userInfo).then(res => {
-      localStorage.setItem("user", JSON.stringify(res.data))
+      const { user, token } = res.data
+      localStorage.setItem("user", JSON.stringify(user))
+      localStorage.setItem("token", token)
       this.setState({
-        user: res.data,
-        isAuthenticated: true
+        user: user,
+        token: token,
       })
+      return res
     })
-      .catch(err => this.handleError(err.response.data.errMsg))
   }
 
   signIn = userInfo => {
     axios.post('/auth/signin', userInfo).then(res => {
-      localStorage.setItem("user", JSON.stringify(res.data))
+      const { token, user } = res.data
+      localStorage.setItem("token", token)
+      localStorage.setItem("user", JSON.stringify(user))
       this.setState({
-        user: res.data,
-        isAuthenticated: true
+        user: user,
+        token: token
       })
+      this.getUserEntries()
+      return res
     })
-      .catch(err => this.handleError(err.response.data.errMsg))
   }
 
   handleError = err => {
@@ -42,34 +49,71 @@ class UserProvider extends Component {
   }
 
   logOut = () => {
-    localStorage.removeItem("user")
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     this.setState({
-      user: {},
-      isAuthenticated: false
+        entries: [],
+        singleEntry: {},
+        user: {},
+        token: ""
     })
   }
 
-  verify = () => {
-    if (localStorage.getItem("user")) {
+  getUserEntries = ()=> {
+    axios.get('/api/entry').then(res => {
       this.setState({
-        user: JSON.parse(localStorage.getItem("user")),
-        isAuthenticated: true
+        entries: res.data
       })
-    }
+    })
+    .catch(err => console.log(err))
+  }
+
+  getSingleEntry = entryId => {
+    axios.get(`/api/entry/${entryId}`).then(res => {
+      this.setState({
+        singleEntry: res.data
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
+  addEntry = post => {
+    axios.post('/api/entry', post).then(res => {
+      this.setState(prevState => {
+        return {
+          entries: [...prevState.entries, res.data]
+        }
+      })
+    })
+    .catch(err => console.log(err))
+  }
+
+  deleteEntry = entryId => {
+    axios.delete(`/api/entry/${entryId}`).then(res => {
+      if (res.data === "Successfully deleted entry!") {
+        this.setState(prevState => {
+          return {
+            entries: prevState.entries.filter(entry => entry._id !== entryId)
+          }
+        })
+      }
+    })
+    .catch(err => console.log(err))
   }
 
   render() {
     return (
       <UserContext.Provider
         value={{
-          user: this.state.user,
-          isAuthenticated: this.state.isAuthenticated,
-          authErr: this.state.authErr,
+          ...this.state,
           register: this.register,
           signIn: this.signIn,
           logOut: this.logOut,
           handleError: this.handleError,
-          verify: this.verify,
+          getUserEntries: this.getUserEntries,
+          getSingleEntry: this.getSingleEntry,
+          addEntry: this.addEntry,
+          deleteEntry: this.deleteEntry
         }}>
         {this.props.children}
       </UserContext.Provider>

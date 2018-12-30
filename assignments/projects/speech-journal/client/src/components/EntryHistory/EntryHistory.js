@@ -22,4 +22,4 @@ class EntryHistory extends Component {
 
 }
 
-export default withEntry(withUser(EntryHistory))
+export default withUser(EntryHistory)

@@ -21,4 +21,4 @@ class Entry extends Component {
   }
 }
 
-export default withEntry(withUser(Entry))
+export default withUser(Entry)

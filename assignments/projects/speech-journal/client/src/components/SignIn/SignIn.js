@@ -24,6 +24,7 @@ class SignIn extends Component {
       username: '',
       password: ''
     })
+    .then(() => this.props.history.push("/journal"))
   }
   
   render() {

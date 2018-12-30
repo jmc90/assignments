@@ -39,7 +39,7 @@ entryRouter.post('/', (req, res, next) => {
 
 entryRouter.delete('/:entryId', (req, res, next) => {
     Entry.findOneAndDelete({_id: req.params.entryId, user: req.user._id}, (err, deletedEntry) => {
-        if (err) {
+         if (err) {
             res.status(500)
             return next(err)
         }

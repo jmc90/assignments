@@ -24,19 +24,19 @@ class NavbarContainer extends React.Component {
     });
   }
   render() {
-    const { isAuthenticated, logOut } = this.props
+    const { token, logOut } = this.props
     return (
       <div className="container">
         <Navbar dark expand="md">
-          {isAuthenticated && <NavLink activeClassName="text-primary" className="text-white" to="/journal">Journal</NavLink>}
+          {token && <NavLink activeClassName="text-primary" className="text-white" to="/journal">Journal</NavLink>}
           <NavbarToggler className="bg-info" onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="px-2">
-                {!isAuthenticated ? <NavLink activeClassName="text-primary" className="text-white" to="/signin">Sign In</NavLink> : <NavLink activeClassName="text-primary" className="text-white" to="/entryhistory">View Entries</NavLink>}
+                {!token ? <NavLink activeClassName="text-primary" className="text-white" to="/signin">Sign In</NavLink> : <NavLink activeClassName="text-primary" className="text-white" to="/entryhistory">View Entries</NavLink>}
               </NavItem>
               <NavItem className="px-2">
-                {!isAuthenticated ? <NavLink activeClassName="text-primary" className="text-white" to="/register">Register</NavLink> : <NavLink className="text-white" to="/" onClick={logOut}>Logout</NavLink>}
+                {!token ? <NavLink activeClassName="text-primary" className="text-white" to="/register">Register</NavLink> : <NavLink className="text-white" to="/" onClick={logOut}>Logout</NavLink>}
               </NavItem>
             </Nav>
           </Collapse>
