@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import { withEntry } from '../../context/EntryProvider'
 import { withUser } from '../../context/UserProvider'
 import EntryDiv from './EntryDiv'
 import './EntryHistory.css'
 
 class EntryHistory extends Component {
-  componentDidMount() {
-    this.props.getUserEntries(this.props.user._id)
-  }
+  // componentDidMount() {
+  //   this.props.getUserEntries()
+  // }
 
   render() {
     return (
@@ -22,4 +21,4 @@ class EntryHistory extends Component {
 
 }
 
-export default withEntry(withUser(EntryHistory))
+export default withUser(EntryHistory)

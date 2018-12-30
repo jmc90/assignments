@@ -6,12 +6,21 @@ class SignIn extends Component {
   constructor() {
     super()
     this.state = {
-      username: '',
-      password: ''
+      username: "",
+      password: "",
+      errorMessage: ""
     }
   }
 
   handleChange = e => this.setState({[e.target.name]: e.target.value})
+
+  clearInputs = () => {
+    this.setState({
+        username: "",
+        password: "",
+        errorMessage: ""
+    })
+  }
 
   handleSignIn = e => {
     e.preventDefault()
@@ -20,10 +29,11 @@ class SignIn extends Component {
       password: this.state.password
     }
     this.props.signIn(userInfo)
-    this.setState({
-      username: '',
-      password: ''
-    })
+      .then(() => this.props.history.push("/journal"))
+      .catch(err => {
+        this.setState({errorMessage: err.response.data.errMsg})
+      })
+    this.clearInputs()
   }
   
   render() {
@@ -34,7 +44,7 @@ class SignIn extends Component {
           handleSignIn={this.handleSignIn}
           username={this.state.username}
           password={this.state.password}
-          authErr={this.props.authErr} />
+          errorMessage={this.state.errorMessage} />
       </div>
     )
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import JournalForm from './JournalForm'
-import { withEntry } from '../../context/EntryProvider'
 import { withUser } from '../../context/UserProvider'
 import { Button } from 'reactstrap'
 
@@ -77,4 +76,4 @@ class Journal extends Component {
   }
 }
 
-export default withUser(withEntry(Journal))
+export default withUser(Journal)

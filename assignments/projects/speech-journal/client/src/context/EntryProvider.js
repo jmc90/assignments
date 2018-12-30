@@ -56,7 +56,6 @@ class EntryProvider extends Component {
         value={{
           entries: this.state.entries,
           singleEntry: this.state.singleEntry,
-          success: this.state.success,
           getUserEntries: this.getUserEntries,
           getSingleEntry: this.getSingleEntry,
           addEntry: this.addEntry,

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 
-const RegisterForm = ({ handleChange, handleRegister, firstName, username, password, authErr }) => {
+const RegisterForm = ({ handleChange, handleRegister, firstName, username, password, errorMessage }) => {
   return (
     <div className="page d-flex justify-content-center align-items-center">
       <Form className="register-signin bg-info text-center rounded" onSubmit={handleRegister}>
@@ -37,35 +37,12 @@ const RegisterForm = ({ handleChange, handleRegister, firstName, username, passw
         </FormGroup>
         <Button>Register</Button>
         <Link className="d-block" to="/signin">Already Registered?</Link>
-        <p>{authErr}</p>
-      </Form>
+        {
+          errorMessage &&
+          <p style={{color: "red"}}>{errorMessage}</p>
+        }
 
-      {/* <div className="container">
-        <h1>Register</h1>
-        <form onSubmit={handleRegister}>
-          <input
-            type="text"
-            name="firstName"
-            value={firstName}
-            placeholder="First Name"
-            onChange={handleChange} />
-          <input
-            type="text"
-            name="username"
-            value={username}
-            placeholder="Username"
-            onChange={handleChange} />
-          <input
-            type="text"
-            name="password"
-            value={password}
-            placeholder="Password"
-            onChange={handleChange} />
-          <button>Register</button>
-        </form>
-        <Link to="/signin">Sign In</Link>
-      </div>
-      <p>{authErr}</p> */}
+      </Form>
     </div>
   )
 }
