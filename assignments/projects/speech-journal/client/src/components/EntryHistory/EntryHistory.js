@@ -4,9 +4,9 @@ import EntryDiv from './EntryDiv'
 import './EntryHistory.css'
 
 class EntryHistory extends Component {
-  componentDidMount() {
-    this.props.getUserEntries(this.props.user._id)
-  }
+  // componentDidMount() {
+  //   this.props.getUserEntries()
+  // }
 
   render() {
     return (
