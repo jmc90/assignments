@@ -9,7 +9,8 @@ class Journal extends Component {
     this.state = {
       title: '',
       content: '',
-      recordingState: ''
+      recordingState: '',
+      micMessage: 'Mic is turned off'
     }
   }
 
@@ -46,16 +47,18 @@ class Journal extends Component {
   handleRecord = stateKey => {
     this.setState({recordingState: stateKey}, () =>  this.props.resetTranscript())
     this.props.startListening()
+    this.setState({micMessage: `Recording ${stateKey}`})
   }
 
   handleStopRecord = () => {
     this.props.stopListening()
+    this.setState({recordingState: '', micMessage: 'Mic is turned off'})
   }
 
 
   render() {
     return (
-      <div className="container my-5 text-white">
+      <div className="my-5 text-white">
         <h1 className="text-center text-capitalize">Welcome {this.props.user.firstName}</h1>
         <h1 className="text-white">Journal Entry</h1>
         <p>Type or record your thoughts!</p>
@@ -63,6 +66,7 @@ class Journal extends Component {
         <Button color="success" onClick={() => this.handleRecord('title')}>Record Title</Button>
         <Button color="success" onClick={() => this.handleRecord('content')}>Record Entry</Button>
         <Button color="primary" onClick={this.handleStopRecord}>Stop Recording</Button>
+        <p style={{color: 'red', fontWeight: 'bold'}}>{this.state.micMessage}</p>
         <JournalForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}

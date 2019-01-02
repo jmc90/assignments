@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
-const JournalForm = ({handleChange, handleSubmit, title, content, success, recordingState, transcript}) => {
+const JournalForm = ({handleChange, handleSubmit, title, content}) => {
   return (
     <div>
       <Form className="text-white" onSubmit={handleSubmit}>
@@ -44,7 +44,6 @@ const JournalForm = ({handleChange, handleSubmit, title, content, success, recor
           rows="10"/>
           <button>Submit</button> */}
       </Form>
-      <p>{success}</p>
     </div>
   )
 }

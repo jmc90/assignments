@@ -1,16 +1,20 @@
+/* enytry list */
 .entries-container {
   height: 75vh;
   overflow-y: auto;
 }
 
 .entry-div {
-  width: 80%;
+  width: 70%;
   margin: auto;
   word-wrap: break-word;
 }
 
-/* paper */
+/*individual entry*/
 .entry {
+  width: 70%;
+  margin: auto;
   background-color: #fff;
-  height: 90vh;
+  height: 75vh;
+  overflow-y: auto;
 }

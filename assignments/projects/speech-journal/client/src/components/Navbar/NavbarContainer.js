@@ -26,7 +26,7 @@ class NavbarContainer extends React.Component {
   render() {
     const { token, logOut } = this.props
     return (
-      <div className="container">
+      <div>
         <Navbar dark expand="md">
           {token && <NavLink activeClassName="text-primary" className="text-white" to="/journal">Journal</NavLink>}
           <NavbarToggler className="bg-info" onClick={this.toggle} />

@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Switch, Route } from "react-router-dom"
+import { Switch, Route, Redirect } from "react-router-dom"
 import { withUser } from './context/UserProvider'
 import ProtectedRoute from "./components/shared/ProtectedRoute"
 import NavbarContainer from "./components/Navbar/NavbarContainer"
@@ -19,12 +19,12 @@ class App extends Component {
   render() {
     const { transcript, resetTranscript, startListening, stopListening, token } = this.props
     return (
-      <div>
+      <div className="container">
         <NavbarContainer />
         <Switch>
-          <Route exact path="/" render={routerProps => <LandingPage {...routerProps}/>} />
-          <Route path="/signin" render={routerProps => <SignIn {...routerProps}/>} />
-          <Route path="/register" render={routerProps => <Register {...routerProps}/>} />
+          <Route exact path="/" render={routerProps => token ? <Redirect to="/journal"/> : <LandingPage {...routerProps}/>} />
+          <Route path="/signin" render={routerProps => token ? <Redirect to="/journal"/> : <SignIn {...routerProps}/>} />
+          <Route path="/register" render={routerProps => token ? <Redirect to="/journal"/> : <Register {...routerProps}/>} />
           <ProtectedRoute 
             path="/journal" 
             component={Journal} 
