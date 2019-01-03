@@ -18,8 +18,6 @@ class Entry extends Component {
           <p>{this.props.singleEntry.content}</p>
         </div>
         
-        {/* <h1>{this.props.singleEntry.title}</h1>
-        <p>{this.props.singleEntry.content}</p> */}
       </div>
     )
   }
