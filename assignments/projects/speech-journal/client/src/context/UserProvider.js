@@ -18,7 +18,8 @@ class UserProvider extends Component {
       token: localStorage.getItem("token") || "",
       entries: [],
       singleEntry: {},
-      errorMessage: ""
+      signInErrorMessage: "",
+      registerErrorMessage: ""
     }
   }
 
@@ -30,9 +31,11 @@ class UserProvider extends Component {
       this.setState({
         user: user,
         token: token,
+        signInErrorMessage: "",
+        registerErrorMessage: ""
       })
     })
-    .catch(err => this.handleError(err.response.data.errMsg))
+    .catch(err => this.handleError(err.response.data.errMsg, 'register'))
   }
 
   signIn = userInfo => {
@@ -42,18 +45,27 @@ class UserProvider extends Component {
       localStorage.setItem("user", JSON.stringify(user))
       this.setState({
         user: user,
-        token: token
+        token: token,
+        signInErrorMessage: "",
+        registerErrorMessage: ""
       })
       this.getUserEntries()
     })
-    .catch(err => this.handleError(err.response.data.errMsg))
+    .catch(err => this.handleError(err.response.data.errMsg, 'signIn'))
   }
 
-  handleError = err => {
-    this.setState({
-        errorMessage: err
+  handleError = (err, errRoute) => {
+    if (errRoute === 'signIn') {
+      this.setState({
+        signInErrorMessage: err
     })
-}
+    } else if (errRoute === 'register') {
+      this.setState({
+        registerErrorMessage: err
+      })
+    }
+  }
+    
 
   logOut = () => {
     localStorage.removeItem("user");
@@ -68,8 +80,9 @@ class UserProvider extends Component {
 
   getUserEntries = ()=> {
     todoAxios.get('/api/entry').then(res => {
+      let data = res.data.reverse()
       this.setState({
-        entries: res.data
+        entries: data
       })
       return res
     })

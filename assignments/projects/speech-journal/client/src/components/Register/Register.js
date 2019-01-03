@@ -8,8 +8,7 @@ class Register extends Component  {
     this.state = {
       firstName: "",
       username: "",
-      password: "",
-      errorMessage: ""
+      password: ""
     }
   }
   
@@ -18,8 +17,7 @@ class Register extends Component  {
   clearInputs = () => {
     this.setState({
         username: "",
-        password: "",
-        errorMessage: ""
+        password: ""
     })
   }
 
@@ -49,7 +47,7 @@ class Register extends Component  {
           firstName={this.state.firstName}
           username={this.state.username}
           password={this.state.password}
-          errorMessage={this.state.errorMessage} />
+          errorMessage={this.props.registerErrorMessage} />
       </div>
     )
   }

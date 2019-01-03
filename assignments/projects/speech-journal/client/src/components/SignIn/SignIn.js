@@ -7,8 +7,7 @@ class SignIn extends Component {
     super()
     this.state = {
       username: "",
-      password: "",
-      errorMessage: ""
+      password: ""
     }
   }
 
@@ -17,8 +16,7 @@ class SignIn extends Component {
   clearInputs = () => {
     this.setState({
         username: "",
-        password: "",
-        errorMessage: ""
+        password: ""
     })
   }
 
@@ -35,7 +33,6 @@ class SignIn extends Component {
       //   this.setState({errorMessage: err.response.data.errMsg})
       // })
       this.clearInputs()
-    
   }
   
   render() {
@@ -46,7 +43,7 @@ class SignIn extends Component {
           handleSignIn={this.handleSignIn}
           username={this.state.username}
           password={this.state.password}
-          errorMessage={this.props.errorMessage} />
+          errorMessage={this.props.signInErrorMessage} />
       </div>
     )
   }

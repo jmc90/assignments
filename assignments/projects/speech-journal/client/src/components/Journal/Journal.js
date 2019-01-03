@@ -15,7 +15,6 @@ class Journal extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(nextProps)
     if(this.state.recordingState === "title"){
       this.setState({
         title: nextProps.transcript
@@ -60,9 +59,11 @@ class Journal extends Component {
     return (
       <div className="my-5 text-white">
         <h1 className="text-center text-capitalize">Welcome {this.props.user.firstName}</h1>
+        <div className="text-center text-md-left">
         <h1 className="text-white">Journal Entry</h1>
         <p>Type or record your thoughts!</p>
         <p>(Speech to text will only work in Chrome browser!)</p>
+        </div>
         <Button color="success" onClick={() => this.handleRecord('title')}>Record Title</Button>
         <Button color="success" onClick={() => this.handleRecord('content')}>Record Entry</Button>
         <Button color="primary" onClick={this.handleStopRecord}>Stop Recording</Button>

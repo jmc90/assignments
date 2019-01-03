@@ -7,17 +7,15 @@ class Entry extends Component {
     this.props.getSingleEntry(this.props.match.params.id)
   }
   render() {
-    console.log(this.props.singleEntry)
     return (
       <div>
         <h1 className="text-white text-center m-3">Journal Entry</h1>
         <div className="entry">
           <h3>Date: {moment(this.props.singleEntry.entryDate).format('MM/DD/YYYY')}</h3>
-          <h3>Title: {this.props.singleEntry.title} </h3>
+          <h3 className="text-center">Title: {this.props.singleEntry.title} </h3>
           <br/>
-          <p>{this.props.singleEntry.content}</p>
+          <p className="m-5">{this.props.singleEntry.content}</p>
         </div>
-        
       </div>
     )
   }
