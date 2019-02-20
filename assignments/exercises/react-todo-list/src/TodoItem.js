@@ -1,10 +1,10 @@
 import React from 'react'
 
-const TodoItem = () => {
+const TodoItem = ({item}) => {
   return (
     <div className="todo-item">
-        <input type="checkbox"/>
-        <p>PlaceHolder text here</p>
+        <input type="checkbox" checked={item.completed}/>
+        <p>{item.text}</p>
     </div>
   )
 }
