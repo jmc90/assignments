@@ -10,7 +10,7 @@ class App extends Component {
     }
   }
 
-  handleClick = (id) => {
+  handleChange = (id) => {
     this.setState(prevState => {
       const updatedTodos = prevState.todosData.map(todo => {
           if (todo.id === id) {
@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   render() {
-    const mappedTodos = this.state.todosData.map(item => <TodoItem key={item.id} item={item} handleClick={this.handleClick} />)
+    const mappedTodos = this.state.todosData.map(item => <TodoItem key={item.id} item={item} handleChange={this.handleChange} />)
     return (
       <div className="todo-list">
          {mappedTodos}
