@@ -1,9 +1,9 @@
 import React from 'react'
 
-const TodoItem = ({item}) => {
+const TodoItem = ({item, handleClick}) => {
   return (
     <div className="todo-item">
-        <input type="checkbox" checked={item.completed}/>
+        <input type="checkbox" checked={item.completed} onChange={() => handleClick(item.id)} />
         <p>{item.text}</p>
     </div>
   )
